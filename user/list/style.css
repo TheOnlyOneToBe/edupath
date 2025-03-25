@@ -1,0 +1,298 @@
+/* Style pour les listes et tables de base de données - EduPath */
+
+/* Styles de table améliorés */
+.table {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.03);
+  }
+  
+  .table th,
+  .table td {
+    padding: 1rem;
+    vertical-align: middle;
+    border-top: 1px solid #dee2e6;
+  }
+  
+  .table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+    background-color: #f8f9fa;
+    color: #333;
+    font-weight: 600;
+  }
+  
+  .table tbody tr:hover {
+    background-color: rgba(0, 123, 255, 0.05);
+  }
+  
+  /* Boutons d'action */
+  .action-buttons {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    border-radius: 0.2rem;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-primary {
+    background-color: var(--ep-primary-color);
+    border-color: var(--ep-primary-color);
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--ep-primary-color-hover);
+    border-color: var(--ep-primary-color-hover);
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
+  
+  .btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+  }
+  
+  /* Pagination */
+  .pagination {
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.25rem;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+  
+  .pagination .page-item .page-link {
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: var(--ep-primary-color);
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    transition: all 0.3s ease;
+  }
+  
+  .pagination .page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: var(--ep-primary-color);
+    border-color: var(--ep-primary-color);
+  }
+  
+  .pagination .page-item .page-link:hover {
+    z-index: 2;
+    color: var(--ep-primary-color-hover);
+    text-decoration: none;
+    background-color: #e9ecef;
+    border-color: #dee2e6;
+  }
+  
+  /* Responsive tables */
+  .table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Filtres et recherche */
+  .filter-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  }
+  
+  .filter-section .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .search-box {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+  
+  .search-box input {
+    padding-right: 2.5rem;
+  }
+  
+  .search-box .search-icon {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6c757d;
+  }
+  
+  /* Badges pour statuts */
+  .badge {
+    display: inline-block;
+    padding: 0.25em 0.6em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+    transition: all 0.3s ease;
+  }
+  
+  .badge-success {
+    color: #fff;
+    background-color: #28a745;
+  }
+  
+  .badge-warning {
+    color: #212529;
+    background-color: #ffc107;
+  }
+  
+  .badge-danger {
+    color: #fff;
+    background-color: #dc3545;
+  }
+  
+  .badge-info {
+    color: #fff;
+    background-color: #17a2b8;
+  }
+  
+  /* Styles pour les messages d'alerte */
+  .alert {
+    position: relative;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+  }
+  
+  .alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+  }
+  
+  .alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+  }
+  
+  .alert-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+  }
+  
+  /* Styles pour les cartes */
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+  }
+  
+  .card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  }
+  
+  .card-header {
+    padding: 1rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  }
+  
+  .card-body {
+    flex: 1 1 auto;
+    padding: 1.25rem;
+  }
+  
+  /* Styles pour les boutons d'action dans les tables */
+  .table .action-btn {
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+  
+  .table .action-btn:hover {
+    transform: translateY(-2px);
+  }
+  
+  /* Styles pour les icônes */
+  .icofont-edit {
+    color: #fff;
+  }
+  
+  .icofont-trash {
+    color: #fff;
+  }
+  
+  /* Styles pour les formulaires de filtre */
+  .filter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .filter-form .form-group {
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  /* Styles pour les statistiques */
+  .stats-card {
+    background: linear-gradient(135deg, var(--ep-primary-color) 0%, var(--ep-primary-color-hover) 100%);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  }
+  
+  .stats-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stats-card .stats-value {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+  
+  .stats-card .stats-icon {
+    font-size: 2.5rem;
+    opacity: 0.5;
+    position: absolute;
+    right: 1.5rem;
+    top: 1.5rem;
+  }
