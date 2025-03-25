@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../../config/database.php';
+require_once '../../config/database.php'; // Fixed path
 
 $success = $error = '';
 $avoir = null;
@@ -10,7 +10,7 @@ $id_filiere = $_GET['filiere'] ?? null;
 $id_cycle = $_GET['cycle'] ?? null;
 
 if (!$id_filiere || !$id_cycle) {
-    header('Location: ../list/avoir.php');
+    header('Location: ../list/avoir.php'); // Fixed redirect path
     exit();
 }
 
@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 ':id_cycle' => $id_cycle
             ]);
             $_SESSION['success'] = "Les frais ont été modifiés avec succès!";
-            header('Location: ../list/avoir.php');
+            header('Location: ../list/avoir.php'); // Fixed redirect path
             exit();
         } catch(PDOException $e) {
             $error = "Une erreur est survenue lors de la modification des frais: " . $e->getMessage();

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'config/database.php';
+require_once '../../config/database.php'; // Fixed path
 
 $success = $error = '';
 $bourse = null;
@@ -9,13 +9,13 @@ $bourse = null;
 $id_bourse = $_GET['id'] ?? null;
 
 if (!$id_bourse) {
-    header('Location: bourses.php');
+    header('Location: ../list/bourses.php'); // Fixed path
     exit();
 }
 
 // Traitement du formulaire de modification
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $caracteristique = $_POST['caracteristique'] ?? '';
+    $caracteristique = trim($_POST['caracteristique'] ?? '');
 
     if (!empty($caracteristique)) {
         try {
@@ -25,11 +25,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 ':caracteristique' => $caracteristique,
                 ':id' => $id_bourse
             ]);
-            $success = "La bourse a été modifiée avec succès!";
-            header('Location: bourses.php');
+            $_SESSION['success'] = "La bourse a été modifiée avec succès!";
+            header('Location: ../list/bourses.php'); // Fixed path
             exit();
         } catch(PDOException $e) {
-            $error = "Une erreur est survenue lors de la modification de la bourse.";
+            $error = "Une erreur est survenue lors de la modification de la bourse: " . $e->getMessage();
         }
     } else {
         $error = "La caractéristique de la bourse est requise.";
@@ -38,17 +38,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 // Récupération des données de la bourse
 try {
-    $sql = "SELECT * FROM Bourse WHERE id_bourse = :id";
+    $sql = "SELECT b.*, u.login as nom_utilisateur 
+            FROM Bourse b 
+            LEFT JOIN Utilisateur u ON b.id_utilisateur = u.id_utilisateur 
+            WHERE b.id_bourse = :id";
     $stmt = $conn->prepare($sql);
     $stmt->execute([':id' => $id_bourse]);
     $bourse = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$bourse) {
-        header('Location: bourses.php');
+        header('Location: ../list/bourses.php');
         exit();
     }
 } catch(PDOException $e) {
-    $error = "Erreur lors de la récupération des données de la bourse.";
+    $error = "Erreur lors de la récupération des données: " . $e->getMessage();
 }
 ?>
 
@@ -58,45 +61,56 @@ try {
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Modifier la Bourse - EduPath</title>
+    <title>Modifier la Bourse | EduPath</title>
     <?php include_once 'css.php'; ?>
 </head>
-<body>
+<body class="ep-magic-cursor">
     <?php include_once '../magic.php'; ?>
-
-    <section class="section-gap">
-        <div class="container">
-            <div class="row">
-                <div class="col-6">
-                    <h2 class="text-center mb-4">Modifier la Bourse</h2>
-                    
-                    <?php if ($success): ?>
-                        <div class="alert alert-success"><?php echo $success; ?></div>
-                    <?php endif; ?>
-                    
-                    <?php if ($error): ?>
-                        <div class="alert alert-danger"><?php echo $error; ?></div>
-                    <?php endif; ?>
-
-                    <div class="card">
-                        <div class="card-body">
-                            <form method="POST" action="">
-                                <div class="mb-3">
-                                    <label for="caracteristique" class="form-label">Caractéristiques *</label>
-                                    <textarea class="form-control" id="caracteristique" name="caracteristique" 
-                                              rows="3" required><?php echo htmlspecialchars($bourse['caracteristique']); ?></textarea>
+    
+    <div id="smooth-wrapper">
+        <div id="smooth-content">
+            <main>
+                <section class="ep-contact section-gap position-relative pb-0">
+                    <div class="container ep-container">
+                        <div class="row">
+                            <div class="offset-2 col-lg-9 col-xl-5 col-9">
+                                <div class="ep-contact__form">
+                                    <?php if ($error): ?>
+                                        <div class="alert alert-danger"><?php echo $error; ?></div>
+                                    <?php endif; ?>
+                                    
+                                    <h3 class="ep-contact__form-title ep-split-text left">
+                                        Modifier la Bourse
+                                    </h3>
+                                    
+                                    <form method="POST">
+                                        <div class="form-group">
+                                            <label for="caracteristique" class="form-label">Caractéristiques *</label>
+                                            <textarea 
+                                                class="form-control" 
+                                                id="caracteristique" 
+                                                name="caracteristique" 
+                                                rows="3" 
+                                                required
+                                            ><?php echo htmlspecialchars($bourse['caracteristique'] ?? ''); ?></textarea>
+                                        </div>
+                                        
+                                        <div class="row mt-4">
+                                            <div class="col-6">
+                                                <a href="../list/bourses.php" class="ep-btn">Retour</a>
+                                            </div>
+                                            <div class="col-6 text-end">
+                                                <button type="submit" class="ep-btn">Enregistrer</button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
-                                <a href="bourses.php" class="btn btn-secondary">Retour</a>
-                            </form>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-      <?php include_once '../include/footer.php'; ?>
+                </section>
+            </main>
+            <?php include_once '../include/footer.php'; ?>
         </div>
     </div>
 

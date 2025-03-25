@@ -129,7 +129,7 @@ if ($avoir) {
                                         <div class="ep-blog__details-cover">
                                             <div class="ep-blog__details-cover-img">
                                                 <img
-                                                    src="../../assets/images/blog/details/blog-details-img-1.jpg"
+                                                    src="../../assets/img/concept-technologie-apprentissage-electronique-webinar-education-ligne-cours-ligne-ai-apprentissage-automatique_1006743-555.jpg"
                                                     alt="filiere-img"
                                                 />
                                             </div>

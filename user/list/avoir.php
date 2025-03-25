@@ -10,28 +10,9 @@ if (isset($_SESSION['success'])) {
   unset($_SESSION['success']);
 }
 
-
-// Récupération des filières
-try {
-  $sql = "SELECT * FROM Filiere ORDER BY nom";
-  $stmt = $conn->query($sql);
-  $filieres = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-  $error = "Erreur lors de la récupération des filières.";
-}
-
-// Récupération des cycles
-try {
-  $sql = "SELECT * FROM Cycle ORDER BY nom";
-  $stmt = $conn->query($sql);
-  $cycles = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-  $error = "Erreur lors de la récupération des cycles.";
-}
-
 // Récupération des associations existantes
 try {
-  $sql = "SELECT a.*, f.nom as nom_filiere, c.nom as nom_cycle 
+  $sql = "SELECT a.*, f.nom as nom_filiere, c.nom as nom_cycle, c.nbre_annee 
             FROM Avoir a 
             JOIN Filiere f ON a.id_filiere = f.id_filiere 
             JOIN Cycle c ON a.id_cycle = c.id_cycle 
@@ -60,7 +41,7 @@ try {
     content="online learning, education, e-learning, courses, tutorials, educational resources, skill development, career enhancement" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="assets/images/favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.svg" />
 
   <!-- Site Title -->
   <title>Gestion des Frais de Scolarité | EduPath</title>
@@ -75,79 +56,109 @@ try {
   <div id="smooth-wrapper">
     <div id="smooth-content">
       <main>
-        <!-- Start Contact Area -->
-        <section class="ep-contact section-gap position-relative pb-0">
-          <div class="container ep-container">
-            <div class="row">
-              <div class="col-12">
-                <h3 class="ep-contact__form-title ep-split-text left mb-4">
-                  Gestion des Frais de Scolarité
-                </h3>
-
-                <?php if ($success): ?>
-                  <div class="alert alert-success"><?php echo $success; ?></div>
-                <?php endif; ?>
-
-                <?php if ($error): ?>
-                  <div class="alert alert-danger"><?php echo $error; ?></div>
-                <?php endif; ?>
-
-                <!-- Liste des associations -->
-                <div class="ep-contact__form">
-                  <h4 class="mb-3">Liste des frais de scolarité</h4>
-                  <div class="table-responsive">
-                    <table class="table table-striped">
-                      <thead>
-                        <tr>
-                          <th>Filière et cycle</th>
-                          <th>Inscription</th>
-                          <th>Scolarité</th>
-                          <th>Actions</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <?php foreach ($associations as $assoc): ?>
-                          <tr>
-                            <td>
-                              <a href="../view/view_avoir.php?filiere=<?php echo $assoc['id_filiere']; ?>&cycle=<?php echo $assoc['id_cycle']; ?>">
-                                <?php echo htmlspecialchars($assoc['nom_filiere'] ?? null); ?>
-                                -
-                                <?php echo htmlspecialchars($assoc['nom_cycle'] ?? null); ?>
-                              </a>
-                            </td>
-
-                            <td><?php echo number_format($assoc['montant_inscription'] ?? null, 0, ',', ' '); ?> FCFA</td>
-                            <td><?php echo number_format($assoc['montant_scolarite'] ?? null, 0, ',', ' '); ?> FCFA</td>
-                            <td>
-                              <a href="../edit/edit_avoir.php?filiere=<?php echo $assoc['id_filiere']; ?>&cycle=<?php echo $assoc['id_cycle']; ?>"
-                                class="btn btn-sm btn-primary">
-                                <i class="icofont-edit"></i>
-                              </a>
-                              <a href="../delete/delete_avoir.php?filiere=<?php echo $assoc['id_filiere']; ?>&cycle=<?php echo $assoc['id_cycle']; ?>"
-                                class="btn btn-sm btn-danger"
-                                onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette association ?');">
-                                <i class="icofont-trash"></i>
-                              </a>
-                            </td>
-                          </tr>
-                        <?php endforeach; ?>
-                      </tbody>
-                    </table>
-                  </div>
+        <!-- Start Breadcrumbs Area -->
+        <div
+          class="ep-breadcrumbs breadcrumbs-bg background-image"
+          style="background-image: url('../../assets/images/breadcrumbs-bg.png')"
+        >
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-6 col-md-6 col-12">
+                <div class="ep-breadcrumbs__content">
+                  <h3 class="ep-breadcrumbs__title">Frais de Scolarité</h3>
+                  <ul class="ep-breadcrumbs__menu">
+                    <li>
+                      <a href="../dashboard.php">Tableau de bord</a>
+                    </li>
+                    <li>
+                      <i class="fi-bs-angle-right"></i>
+                    </li>
+                    <li class="active">
+                      <a href="#">Frais de scolarité</a>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+        <!-- End Breadcrumbs Area -->
+
+        <!-- Start Event Area -->
+        <section class="ep-blog section-gap position-relative pd-top-90">
+          <div class="container ep-container">
+            <?php if ($success): ?>
+              <div class="alert alert-success"><?php echo $success; ?></div>
+            <?php endif; ?>
+
+            <?php if ($error): ?>
+              <div class="alert alert-danger"><?php echo $error; ?></div>
+            <?php endif; ?>
+
+            <div class="row mb-4">
+              <div class="col-12 d-flex justify-content-between align-items-center">
+                <h3 class="ep-section__title">Liste des frais de scolarité</h3>
+                <a href="../add/add_avoir.php" class="ep-btn">
+                  <i class="fi fi-rs-plus"></i> Ajouter
+                </a>
+              </div>
+            </div>
+
+            <div class="row">
+              <?php foreach ($associations as $assoc): ?>
+                <!-- Single Event Card -->
+                <div class="col-lg-6 col-xl-4 col-md-6 col-12 mb-4">
+                  <div class="ep-blog__card wow fadeInUp" data-wow-delay=".3s" data-wow-duration="1s">
+                    <a href="../view/view_avoir.php?filiere=<?php echo $assoc['id_filiere']; ?>&cycle=<?php echo $assoc['id_cycle']; ?>" class="ep-blog__img">
+                      <img src="../../assets/img/souriante-jeune-etudiante-livres-sac_13339-196812.avif" alt="frais-img" />
+                    </a>
+                    <div class="ep-blog__info">
+                      <div class="ep-blog__date ep1-bg">
+                        <?php echo $assoc['nbre_annee']; ?> <br />
+                        an(s)
+                      </div>
+                      <div class="ep-blog__location">
+                        <i class="fi fi-rs-graduation-cap"></i>
+                        <span><?php echo htmlspecialchars($assoc['nom_cycle']); ?></span>
+                      </div>
+                      <div class="ep-blog__content">
+                        <a href="../view/view_avoir.php?filiere=<?php echo $assoc['id_filiere']; ?>&cycle=<?php echo $assoc['id_cycle']; ?>" class="ep-blog__title">
+                          <h5><?php echo htmlspecialchars($assoc['nom_filiere']); ?></h5>
+                        </a>
+                        <p class="ep-blog__text">
+                          <strong>Inscription:</strong> <?php echo number_format($assoc['montant_inscription'], 0, ',', ' '); ?> FCFA<br>
+                          <strong>Scolarité:</strong> <?php echo number_format($assoc['montant_scolarite'], 0, ',', ' '); ?> FCFA
+                        </p>
+                        <div class="ep-blog__btn d-flex justify-content-between">
+                          <a href="../view/view_avoir.php?filiere=<?php echo $assoc['id_filiere']; ?>&cycle=<?php echo $assoc['id_cycle']; ?>">
+                            Détails <i class="fi fi-rs-arrow-small-right"></i>
+                          </a>
+                          <div>
+                            <a href="../edit/edit_avoir.php?filiere=<?php echo $assoc['id_filiere']; ?>&cycle=<?php echo $assoc['id_cycle']; ?>" 
+                               class="text-primary me-2">
+                              <i class="icofont-edit"></i>
+                            </a>
+                            <a href="../delete/delete_avoir.php?filiere=<?php echo $assoc['id_filiere']; ?>&cycle=<?php echo $assoc['id_cycle']; ?>" 
+                               class="text-danger"
+                               onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette association ?');">
+                              <i class="icofont-trash"></i>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <?php endforeach; ?>
+            </div>
+          </div>
         </section>
-        <br>
+        <!-- End Event Area -->
       </main>
-      <br>
-      <br>
       <?php include_once '../include/footer.php'; ?>
     </div>
   </div>
 
   <?php include_once '../edit/script.php'; ?>
 </body>
-
 </html>
