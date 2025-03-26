@@ -31,7 +31,7 @@ try {
     <title>Gestion des Événements - EduPath</title>
     <?php include_once '../edit/css.php'; ?>
 </head>
-<body class="ep-magic-cursor">
+                      <body class="ep-magic-cursor"><?php include_once '../include/navbar.php'; ?>
     <?php include_once '../magic.php'; ?>
 
     <div id="smooth-wrapper">

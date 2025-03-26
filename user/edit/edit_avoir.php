@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['success'] = "Les frais ont été modifiés avec succès!";
             header('Location: ../list/avoir.php'); // Fixed redirect path
             exit();
-        } catch(PDOException $e) {
+        } catch (PDOException $e) {
             $error = "Une erreur est survenue lors de la modification des frais: " . $e->getMessage();
         }
     } else {
@@ -60,7 +60,7 @@ try {
         header('Location: ../list/avoir.php');
         exit();
     }
-} catch(PDOException $e) {
+} catch (PDOException $e) {
     $error = "Erreur lors de la récupération des données.";
 }
 ?>
@@ -89,7 +89,10 @@ try {
     <?php include_once 'css.php'; ?>
 </head>
 
+
+
 <body class="ep-magic-cursor">
+    <?php include_once '../include/navbar.php'; ?>
     <?php include_once '../magic.php'; ?>
 
     <!-- End Header Area -->
@@ -110,8 +113,8 @@ try {
                                         Modifier les Frais
                                     </h3>
                                     <div class="mb-4">
-                                        <h5>Filière : <?php echo htmlspecialchars($avoir['nom_filiere']??null); ?></h5>
-                                        <h5>Cycle : <?php echo htmlspecialchars($avoir['nom_cycle']??null); ?></h5>
+                                        <h5>Filière : <?php echo htmlspecialchars($avoir['nom_filiere'] ?? null); ?></h5>
+                                        <h5>Cycle : <?php echo htmlspecialchars($avoir['nom_cycle'] ?? null); ?></h5>
                                     </div>
                                     <form method="POST" action="">
                                         <div class="row">
@@ -120,20 +123,20 @@ try {
                                                     <label>Montant Inscription (FCFA) *</label>
                                                     <input
                                                         type="number"
-                                                        id="montant_inscription" name="montant_inscription" 
-                                                        value="<?php echo htmlspecialchars($avoir['montant_inscription']??null); ?>" 
+                                                        id="montant_inscription" name="montant_inscription"
+                                                        value="<?php echo htmlspecialchars($avoir['montant_inscription'] ?? null); ?>"
                                                         required min="0" />
                                                 </div>
                                             </div>
                                             <div class="col-6">
                                                 <div class="form-group">
                                                     <label for="montant_scolarite" class="form-label">Montant Scolarité (FCFA) *</label>
-                                                    <input 
-                                                        type="number" 
-                                                        class="form-control" 
-                                                        id="montant_scolarite" 
-                                                        name="montant_scolarite" 
-                                                        value="<?php echo htmlspecialchars($avoir['montant_scolarite']??null); ?>" 
+                                                    <input
+                                                        type="number"
+                                                        class="form-control"
+                                                        id="montant_scolarite"
+                                                        name="montant_scolarite"
+                                                        value="<?php echo htmlspecialchars($avoir['montant_scolarite'] ?? null); ?>"
                                                         required min="0">
                                                 </div>
                                             </div>
@@ -163,4 +166,5 @@ try {
     <?php include_once 'script.php'; ?>
 
 </body>
+
 </html>

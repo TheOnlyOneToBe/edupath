@@ -80,7 +80,7 @@ try {
     <?php include_once 'css.php'; ?>
 </head>
 
-<body class="ep-magic-cursor">
+                      <body class="ep-magic-cursor"><?php include_once '../include/navbar.php'; ?>
     <?php include_once '../magic.php'; ?>
 
     <!-- End Header Area -->

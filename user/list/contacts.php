@@ -45,7 +45,7 @@ try {
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="ep-magic-cursor">
+<?php include_once '../include/navbar.php'; ?>                      <body class="ep-magic-cursor"><?php include_once '../include/navbar.php'; ?>                      <body class="ep-magic-cursor"><?php include_once '../include/navbar.php'; ?>
   <?php include_once '../magic.php'; ?>
 
   <!-- End Header Area -->

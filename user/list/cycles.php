@@ -15,13 +15,14 @@ try {
     $sql = "SELECT * FROM cycle ORDER BY id_cycle DESC";
     $stmt = $conn->query($sql);
     $cycles = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch(PDOException $e) {
+} catch (PDOException $e) {
     $error = "Erreur lors de la récupération des cycles.";
 }
 ?>
 
 <!DOCTYPE html>
 <html class="no-js" lang="fr">
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -29,15 +30,17 @@ try {
     <title>Gestion des Cycles - EduPath</title>
     <?php include_once '../edit/css.php'; ?>
 </head>
-<body class="ep-magic-cursor">
+
+<body class="ep-magic-cursor"><?php include_once '../include/navbar.php'; ?>
+    
     <?php include_once '../magic.php'; ?>
 
     <div id="smooth-wrapper">
         <div id="smooth-content">
             <main>
                 <!-- Start Breadcrumbs Area -->
-                <div class="ep-breadcrumbs breadcrumbs-bg background-image" 
-                     style="background-image: url('../../assets/images/breadcrumbs-bg.png')">
+                <div class="ep-breadcrumbs breadcrumbs-bg background-image"
+                    style="background-image: url('../../assets/images/breadcrumbs-bg.png')">
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-6 col-md-6 col-12">
@@ -64,8 +67,8 @@ try {
 
                         <?php if ($error): ?>
                             <div class="alert alert-danger"><?php echo $error; ?></div>
-                        <?php endif; ?> 
-                        
+                        <?php endif; ?>
+
                         <!-- Add Cycle Button -->
                         <div class="row mb-4">
                             <div class="col-12 text-end">
@@ -74,44 +77,44 @@ try {
                                 </a>
                             </div>
                         </div>
-                        
+
                         <div class="row">
                             <?php foreach ($cycles as $cycle): ?>
-                            <div class="col-lg-6 col-xl-4 col-md-6 col-12 mb-4">
-                                <div class="ep-blog__card wow fadeInUp" data-wow-delay=".3s" data-wow-duration="1s">
-                                    <div class="ep-blog__info">
-                                        <div class="ep-blog__date ep1-bg">
-                                            <i class="fi fi-rs-calendar"></i><br>
-                                            <?php echo htmlspecialchars($cycle['nbre_annee']); ?>
-                                        </div>
-                                        <div class="ep-blog__content">
-                                            <a href="../view/view_cycle.php?id=<?php echo $cycle['id_cycle']; ?>" 
-                                               class="ep-blog__title">
-                                                <h5><?php echo htmlspecialchars($cycle['nom']); ?></h5>
-                                            </a>
-                                            <p class="ep-blog__text">
-                                                Durée: <?php echo htmlspecialchars($cycle['nbre_annee']); ?>
-                                            </p>
-                                            <div class="ep-blog__btn d-flex justify-content-between">
-                                                <a href="../view/view_cycle.php?id=<?php echo $cycle['id_cycle']; ?>">
-                                                    Détails <i class="fi fi-rs-arrow-small-right"></i>
+                                <div class="col-lg-6 col-xl-4 col-md-6 col-12 mb-4">
+                                    <div class="ep-blog__card wow fadeInUp" data-wow-delay=".3s" data-wow-duration="1s">
+                                        <div class="ep-blog__info">
+                                            <div class="ep-blog__date ep1-bg">
+                                                <i class="fi fi-rs-calendar"></i><br>
+                                                <?php echo htmlspecialchars($cycle['nbre_annee']); ?>
+                                            </div>
+                                            <div class="ep-blog__content">
+                                                <a href="../view/view_cycle.php?id=<?php echo $cycle['id_cycle']; ?>"
+                                                    class="ep-blog__title">
+                                                    <h5><?php echo htmlspecialchars($cycle['nom']); ?></h5>
                                                 </a>
-                                                <div>
-                                                    <a href="../edit/edit_cycle.php?id=<?php echo $cycle['id_cycle']; ?>" 
-                                                       class="text-primary me-2">
-                                                        <i class="fi fi-rs-edit"></i>
+                                                <p class="ep-blog__text">
+                                                    Durée: <?php echo htmlspecialchars($cycle['nbre_annee']); ?>
+                                                </p>
+                                                <div class="ep-blog__btn d-flex justify-content-between">
+                                                    <a href="../view/view_cycle.php?id=<?php echo $cycle['id_cycle']; ?>">
+                                                        Détails <i class="fi fi-rs-arrow-small-right"></i>
                                                     </a>
-                                                    <a href="../delete/delete_cycle.php?id=<?php echo $cycle['id_cycle']; ?>" 
-                                                       class="text-danger"
-                                                       onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce cycle ?');">
-                                                        <i class="fi fi-rs-trash"></i>
-                                                    </a>
+                                                    <div>
+                                                        <a href="../edit/edit_cycle.php?id=<?php echo $cycle['id_cycle']; ?>"
+                                                            class="text-primary me-2">
+                                                            <i class="fi fi-rs-edit"></i>
+                                                        </a>
+                                                        <a href="../delete/delete_cycle.php?id=<?php echo $cycle['id_cycle']; ?>"
+                                                            class="text-danger"
+                                                            onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce cycle ?');">
+                                                            <i class="fi fi-rs-trash"></i>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                             <?php endforeach; ?>
                         </div>
                     </div>
@@ -123,4 +126,5 @@ try {
 
     <?php include_once '../edit/script.php'; ?>
 </body>
+
 </html>

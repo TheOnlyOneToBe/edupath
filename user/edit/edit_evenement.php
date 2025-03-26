@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $success = "L'événement a été modifié avec succès!";
             header('Location: evenements.php');
             exit();
-        } catch(PDOException $e) {
+        } catch (PDOException $e) {
             $error = "Une erreur est survenue lors de la modification de l'événement.";
         }
     } else {
@@ -49,13 +49,14 @@ try {
         header('Location: evenements.php');
         exit();
     }
-} catch(PDOException $e) {
+} catch (PDOException $e) {
     $error = "Erreur lors de la récupération des données de l'événement.";
 }
 ?>
 
 <!DOCTYPE html>
 <html class="no-js" lang="fr">
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -63,7 +64,9 @@ try {
     <title>Modifier l'Événement - EduPath</title>
     <?php include_once 'css.php'; ?>
 </head>
+
 <body>
+    
     <?php include_once '../magic.php'; ?>
 
     <section class="section-gap">
@@ -71,11 +74,11 @@ try {
             <div class="row">
                 <div class="col-6">
                     <h2 class="text-center mb-4">Modifier l'Événement</h2>
-                    
+
                     <?php if ($success): ?>
                         <div class="alert alert-success"><?php echo $success; ?></div>
                     <?php endif; ?>
-                    
+
                     <?php if ($error): ?>
                         <div class="alert alert-danger"><?php echo $error; ?></div>
                     <?php endif; ?>
@@ -85,13 +88,13 @@ try {
                             <form method="POST" action="">
                                 <div class="mb-3">
                                     <label for="nom" class="form-label">Nom de l'événement *</label>
-                                    <input type="text" class="form-control" id="nom" name="nom" 
-                                           value="<?php echo htmlspecialchars($evenement['nom']); ?>" required>
+                                    <input type="text" class="form-control" id="nom" name="nom"
+                                        value="<?php echo htmlspecialchars($evenement['nom']); ?>" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="description_ev" class="form-label">Description *</label>
-                                    <textarea class="form-control" id="description_ev" name="description_ev" 
-                                              rows="3" required><?php echo htmlspecialchars($evenement['description_ev']); ?></textarea>
+                                    <textarea class="form-control" id="description_ev" name="description_ev"
+                                        rows="3" required><?php echo htmlspecialchars($evenement['description_ev']); ?></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
                                 <a href="evenements.php" class="btn btn-secondary">Retour</a>
@@ -103,10 +106,11 @@ try {
         </div>
     </section>
 
-      <?php include_once '../include/footer.php'; ?>
-        </div>
+    <?php include_once '../include/footer.php'; ?>
+    </div>
     </div>
 
     <?php include_once 'script.php'; ?>
 </body>
+
 </html>

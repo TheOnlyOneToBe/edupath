@@ -82,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php include_once 'css.php'; ?>
 </head>
 
-<body class="ep-magic-cursor">
+<body class="ep-magic-cursor"><?php include_once '../include/navbar.php'; ?>
     <?php include_once '../magic.php'; ?>
 
     <!-- End Header Area -->
@@ -158,9 +158,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                 </section>
                 <!-- End Contact Area -->
-               
+
             </main>
-            <?php include_once '../include/footer.php' ;?>
+            <?php include_once '../include/footer.php'; ?>
         </div>
     </div>
 

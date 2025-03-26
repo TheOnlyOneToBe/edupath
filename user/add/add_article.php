@@ -6,67 +6,67 @@ $success = $error = '';
 
 // Traitement du formulaire d'ajout
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $titre = $_POST['titre'] ?? '';
-    $description = $_POST['description_art'] ?? '';
-    $statut = $_POST['statut'] ?? '';
-    $id_utilisateur = $_SESSION['user']['user_id'] ?? null;
+  $titre = $_POST['titre'] ?? '';
+  $description = $_POST['description_art'] ?? '';
+  $statut = $_POST['statut'] ?? '';
+  $id_utilisateur = $_SESSION['user']['user_id'] ?? null;
 
-    // Vérifier si l'utilisateur est connecté
-   /*  if (!$id_utilisateur) {
+  // Vérifier si l'utilisateur est connecté
+  /*  if (!$id_utilisateur) {
         $error = "Vous devez être connecté pour ajouter un article.";
         exit();
     } */
 
-    // Traitement de l'upload de photo
-    $photo = '';
-    if (isset($_FILES['photo']) && $_FILES['photo']['error'] == 0) {
-        $allowed = ['jpg', 'jpeg', 'png', 'gif'];
-        $filename = $_FILES['photo']['name'];
-        $filetype = pathinfo($filename, PATHINFO_EXTENSION);
-        
-        if (in_array(strtolower($filetype), $allowed)) {
-            $newname = uniqid() . '.' . $filetype;
-            $upload_dir = '../../assets/imgs/articles/';
-            $relative_path = 'assets/imgs/articles/' . $newname; // Chemin relatif pour la BD
-            
-            if (!is_dir($upload_dir)) {
-                mkdir($upload_dir, 0777, true);
-            }
-            
-            if (move_uploaded_file($_FILES['photo']['tmp_name'], $upload_dir . $newname)) {
-                $photo = $newname; // Stocker le chemin relatif
-            } else {
-                $error = "Erreur lors de l'upload de l'image.";
-                exit();
-            }
-        } else {
-            $error = "Format de fichier non autorisé. Formats acceptés: jpg, jpeg, png, gif";
-            exit();
-        }
-    }
+  // Traitement de l'upload de photo
+  $photo = '';
+  if (isset($_FILES['photo']) && $_FILES['photo']['error'] == 0) {
+    $allowed = ['jpg', 'jpeg', 'png', 'gif'];
+    $filename = $_FILES['photo']['name'];
+    $filetype = pathinfo($filename, PATHINFO_EXTENSION);
 
-    if (!empty($titre) && !empty($description) && !empty($statut)) {
-        try {
-            $sql = "INSERT INTO Article (titre, description_art, date_pub, statut, photo, id_utilisateur) 
-                    VALUES (:titre, :description, CURRENT_DATE, :statut, :photo, :id_utilisateur)";
-            $stmt = $conn->prepare($sql);
-            $stmt->execute([
-                ':titre' => $titre,
-                ':description' => $description,
-                ':statut' => $statut,
-                ':photo' => $photo,
-                ':id_utilisateur' => $id_utilisateur
-            ]);
-            
-            $_SESSION['success'] = "L'article a été ajouté avec succès!";
-            header('Location: ../list/articles.php');
-            exit();
-        } catch(PDOException $e) {
-            $error = "Une erreur est survenue lors de l'ajout de l'article: " . $e->getMessage();
-        }
+    if (in_array(strtolower($filetype), $allowed)) {
+      $newname = uniqid() . '.' . $filetype;
+      $upload_dir = '../../assets/imgs/articles/';
+      $relative_path = 'assets/imgs/articles/' . $newname; // Chemin relatif pour la BD
+
+      if (!is_dir($upload_dir)) {
+        mkdir($upload_dir, 0777, true);
+      }
+
+      if (move_uploaded_file($_FILES['photo']['tmp_name'], $upload_dir . $newname)) {
+        $photo = $newname; // Stocker le chemin relatif
+      } else {
+        $error = "Erreur lors de l'upload de l'image.";
+        exit();
+      }
     } else {
-        $error = "Les champs titre, description et statut sont requis.";
+      $error = "Format de fichier non autorisé. Formats acceptés: jpg, jpeg, png, gif";
+      exit();
     }
+  }
+
+  if (!empty($titre) && !empty($description) && !empty($statut)) {
+    try {
+      $sql = "INSERT INTO Article (titre, description_art, date_pub, statut, photo, id_utilisateur) 
+                    VALUES (:titre, :description, CURRENT_DATE, :statut, :photo, :id_utilisateur)";
+      $stmt = $conn->prepare($sql);
+      $stmt->execute([
+        ':titre' => $titre,
+        ':description' => $description,
+        ':statut' => $statut,
+        ':photo' => $photo,
+        ':id_utilisateur' => $id_utilisateur
+      ]);
+
+      $_SESSION['success'] = "L'article a été ajouté avec succès!";
+      header('Location: ../list/articles.php');
+      exit();
+    } catch (PDOException $e) {
+      $error = "Une erreur est survenue lors de l'ajout de l'article: " . $e->getMessage();
+    }
+  } else {
+    $error = "Les champs titre, description et statut sont requis.";
+  }
 }
 
 ?>
@@ -96,6 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body class="ep-magic-cursor">
+  <?php include_once '../include/navbar.php'; ?>
   <?php include_once '../magic.php'; ?>
 
   <!-- End Header Area -->
@@ -108,10 +109,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="row">
 
               <div class="offset-2 col-lg-9 col-xl-5 col-9">
-                <div class="ep-contact__form">     
-                    <?php if ($error): ?>
-                        <div class="alert alert-danger"><?php echo $error; ?></div>
-                    <?php endif; ?>
+                <div class="ep-contact__form">
+                  <?php if ($error): ?>
+                    <div class="alert alert-danger"><?php echo $error; ?></div>
+                  <?php endif; ?>
                   <h3 class="ep-contact__form-title ep-split-text left">
                     Ajouter un article
                   </h3>
@@ -153,7 +154,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </main>
       <br>
       <br>
-     <?php include_once '../include/footer.php' ;?>
+      <?php include_once '../include/footer.php'; ?>
     </div>
   </div>
 
