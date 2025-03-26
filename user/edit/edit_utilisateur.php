@@ -1,12 +1,8 @@
 <?php
 session_start();
-require_once 'config/database.php';
+require_once '../../config/database.php';
 
-// Vérifier si l'utilisateur est connecté et a la fonction d'administrateur
-if (!isset($_SESSION['user']) || $_SESSION['user']['user_fonction'] !== 'admin') {
-    header('Location: login.php');
-    exit();
-}
+
 
 $success = $error = '';
 $utilisateur = null;
