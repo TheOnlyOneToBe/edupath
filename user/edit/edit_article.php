@@ -176,7 +176,7 @@ try {
                                                     <label for="photo" class="form-label">Photo</label>
                                                     <?php if (!empty($article['photo'])): ?>
                                                         <div class="mb-2">
-                                                            <img src="../../assets/imgs/articles/<?php echo htmlspecialchars($article['photo']); ?>"
+                                                            <img src="../..//assets/imgs/articles/<?php echo htmlspecialchars($article['photo']); ?>"
                                                                 alt="Photo actuelle" style="max-width: 200px;">
                                                         </div>
                                                     <?php endif; ?>
@@ -185,14 +185,13 @@ try {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                        <div class="col-3">
-                                                <a href="../list/articles.php" class="ep-btn">Retour</a>
+                                        <div class="row mt-4">
+                                            <div class="col-6">
+                                                <a href="../list/articles.php" class="ep-btn ep-btn-secondary">Retour</a>
                                             </div>
-                                            <div class="col-9">
-                                                <button type="submit" class="">Modifier</button>
+                                            <div class="col-6 text-end">
+                                                <button type="submit" class="ep-btn ep-btn-primary">Modifier</button>
                                             </div>
-                                           
                                         </div>
                                     </form>
                                 </div>
@@ -208,7 +207,7 @@ try {
         </div>
     </div>
 
-    <?php include_once 'script.php'; ?>
+    <?php include_once '../edit/script.php'; ?>
 
 </body>
 
