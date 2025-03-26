@@ -17,5 +17,5 @@ if ($id_bourse) {
     }
 }
 
-header('Location: bourses.php');
+header('Location: ../list/bourses.php');
 exit();
