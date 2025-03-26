@@ -4,51 +4,16 @@ require_once '../../config/database.php';
 
 $success = $error = '';
 
-// Traitement du formulaire d'ajout
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $titre = $_POST['titre'] ?? '';
-    $description = $_POST['description_art'] ?? '';
-    $statut = $_POST['statut'] ?? '';
-    $id_utilisateur = $_SESSION['user']['user_id'] ?? null;
+// Get success message from session
+if (isset($_SESSION['success'])) {
+    $success = $_SESSION['success'];
+    unset($_SESSION['success']);
+}
 
-    // Traitement de l'upload de photo
-    $photo = '';
-    if (isset($_FILES['photo']) && $_FILES['photo']['error'] == 0) {
-        $allowed = ['jpg', 'jpeg', 'png', 'gif'];
-        $filename = $_FILES['photo']['name'];
-        $filetype = pathinfo($filename, PATHINFO_EXTENSION);
-        
-        if (in_array(strtolower($filetype), $allowed)) {
-            $newname = uniqid() . '.' . $filetype;
-            $upload_dir = '../../assets/imgs/articles/';
-            if (!is_dir($upload_dir)) {
-                mkdir($upload_dir, 0777, true);
-            }
-            if (move_uploaded_file($_FILES['photo']['tmp_name'], $upload_dir . $newname)) {
-                $photo = $upload_dir . $newname;
-            }
-        }
-    }
-
-    if (!empty($titre) && !empty($description) && !empty($statut)) {
-        try {
-            $sql = "INSERT INTO Article (titre, description_art, date_pub, statut, photo, id_utilisateur) 
-                    VALUES (:titre, :description, CURRENT_DATE, :statut, :photo, :id_utilisateur)";
-            $stmt = $conn->prepare($sql);
-            $stmt->execute([
-                ':titre' => $titre,
-                ':description' => $description,
-                ':statut' => $statut,
-                ':photo' => $photo,
-                ':id_utilisateur' => $id_utilisateur
-            ]);
-            $success = "L'article a été ajouté avec succès!";
-        } catch(PDOException $e) {
-            $error = "Une erreur est survenue lors de l'ajout de l'article.";
-        }
-    } else {
-        $error = "Les champs titre, description et statut sont requis.";
-    }
+// Get error message from session
+if (isset($_SESSION['error'])) {
+    $error = $_SESSION['error'];
+    unset($_SESSION['error']);
 }
 
 // Récupération des articles existants
@@ -72,72 +37,99 @@ try {
     <title>Gestion des Articles - EduPath</title>
     <?php include_once '../edit/css.php'; ?>
 </head>
-<body>
+<body class="ep-magic-cursor">
     <?php include_once '../magic.php'; ?>
 
-    <section class="section-gap">
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-12">
-                    <h2 class="text-center mb-4">Gestion des Articles</h2>
-                    
-                    <?php if ($success): ?>
-                        <div class="alert alert-success"><?php echo $success; ?></div>
-                    <?php endif; ?>
-                    
-                    <?php if ($error): ?>
-                        <div class="alert alert-danger"><?php echo $error; ?></div>
-                    <?php endif; ?>
-                    <!-- Liste des articles -->
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Liste des articles</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Titre</th>
-                                            <th>Date</th>
-                                            <th>Statut</th>
-                                            <th>Auteur</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php foreach ($articles as $article): ?>
-                                        <tr>
-                                            <td><?php echo htmlspecialchars($article['id_article']); ?></td>
-                                            <td><?php echo htmlspecialchars($article['titre']); ?></td>
-                                            <td><?php echo htmlspecialchars($article['date_pub']); ?></td>
-                                            <td><?php echo htmlspecialchars($article['statut']); ?></td>
-                                            <td><?php echo htmlspecialchars($article['auteur']); ?></td>
-                                            <td>
-                                                <a href="view_article.php?id=<?php echo $article['id_article']; ?>" class="btn btn-sm btn-info">
-                                                    <i class="fas fa-eye"></i>
-                                                </a>
-                                                <a href="edit_article.php?id=<?php echo $article['id_article']; ?>" class="btn btn-sm btn-primary">
-                                                    <i class="fas fa-edit"></i>
-                                                </a>
-                                                <a href="delete_article.php?id=<?php echo $article['id_article']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?');">
-                                                    <i class="fas fa-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
+    <div id="smooth-wrapper">
+        <div id="smooth-content">
+            <main>
+                <!-- Start Breadcrumbs Area -->
+                <div class="ep-breadcrumbs breadcrumbs-bg background-image" 
+                     style="background-image: url('../../assets/images/breadcrumbs-bg.png')">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="ep-breadcrumbs__content">
+                                    <h3 class="ep-breadcrumbs__title">Gestion des Articles</h3>
+                                    <ul class="ep-breadcrumbs__menu">
+                                        <li><a href="../dashboard.php">Tableau de bord</a></li>
+                                        <li><i class="fi-bs-angle-right"></i></li>
+                                        <li class="active">Articles</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+                <!-- End Breadcrumbs Area -->
 
-      <?php include_once '../include/footer.php'; ?>
+                <!-- Start Article Area -->
+                <section class="ep-blog section-gap position-relative pd-top-90">
+                    <div class="container ep-container">
+                        <?php if ($success): ?>
+                            <div class="alert alert-success"><?php echo $success; ?></div>
+                        <?php endif; ?>
+
+                        <?php if ($error): ?>
+                            <div class="alert alert-danger"><?php echo $error; ?></div>
+                        <?php endif; ?> 
+                        
+                        <!-- Add Article Button -->
+                        <div class="row mb-4">
+                            <div class="col-12 text-end">
+                                <a href="../add/add_article.php" class="ep-btn ep-btn-primary">
+                                    <i class="fi fi-rs-plus"></i> Ajouter un article
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <?php foreach ($articles as $article): ?>
+                            <div class="col-lg-6 col-xl-4 col-md-6 col-12 mb-4">
+                                <div class="ep-blog__card wow fadeInUp" data-wow-delay=".3s" data-wow-duration="1s">
+                                    <div class="ep-blog__info">
+                                        <div class="ep-blog__date ep1-bg">
+                                            <i class="fi fi-rs-calendar"></i><br>
+                                            <?php echo htmlspecialchars(date('d/m/Y', strtotime($article['date_pub']))); ?>
+                                        </div>
+                                        <div class="ep-blog__content">
+                                            <a href="../view/view_article.php?id=<?php echo $article['id_article']; ?>" 
+                                               class="ep-blog__title">
+                                                <h5><?php echo htmlspecialchars($article['titre']); ?></h5>
+                                            </a>
+                                            <p class="ep-blog__text">
+                                                <?php echo htmlspecialchars(substr($article['description_art'] ?? '', 0, 100)) . '...'; ?>
+                                            </p>
+                                            <div class="ep-blog__meta">
+                                                <span><i class="fi fi-rs-user"></i> <?php echo htmlspecialchars($article['auteur'] ?? 'Anonyme'); ?></span>
+                                                <span><i class="fi fi-rs-flag"></i> <?php echo htmlspecialchars($article['statut']); ?></span>
+                                            </div>
+                                            <div class="ep-blog__btn d-flex justify-content-between">
+                                                <a href="../view/view_article.php?id=<?php echo $article['id_article']; ?>">
+                                                    Détails <i class="fi fi-rs-arrow-small-right"></i>
+                                                </a>
+                                                <div>
+                                                    <a href="../edit/edit_article.php?id=<?php echo $article['id_article']; ?>" 
+                                                       class="text-primary me-2">
+                                                        <i class="fi fi-rs-edit"></i>
+                                                    </a>
+                                                    <a href="../delete/delete_article.php?id=<?php echo $article['id_article']; ?>" 
+                                                       class="text-danger"
+                                                       onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?');">
+                                                        <i class="fi fi-rs-trash"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <?php include_once '../include/footer.php'; ?>
         </div>
     </div>
 
