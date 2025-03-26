@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'config/database.php';
+require_once '../../config/database.php';
 
 $success = $error = '';
 $partenaire = null;
@@ -9,7 +9,7 @@ $partenaire = null;
 $id_partenaire = $_GET['id'] ?? null;
 
 if (!$id_partenaire) {
-    header('Location: partenaires.php');
+    header('Location: ../list/partenaires.php');
     exit();
 }
 

@@ -4,35 +4,17 @@ require_once '../../config/database.php';
 
 $success = $error = '';
 
-// Traitement du formulaire d'ajout
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nom = $_POST['nom'] ?? '';
-    $description = $_POST['description_ev'] ?? '';
-    $id_utilisateur = $_SESSION['user']['user_id'] ?? null;
-
-    if (!empty($nom) && !empty($description)) {
-        try {
-            $sql = "INSERT INTO Evenement (nom, description_ev, id_utilisateur) VALUES (:nom, :description, :id_utilisateur)";
-            $stmt = $conn->prepare($sql);
-            $stmt->execute([
-                ':nom' => $nom,
-                ':description' => $description,
-                ':id_utilisateur' => $id_utilisateur
-            ]);
-            $success = "L'événement a été ajouté avec succès!";
-        } catch(PDOException $e) {
-            $error = "Une erreur est survenue lors de l'ajout de l'événement.";
-        }
-    } else {
-        $error = "Le nom et la description de l'événement sont requis.";
-    }
+// Get success message from session
+if (isset($_SESSION['success'])) {
+    $success = $_SESSION['success'];
+    unset($_SESSION['success']);
 }
 
 // Récupération des événements existants
 try {
-    $sql = "SELECT e.*, u.login as createur FROM Evenement e 
-            LEFT JOIN Utilisateur u ON e.id_utilisateur = u.id_utilisateur 
-            ORDER BY e.id_evenement DESC";
+    $sql = "SELECT e.*, u.login FROM evenement e 
+            LEFT JOIN utilisateur u ON e.id_utilisateur = u.id_utilisateur 
+            ORDER BY id_evenement DESC";
     $stmt = $conn->query($sql);
     $evenements = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch(PDOException $e) {
@@ -49,91 +31,98 @@ try {
     <title>Gestion des Événements - EduPath</title>
     <?php include_once '../edit/css.php'; ?>
 </head>
-<body>
+<body class="ep-magic-cursor">
     <?php include_once '../magic.php'; ?>
 
-    <section class="section-gap">
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-12">
-                    <h2 class="text-center mb-4">Gestion des Événements</h2>
-                    
-                    <?php if ($success): ?>
-                        <div class="alert alert-success"><?php echo $success; ?></div>
-                    <?php endif; ?>
-                    
-                    <?php if ($error): ?>
-                        <div class="alert alert-danger"><?php echo $error; ?></div>
-                    <?php endif; ?>
-
-                    <!-- Formulaire d'ajout -->
-                    <div class="card mb-4">
-                        <div class="card-header">
-                            <h4>Ajouter un nouvel événement</h4>
-                        </div>
-                        <div class="card-body">
-                            <form method="POST" action="">
-                                <div class="mb-3">
-                                    <label for="nom" class="form-label">Nom de l'événement *</label>
-                                    <input type="text" class="form-control" id="nom" name="nom" required>
+    <div id="smooth-wrapper">
+        <div id="smooth-content">
+            <main>
+                <!-- Start Breadcrumbs Area -->
+                <div class="ep-breadcrumbs breadcrumbs-bg background-image" 
+                     style="background-image: url('../../assets/images/breadcrumbs-bg.png')">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-6 col-md-6 col-12">
+                                <div class="ep-breadcrumbs__content">
+                                    <h3 class="ep-breadcrumbs__title">Gestion des Événements</h3>
+                                    <ul class="ep-breadcrumbs__menu">
+                                        <li><a href="../dashboard.php">Tableau de bord</a></li>
+                                        <li><i class="fi-bs-angle-right"></i></li>
+                                        <li class="active">Événements</li>
+                                    </ul>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="description_ev" class="form-label">Description *</label>
-                                    <textarea class="form-control" id="description_ev" name="description_ev" rows="3" required></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Ajouter</button>
-                            </form>
-                        </div>
-                    </div>
-
-                    <!-- Liste des événements -->
-                    <div class="card">
-                        <div class="card-header">
-                            <h4>Liste des événements</h4>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Nom</th>
-                                            <th>Description</th>
-                                            <th>Créé par</th>
-                                            <th>Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php foreach ($evenements as $evenement): ?>
-                                        <tr>
-                                            <td><?php echo htmlspecialchars($evenement['id_evenement']); ?></td>
-                                            <td><?php echo htmlspecialchars($evenement['nom']); ?></td>
-                                            <td><?php echo htmlspecialchars($evenement['description_ev']); ?></td>
-                                            <td><?php echo htmlspecialchars($evenement['createur']); ?></td>
-                                            <td>
-                                                <a href="edit_evenement.php?id=<?php echo $evenement['id_evenement']; ?>" class="btn btn-sm btn-primary">
-                                                    <i class="fas fa-edit"></i>
-                                                </a>
-                                                <a href="delete_evenement.php?id=<?php echo $evenement['id_evenement']; ?>" class="btn btn-sm btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet événement ?');">
-                                                    <i class="fas fa-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
+                <!-- End Breadcrumbs Area -->
 
-      <?php include_once '../include/footer.php'; ?>
+                <!-- Start Event Area -->
+                <section class="ep-blog section-gap position-relative pd-top-90">
+                    <div class="container ep-container">
+                        <?php if ($success): ?>
+                            <div class="alert alert-success"><?php echo $success; ?></div>
+                        <?php endif; ?>
+
+                        <?php if ($error): ?>
+                            <div class="alert alert-danger"><?php echo $error; ?></div>
+                        <?php endif; ?>
+
+                        <!-- Add Event Button -->
+                        <div class="row mb-4">
+                            <div class="col-12 text-end">
+                                <a href="../add/add_event.php" class="ep-btn ep-btn-primary">
+                                    <i class="fi fi-rs-plus"></i> Ajouter un événement
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <?php foreach ($evenements as $evenement): ?>
+                            <div class="col-lg-6 col-xl-4 col-md-6 col-12 mb-4">
+                                <div class="ep-blog__card wow fadeInUp" data-wow-delay=".3s" data-wow-duration="1s">
+                                    <div class="ep-blog__info">
+                                        <div class="ep-blog__date ep1-bg">
+                                            <i class="fi fi-rs-calendar"></i>
+                                        </div>
+                                        <div class="ep-blog__content">
+                                            <a href="../view/view_evenement.php?id=<?php echo $evenement['id_evenement']; ?>" 
+                                               class="ep-blog__title">
+                                                <h5><?php echo htmlspecialchars($evenement['nom']); ?></h5>
+                                            </a>
+                                            <p class="ep-blog__text">
+                                                <?php echo htmlspecialchars($evenement['description_ev']); ?>
+                                            </p>
+                                            <div class="ep-blog__btn d-flex justify-content-between">
+                                                <a href="../view/view_evenement.php?id=<?php echo $evenement['id_evenement']; ?>">
+                                                    Détails <i class="fi fi-rs-arrow-small-right"></i>
+                                                </a>
+                                                <div>
+                                                    <a href="../edit/edit_evenement.php?id=<?php echo $evenement['id_evenement']; ?>" 
+                                                       class="text-primary me-2">
+                                                        <i class="fi fi-rs-edit"></i>
+                                                    </a>
+                                                    <a href="../delete/delete_evenement.php?id=<?php echo $evenement['id_evenement']; ?>" 
+                                                       class="text-danger"
+                                                       onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet événement ?');">
+                                                        <i class="fi fi-rs-trash"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <?php include_once '../include/footer.php'; ?>
         </div>
     </div>
 
     <?php include_once '../edit/script.php'; ?>
 </body>
 </html>
+

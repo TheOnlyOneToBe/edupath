@@ -138,12 +138,18 @@ try {
                           <div>
                             <a href="../edit/edit_avoir.php?filiere=<?php echo $assoc['id_filiere']; ?>&cycle=<?php echo $assoc['id_cycle']; ?>" 
                                class="text-primary me-2">
-                              <i class="icofont-edit"></i>
+                              <i class="fas fa-edit"></i>
                             </a>
-                            <a href="../delete/delete_avoir.php?filiere=<?php echo $assoc['id_filiere']; ?>&cycle=<?php echo $assoc['id_cycle']; ?>" 
-                               class="text-danger delete-link">
-                              <i class="icofont-trash"></i>
-                            </a>
+                            <button type="button" 
+                                    class="text-danger delete-link btn btn-link p-0" 
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#deleteModal"
+                                    data-filiere-id="<?php echo $assoc['id_filiere']; ?>"
+                                    data-cycle-id="<?php echo $assoc['id_cycle']; ?>"
+                                    data-filiere-name="<?php echo htmlspecialchars($assoc['nom_filiere']); ?>"
+                                    data-cycle-name="<?php echo htmlspecialchars($assoc['nom_cycle']); ?>">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
                           </div>
                         </div>
                       </div>
@@ -185,30 +191,29 @@ try {
 
   <!-- Delete Modal Script -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const deleteModal = document.getElementById('deleteModal');
-      const deleteFiliereName = document.getElementById('deleteFiliereName');
-      const deleteCycleName = document.getElementById('deleteCycleName');
-      const deleteConfirmBtn = document.getElementById('deleteConfirmBtn');
-
-      // Update delete links to use modal
-      document.querySelectorAll('.delete-link').forEach(link => {
-        link.addEventListener('click', function(e) {
-          e.preventDefault();
-          const card = this.closest('.ep-blog__card');
-          const filiereName = card.querySelector('.ep-blog__title h5').textContent;
-          const cycleName = card.querySelector('.ep-blog__location span').textContent;
-          const deleteUrl = this.getAttribute('href');
-
-          deleteFiliereName.textContent = filiereName;
-          deleteCycleName.textContent = cycleName;
-          deleteConfirmBtn.href = deleteUrl;
-          
-          const bsModal = new bootstrap.Modal(deleteModal);
-          bsModal.show();
-        });
-      });
+document.addEventListener('DOMContentLoaded', function() {
+    const deleteModal = document.getElementById('deleteModal');
+    
+    deleteModal.addEventListener('show.bs.modal', function(event) {
+        // Button that triggered the modal
+        const button = event.relatedTarget;
+        
+        // Extract info from data-* attributes
+        const filiereId = button.getAttribute('data-filiere-id');
+        const cycleId = button.getAttribute('data-cycle-id');
+        const filiereName = button.getAttribute('data-filiere-name');
+        const cycleName = button.getAttribute('data-cycle-name');
+        
+        // Update the modal's content
+        const deleteFiliereName = deleteModal.querySelector('#deleteFiliereName');
+        const deleteCycleName = deleteModal.querySelector('#deleteCycleName');
+        const deleteConfirmBtn = deleteModal.querySelector('#deleteConfirmBtn');
+        
+        deleteFiliereName.textContent = filiereName;
+        deleteCycleName.textContent = cycleName;
+        deleteConfirmBtn.href = `../delete/delete_avoir.php?filiere=${filiereId}&cycle=${cycleId}`;
     });
-  </script>
+});
+</script>
 </body>
 </html>
