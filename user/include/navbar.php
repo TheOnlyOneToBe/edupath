@@ -7,7 +7,7 @@
         <div class="row align-items-center">
           <div class="col-lg-2 col-6">
             <div class="ep-logo">
-              <a href="../dashboard.php">
+              <a href="dashboard.php">
                 <img src="../../assets/images/logo.svg" alt="logo" />
               </a>
             </div>
@@ -20,8 +20,8 @@
                   <li>
                     <a href="#">Articles <i class="fi fi-ss-angle-small-down"></i></a>
                     <ul class="sub-menu">
-                      <li><a href="../list/articles.php">Liste des Articles</a></li>
-                      <li><a href="../add/add_article.php">Ajouter Article</a></li>
+                      <li><a href="list/articles.php">Liste des Articles</a></li>
+                      <li><a href="add/add_article.php">Ajouter Article</a></li>
                     </ul>
                   </li>
 
@@ -29,8 +29,8 @@
                   <li>
                     <a href="#">Avoir <i class="fi fi-ss-angle-small-down"></i></a>
                     <ul class="sub-menu">
-                      <li><a href="../list/avoir.php">Liste des Avoirs</a></li>
-                      <li><a href="../add/add_avoir.php">Ajouter Avoir</a></li>
+                      <li><a href="list/avoir.php">Liste des Avoirs</a></li>
+                      <li><a href="add/add_avoir.php">Ajouter Avoir</a></li>
                     </ul>
                   </li>
 
@@ -38,8 +38,8 @@
                   <li>
                     <a href="#">Bourses <i class="fi fi-ss-angle-small-down"></i></a>
                     <ul class="sub-menu">
-                      <li><a href="../list/bourses.php">Liste des Bourses</a></li>
-                      <li><a href="../add/add_bourse.php">Ajouter Bourse</a></li>
+                      <li><a href="list/bourses.php">Liste des Bourses</a></li>
+                      <li><a href="add/add_bourse.php">Ajouter Bourse</a></li>
                     </ul>
                   </li>
 
@@ -47,7 +47,7 @@
                   <li>
                     <a href="#">Contacts <i class="fi fi-ss-angle-small-down"></i></a>
                     <ul class="sub-menu">
-                      <li><a href="../list/contacts.php">Liste des Contacts</a></li>
+                      <li><a href="list/contacts.php">Liste des Contacts</a></li>
                     </ul>
                   </li>
 
@@ -55,8 +55,8 @@
                   <li>
                     <a href="#">Cycles <i class="fi fi-ss-angle-small-down"></i></a>
                     <ul class="sub-menu">
-                      <li><a href="../list/cycles.php">Liste des Cycles</a></li>
-                      <li><a href="../add/add_cycle.php">Ajouter Cycle</a></li>
+                      <li><a href="list/cycles.php">Liste des Cycles</a></li>
+                      <li><a href="add/add_cycle.php">Ajouter Cycle</a></li>
                     </ul>
                   </li>
 
@@ -64,8 +64,8 @@
                   <li>
                     <a href="#">Événements <i class="fi fi-ss-angle-small-down"></i></a>
                     <ul class="sub-menu">
-                      <li><a href="../list/evenements.php">Liste des Événements</a></li>
-                      <li><a href="../add/add_event.php">Ajouter Événement</a></li>
+                      <li><a href="list/evenements.php">Liste des Événements</a></li>
+                      <li><a href="add/add_event.php">Ajouter Événement</a></li>
                     </ul>
                   </li>
 
@@ -73,8 +73,8 @@
                   <li>
                     <a href="#">Filières <i class="fi fi-ss-angle-small-down"></i></a>
                     <ul class="sub-menu">
-                      <li><a href="../list/filieres.php">Liste des Filières</a></li>
-                      <li><a href="../add/add_filiere.php">Ajouter Filière</a></li>
+                      <li><a href="list/filieres.php">Liste des Filières</a></li>
+                      <li><a href="add/add_filiere.php">Ajouter Filière</a></li>
                     </ul>
                   </li>
 
@@ -82,8 +82,8 @@
                   <li>
                     <a href="#">Partenaires <i class="fi fi-ss-angle-small-down"></i></a>
                     <ul class="sub-menu">
-                      <li><a href="../list/partenaires.php">Liste des Partenaires</a></li>
-                      <li><a href="../add/add_partenaire.php">Ajouter Partenaire</a></li>
+                      <li><a href="list/partenaires.php">Liste des Partenaires</a></li>
+                      <li><a href="add/add_partenaire.php">Ajouter Partenaire</a></li>
                     </ul>
                   </li>
 
@@ -91,8 +91,8 @@
                   <li>
                     <a href="#">Utilisateurs <i class="fi fi-ss-angle-small-down"></i></a>
                     <ul class="sub-menu">
-                      <li><a href="../list/utilisateurs.php">Liste des Utilisateurs</a></li>
-                      <li><a href="../add/add_user.php">Ajouter Utilisateur</a></li>
+                      <li><a href="list/utilisateurs.php">Liste des Utilisateurs</a></li>
+                      <li><a href="add/add_user.php">Ajouter Utilisateur</a></li>
                     </ul>
                   </li>
                 </ul>
