@@ -49,7 +49,8 @@ try {
   <link rel="stylesheet" href="style.css">
 </head>
 
-                      <body class="ep-magic-cursor"><?php include_once '../include/navbar.php'; ?>
+<body class="ep-magic-cursor">
+  <?php include_once '../include/navbar.php'; ?>
   <?php include_once '../magic.php'; ?>
 
   <!-- End Header Area -->
@@ -59,8 +60,7 @@ try {
         <!-- Start Breadcrumbs Area -->
         <div
           class="ep-breadcrumbs breadcrumbs-bg background-image"
-          style="background-image: url('../../assets/images/breadcrumbs-bg.png')"
-        >
+          style="background-image: url('../../assets/images/breadcrumbs-bg.png')">
           <div class="container">
             <div class="row justify-content-center">
               <div class="col-lg-6 col-md-6 col-12">
@@ -136,19 +136,19 @@ try {
                             Détails <i class="fi fi-rs-arrow-small-right"></i>
                           </a>
                           <div>
-                            <a href="../edit/edit_avoir.php?filiere=<?php echo $assoc['id_filiere']; ?>&cycle=<?php echo $assoc['id_cycle']; ?>" 
-                               class="text-primary me-2">
+                            <a href="../edit/edit_avoir.php?filiere=<?php echo $assoc['id_filiere']; ?>&cycle=<?php echo $assoc['id_cycle']; ?>"
+                              class="text-primary me-2">
                               <i class="fas fa-edit"></i>
                             </a>
-                            <button type="button" 
-                                    class="text-danger delete-link btn btn-link p-0" 
-                                    data-bs-toggle="modal" 
-                                    data-bs-target="#deleteModal"
-                                    data-filiere-id="<?php echo $assoc['id_filiere']; ?>"
-                                    data-cycle-id="<?php echo $assoc['id_cycle']; ?>"
-                                    data-filiere-name="<?php echo htmlspecialchars($assoc['nom_filiere']); ?>"
-                                    data-cycle-name="<?php echo htmlspecialchars($assoc['nom_cycle']); ?>">
-                                <i class="fas fa-trash-alt"></i>
+                            <button type="button"
+                              class="text-danger delete-link btn btn-link p-0"
+                              data-bs-toggle="modal"
+                              data-bs-target="#deleteModal"
+                              data-filiere-id="<?php echo $assoc['id_filiere']; ?>"
+                              data-cycle-id="<?php echo $assoc['id_cycle']; ?>"
+                              data-filiere-name="<?php echo htmlspecialchars($assoc['nom_filiere']); ?>"
+                              data-cycle-name="<?php echo htmlspecialchars($assoc['nom_cycle']); ?>">
+                              <i class="fas fa-trash-alt"></i>
                             </button>
                           </div>
                         </div>
@@ -191,29 +191,30 @@ try {
 
   <!-- Delete Modal Script -->
   <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const deleteModal = document.getElementById('deleteModal');
-    
-    deleteModal.addEventListener('show.bs.modal', function(event) {
+    document.addEventListener('DOMContentLoaded', function() {
+      const deleteModal = document.getElementById('deleteModal');
+
+      deleteModal.addEventListener('show.bs.modal', function(event) {
         // Button that triggered the modal
         const button = event.relatedTarget;
-        
+
         // Extract info from data-* attributes
         const filiereId = button.getAttribute('data-filiere-id');
         const cycleId = button.getAttribute('data-cycle-id');
         const filiereName = button.getAttribute('data-filiere-name');
         const cycleName = button.getAttribute('data-cycle-name');
-        
+
         // Update the modal's content
         const deleteFiliereName = deleteModal.querySelector('#deleteFiliereName');
         const deleteCycleName = deleteModal.querySelector('#deleteCycleName');
         const deleteConfirmBtn = deleteModal.querySelector('#deleteConfirmBtn');
-        
+
         deleteFiliereName.textContent = filiereName;
         deleteCycleName.textContent = cycleName;
         deleteConfirmBtn.href = `../delete/delete_avoir.php?filiere=${filiereId}&cycle=${cycleId}`;
+      });
     });
-});
-</script>
+  </script>
 </body>
+
 </html>
