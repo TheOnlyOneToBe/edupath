@@ -296,3 +296,112 @@
     right: 1.5rem;
     top: 1.5rem;
   }
+
+  /* Contact Card Styles */
+  .ep-contact-list {
+      padding: 80px 0;
+  }
+  
+  .ep-contact-card {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+  }
+  
+  .ep-contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .ep-contact-card__header {
+      display: flex;
+      padding: 20px;
+      background-color: #f8f9fa;
+      border-bottom: 1px solid #eee;
+  }
+  
+  .ep-contact-card__date {
+      background-color: var(--ep-primary-color);
+      color: #fff;
+      border-radius: 5px;
+      padding: 10px;
+      text-align: center;
+      font-weight: 600;
+      min-width: 60px;
+      margin-right: 15px;
+      font-size: 14px;
+      line-height: 1.2;
+  }
+  
+  .ep-contact-card__info {
+      flex: 1;
+  }
+  
+  .ep-contact-card__name {
+      margin: 0 0 5px;
+      font-size: 18px;
+      font-weight: 600;
+  }
+  
+  .ep-contact-card__email {
+      margin: 0;
+      font-size: 14px;
+      color: #666;
+  }
+  
+  .ep-contact-card__content {
+      padding: 20px;
+      flex: 1;
+  }
+  
+  .ep-contact-card__subject {
+      margin: 0 0 10px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+  }
+  
+  .ep-contact-card__message {
+      margin: 0;
+      font-size: 14px;
+      color: #666;
+      line-height: 1.6;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+  }
+  
+  .ep-contact-card__footer {
+      padding: 15px 20px;
+      border-top: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+  
+  .ep-btn-sm {
+      padding: 8px 15px;
+      font-size: 14px;
+  }
+  
+  .ep-btn-danger {
+      background-color: #dc3545;
+      color: #fff;
+  }
+  
+  .ep-btn-danger:hover {
+      background-color: #c82333;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 767px) {
+      .ep-contact-card {
+          margin-bottom: 20px;
+      }
+  }
