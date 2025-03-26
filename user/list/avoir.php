@@ -98,9 +98,11 @@ try {
             <div class="row mb-4">
               <div class="col-12 d-flex justify-content-between align-items-center">
                 <h3 class="ep-section__title">Liste des frais de scolarité</h3>
-                <a href="../add/add_avoir.php" class="ep-btn">
-                  <i class="fi fi-rs-plus"></i> Ajouter
-                </a>
+                <div>
+                  <a href="../add/add_avoir.php" class="ep-btn">
+                    <i class="fi fi-rs-plus"></i> Ajouter
+                  </a>
+                </div>
               </div>
             </div>
 
@@ -139,8 +141,7 @@ try {
                               <i class="icofont-edit"></i>
                             </a>
                             <a href="../delete/delete_avoir.php?filiere=<?php echo $assoc['id_filiere']; ?>&cycle=<?php echo $assoc['id_cycle']; ?>" 
-                               class="text-danger"
-                               onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette association ?');">
+                               class="text-danger delete-link">
                               <i class="icofont-trash"></i>
                             </a>
                           </div>
@@ -159,6 +160,55 @@ try {
     </div>
   </div>
 
+  <!-- Delete Confirmation Modal -->
+  <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-danger text-white">
+          <h5 class="modal-title" id="deleteModalLabel">Confirmation de suppression</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Êtes-vous sûr de vouloir supprimer les frais de scolarité pour cette filière et ce cycle ?</p>
+          <p class="mb-0"><strong>Filière :</strong> <span id="deleteFiliereName"></span></p>
+          <p><strong>Cycle :</strong> <span id="deleteCycleName"></span></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="ep-btn ep-btn--cancel" data-bs-dismiss="modal">Annuler</button>
+          <a href="#" id="deleteConfirmBtn" class="ep-btn ep-btn--danger">Supprimer</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <?php include_once '../edit/script.php'; ?>
+
+  <!-- Delete Modal Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const deleteModal = document.getElementById('deleteModal');
+      const deleteFiliereName = document.getElementById('deleteFiliereName');
+      const deleteCycleName = document.getElementById('deleteCycleName');
+      const deleteConfirmBtn = document.getElementById('deleteConfirmBtn');
+
+      // Update delete links to use modal
+      document.querySelectorAll('.delete-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const card = this.closest('.ep-blog__card');
+          const filiereName = card.querySelector('.ep-blog__title h5').textContent;
+          const cycleName = card.querySelector('.ep-blog__location span').textContent;
+          const deleteUrl = this.getAttribute('href');
+
+          deleteFiliereName.textContent = filiereName;
+          deleteCycleName.textContent = cycleName;
+          deleteConfirmBtn.href = deleteUrl;
+          
+          const bsModal = new bootstrap.Modal(deleteModal);
+          bsModal.show();
+        });
+      });
+    });
+  </script>
 </body>
 </html>

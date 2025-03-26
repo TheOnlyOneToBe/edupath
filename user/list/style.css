@@ -405,3 +405,36 @@
           margin-bottom: 20px;
       }
   }
+
+  .ep-btn--cancel {
+    background-color: #6c757d;
+    color: #fff;
+}
+
+.ep-btn--cancel:hover {
+    background-color: #5a6268;
+    color: #fff;
+}
+
+.ep-btn--danger {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.ep-btn--danger:hover {
+    background-color: #bb2d3b;
+    color: #fff;
+}
+
+.modal-content {
+    border-radius: 15px;
+}
+
+.modal-header {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.btn-close-white {
+    filter: brightness(0) invert(1);
+}

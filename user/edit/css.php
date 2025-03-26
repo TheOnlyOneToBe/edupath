@@ -14,3 +14,5 @@
     <link rel="stylesheet" href="../../assets/plugins/css/uicons.css" />
     <!-- Main CSS -->
     <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="../../assets/plugins/fontawesome/css/all.css">
+    <link rel="stylesheet" href="../../assets/plugins/fontawesome/js/all.js">
