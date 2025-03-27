@@ -11,7 +11,7 @@
               <div class="col-lg-2 col-6">
                 <div class="ep-logo">
                   <a href="index.php">
-                    <img src="assets/images/logo.svg" alt="logo" />
+                    
                   </a>
                 </div>
               </div>
@@ -27,6 +27,12 @@
                       </li>
                       <li>
                         <a href="about.php">À propos</a>
+                      </li>
+                      <li>
+                        <a href="events.php">Evenements</a>
+                      </li>
+                      <li>
+                        <a href="articles.php">Articles</a>
                       </li>
                       <li>
                         <a href="contact.php">Contact</a>

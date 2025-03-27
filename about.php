@@ -40,26 +40,12 @@ $partenaires = $stmt_partenaires->fetchAll();
     <!-- Site Title -->
     <title>À propos de <?php include 'name.php' ;  ?> - Votre partenaire éducatif</title>
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="assets/plugins/css/bootstrap.min.css" />
-    <!-- Animate CSS -->
-    <link rel="stylesheet" href="assets/plugins/css/animate.min.css" />
-    <!-- Owl Carousel CSS -->
-    <link rel="stylesheet" href="assets/plugins/css/owl.carousel.min.css" />
-    <!-- Maginific Popup CSS -->
-    <link rel="stylesheet" href="assets/plugins/css/maginific-popup.min.css" />
-    <!-- Nice Select CSS -->
-    <link rel="stylesheet" href="assets/plugins/css/nice-select.min.css" />
-    <!-- Icofont -->
-    <link rel="stylesheet" href="assets/plugins/css/icofont.css" />
-    <!-- Uicons -->
-    <link rel="stylesheet" href="assets/plugins/css/uicons.css" />
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="style.css" >
+    <?php include_once 'includes/head.php'; ?>
 </head>
 <body class="ep-magic-cursor">
     <?php include_once 'user/magic.php'; ?>
 
+    <?php include_once 'includes/header.php' ;?>
     <!-- Section À propos -->
     <section class="ep-about section-gap">
         <div class="container">
@@ -177,34 +163,7 @@ $partenaires = $stmt_partenaires->fetchAll();
         }
     </style>
 
-    <!-- Jquery JS -->
-    <script src="assets/plugins/js/jquery.min.js"></script>
-    <script src="assets/plugins/js/jquery-migrate.js"></script>
+    <?php include_once 'includes/scripts.php' ;?>
 
-    <!-- Bootstrap JS -->
-    <script src="assets/plugins/js/bootstrap.min.js"></script>
-    <!-- Gsap JS -->
-    <script src="assets/plugins/js/gsap/gsap.js"></script>
-    <script src="assets/plugins/js/gsap/gsap-scroll-to-plugin.js"></script>
-    <script src="assets/plugins/js/gsap/gsap-scroll-smoother.js"></script>
-    <script src="assets/plugins/js/gsap/gsap-scroll-trigger.js"></script>
-    <script src="assets/plugins/js/gsap/gsap-split-text.js"></script>
-    <!-- Wow JS -->
-    <script src="assets/plugins/js/wow.min.js"></script>
-    <!-- Owl Carousel JS -->
-    <script src="assets/plugins/js/owl.carousel.min.js"></script>
-    <!-- Magnific Popup JS -->
-    <script src="assets/plugins/js/magnific-popup.min.js"></script>
-    <!-- CounterUp  JS -->
-    <script src="assets/plugins/js/jquery.counterup.min.js"></script>
-    <script src="assets/plugins/js/waypoints.min.js"></script>
-    <!-- Nice Select JS -->
-    <script src="assets/plugins/js/nice-select.min.js"></script>
-    <!-- Cursor JS -->
-    <script src="assets/plugins/js/ep-cursor.js"></script>
-    <!-- Back To Top JS -->
-    <script src="assets/plugins/js/backToTop.js"></script>
-    <!-- Main JS -->
-    <script src="assets/plugins/js/active.js"></script>
 </body>
 </html>
