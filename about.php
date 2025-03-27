@@ -58,7 +58,7 @@ $partenaires = $stmt_partenaires->fetchAll();
     <link rel="stylesheet" href="style.css" />
 </head>
 <body class="ep-magic-cursor">
-    <?php include_once '../magic.php'; ?>
+    <?php include_once 'user/magic.php'; ?>
 
     <!-- Section À propos -->
     <section class="ep-about section-gap">
@@ -132,7 +132,7 @@ $partenaires = $stmt_partenaires->fetchAll();
                 <?php foreach ($partenaires as $partenaire): ?>
                 <div class="col-lg-3 col-md-4 col-6 mb-4">
                     <div class="partner-card text-center">
-                        <img src="assets/images/partners/<?php echo htmlspecialchars($partenaire['photo']); ?>" 
+                        <img src="assets/imgs/partenaires/<?php echo htmlspecialchars($partenaire['photo']); ?>" 
                              alt="<?php echo htmlspecialchars($partenaire['nom']); ?>" 
                              class="img-fluid">
                         <h5 class="mt-3"><?php echo htmlspecialchars($partenaire['nom']); ?></h5>

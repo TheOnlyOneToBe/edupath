@@ -96,39 +96,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </div>
     </div>
 
-  <?php include_once '../magic.php'; ?>
+  <?php include_once 'user/magic.php'; ?>
 
     <!-- End Header Area -->
     <div id="smooth-wrapper">
       <div id="smooth-content">
         <main>
-          <!-- Start Breadcrumbs Area -->
-          <div
-            class="ep-breadcrumbs breadcrumbs-bg background-image"
-            style="background-image: url('assets/images/breadcrumbs-bg.png')"
-          >
-            <div class="container">
-              <div class="row justify-content-center">
-                <div class="col-lg-6 col-md-6 col-12">
-                  <div class="ep-breadcrumbs__content">
-                    <h3 class="ep-breadcrumbs__title">Login</h3>
-                    <ul class="ep-breadcrumbs__menu">
-                      <li>
-                        <a href="dashboard.php">Home</a>
-                      </li>
-                      <li>
-                        <i class="fi-bs-angle-right"></i>
-                      </li>
-                      <li class="active">
-                        <a href="login.php">Login</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- End Breadcrumbs Area -->
           <!-- Start Auth Area -->
           <section class="ep-auth auth-login section-gap position-relative">
             <div class="container ep-container">
@@ -184,7 +157,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </div>
     </div>
 
-    <?php include 'includes/footer.php'; 
+    <?php 
     include 'includes/scripts.php'; 
     ?>
     <script>
