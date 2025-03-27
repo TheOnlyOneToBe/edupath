@@ -85,7 +85,7 @@ try {
     <link rel="icon" type="image/x-icon" href="../assets/images/favicon.svg" />
 
     <!-- Site Title -->
-    <title>Modifier les Frais | EduPath</title>
+    <title>Modifier les Frais | <?php include '../name.php' ;  ?></title>
     <?php include_once 'css.php'; ?>
 </head>
 

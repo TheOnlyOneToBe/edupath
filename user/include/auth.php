@@ -5,7 +5,7 @@ function isLoggedIn() {
 
 function requireLogin() {
     if (!isLoggedIn()) {
-        header('Location: /edupath/login.php');
+        header('Location: ../login.php');
         exit();
     }
 }
@@ -13,7 +13,7 @@ function requireLogin() {
 function logout() {
     session_start();
     session_destroy();
-    header('Location: /edupath/login.php');
+    header('Location: ../login.php');
     exit();
 }
 

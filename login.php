@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.svg" />
 
     <!-- Site Title -->
-    <title>Edupath - Connexion</title>
+    <title><?php include 'name.php' ;  ?> - Connexion</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="assets/plugins/css/bootstrap.min.css" />
@@ -172,5 +172,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </script>
   </body>
 
-<!-- Mirrored from edupath-template.vercel.app/edupath/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 24 Sep 2024 03:29:10 GMT -->
+<!-- Mirrored from <?php include 'name.php' ;  ?>-template.vercel.app/<?php include 'name.php' ;  ?>/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 24 Sep 2024 03:29:10 GMT -->
 </html>

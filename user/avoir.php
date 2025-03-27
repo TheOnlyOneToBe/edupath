@@ -44,7 +44,7 @@ try {
   <link rel="icon" type="image/x-icon" href="../assets/images/favicon.svg" />
 
   <!-- Site Title -->
-  <title>Gestion des Frais de Scolarité | EduPath</title>
+  <title>Gestion des Frais de Scolarité | <?php include '../name.php' ;  ?></title>
   <?php include_once 'css.php'; ?>
   <link rel="stylesheet" href="style.css">
 </head>

@@ -12,7 +12,7 @@
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.svg" />
 
     <!-- Titre du site -->
-    <title>Edupath - Éducation, Cours & Formation en Ligne</title>
+    <title><?php include 'name.php' ;  ?> - Éducation, Cours & Formation en Ligne</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="assets/plugins/css/bootstrap.min.css" />
@@ -2191,5 +2191,5 @@
     <script src="assets/plugins/js/active.js"></script>
   </body>
 
-<!-- Mirrored from edupath-template.vercel.app/edupath/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 24 Sep 2024 03:28:30 GMT -->
+<!-- Mirrored from <?php include 'name.php' ;  ?>-template.vercel.app/<?php include 'name.php' ;  ?>/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 24 Sep 2024 03:28:30 GMT -->
 </html>

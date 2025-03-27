@@ -76,7 +76,7 @@ try {
     <link rel="icon" type="image/x-icon" href="../assets/images/favicon.svg" />
 
     <!-- Site Title -->
-    <title>Modifier un cycle | EduPath</title>
+    <title>Modifier un cycle | <?php include '../name.php' ;  ?></title>
     <?php include_once 'css.php'; ?>
 </head>
 

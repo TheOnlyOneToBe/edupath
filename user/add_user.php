@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="icon" type="image/x-icon" href="../assets/images/favicon.svg" />
 
     <!-- Site Title -->
-    <title>Ajouter un utilisateur | EduPath</title>
+    <title>Ajouter un utilisateur | <?php include '../name.php' ;  ?></title>
     <?php include_once 'css.php'; ?>
 </head>
 
@@ -112,6 +112,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 </body>
 
-<!-- Mirrored from edupath-template.vercel.app/edupath/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 24 Sep 2024 03:29:20 GMT -->
+<!-- Mirrored from <?php include '../name.php' ;  ?>-template.vercel.app/<?php include '../name.php' ;  ?>/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 24 Sep 2024 03:29:20 GMT -->
 
 </html>

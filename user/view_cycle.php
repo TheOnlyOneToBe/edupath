@@ -60,7 +60,7 @@ try {
     <link rel="icon" type="image/x-icon" href="../assets/images/favicon.svg" />
 
     <!-- Site Title -->
-    <title>Détails du Cycle | EduPath</title>
+    <title>Détails du Cycle | <?php include '../name.php' ;  ?></title>
     <?php include_once 'css.php'; ?>
 </head>
 

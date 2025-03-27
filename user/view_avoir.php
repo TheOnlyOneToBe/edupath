@@ -64,7 +64,7 @@ if ($avoir) {
     <link rel="icon" type="image/x-icon" href="../assets/images/favicon.svg" />
 
     <!-- Site Title -->
-    <title>Détails des Frais | EduPath</title>
+    <title>Détails des Frais | <?php include '../name.php' ;  ?></title>
     <?php include_once 'css.php'; ?>
     <link rel="stylesheet" href="/style.css">
 </head>

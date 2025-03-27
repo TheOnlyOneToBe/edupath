@@ -40,7 +40,7 @@ try {
   <link rel="icon" type="image/x-icon" href="../assets/images/favicon.svg" />
 
   <!-- Site Title -->
-  <title>Gestion des Contacts | EduPath</title>
+  <title>Gestion des Contacts | <?php include '../name.php' ;  ?></title>
   <?php include_once 'css.php'; ?>
   <link rel="stylesheet" href="style.css">
 </head>

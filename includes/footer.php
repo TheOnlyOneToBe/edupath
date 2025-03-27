@@ -4,7 +4,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="ep-footer__copyright text-center">
-                            <p>&copy; <?php echo date('Y'); ?> EduPath. Tous droits réservés.</p>
+                            <p>&copy; <?php echo date('Y'); ?> <?php include 'name.php' ;  ?>. Tous droits réservés.</p>
                         </div>
                     </div>
                 </div>

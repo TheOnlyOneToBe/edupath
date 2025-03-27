@@ -38,7 +38,7 @@ $partenaires = $stmt_partenaires->fetchAll();
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.svg" />
 
     <!-- Site Title -->
-    <title>À propos de Edupath - Votre partenaire éducatif</title>
+    <title>À propos de <?php include 'name.php' ;  ?> - Votre partenaire éducatif</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="assets/plugins/css/bootstrap.min.css" />
@@ -55,7 +55,7 @@ $partenaires = $stmt_partenaires->fetchAll();
     <!-- Uicons -->
     <link rel="stylesheet" href="assets/plugins/css/uicons.css" />
     <!-- Main CSS -->
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="style.css" >
 </head>
 <body class="ep-magic-cursor">
     <?php include_once 'user/magic.php'; ?>
@@ -66,9 +66,9 @@ $partenaires = $stmt_partenaires->fetchAll();
             <div class="row align-items-center">
                 <div class="col-lg-6">
                     <div class="about-content">
-                        <h2>Bienvenue chez Edupath</h2>
+                        <h2>Bienvenue chez <?php include 'name.php' ;  ?></h2>
                         <p class="lead">Votre partenaire de confiance pour l'excellence académique depuis 2020</p>
-                        <p>Edupath est un établissement d'enseignement supérieur privé reconnu pour son excellence académique 
+                        <p><?php include 'name.php' ;  ?> est un établissement d'enseignement supérieur privé reconnu pour son excellence académique 
                            et son engagement envers la réussite des étudiants. Nous offrons une large gamme de formations 
                            adaptées aux besoins du marché du travail.</p>
                         <div class="stats-row mt-4">
@@ -88,7 +88,7 @@ $partenaires = $stmt_partenaires->fetchAll();
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <img src="assets/images/about-main.jpg" alt="Campus Edupath" class="img-fluid rounded">
+                    <img src="assets/images/about-main.jpg" alt="Campus <?php include 'name.php' ;  ?>" class="img-fluid rounded">
                 </div>
             </div>
         </div>

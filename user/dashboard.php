@@ -52,7 +52,7 @@ try {
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Tableau de Bord - EduPath</title>
+    <title>Tableau de Bord - <?php include '../name.php' ;  ?></title>
     <?php include_once 'css.php'; ?>
     <style>
         .dashboard-card {
@@ -110,7 +110,7 @@ try {
                         <div class="row">
                             <div class="col-12 mb-4">
                                 <h2>Bienvenue, <?php echo htmlspecialchars($user['login'] ?? 'Utilisateur'); ?></h2>
-                                <p>Voici un aperçu de votre plateforme EduPath</p>
+                                <p>Voici un aperçu de votre plateforme <?php include '../name.php' ;  ?></p>
                             </div>
                         </div>
 

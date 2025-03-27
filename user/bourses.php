@@ -30,7 +30,7 @@ try {
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Gestion des Bourses - EduPath</title>
+    <title>Gestion des Bourses - <?php include '../name.php' ;  ?></title>
     <?php include_once 'css.php'; ?>
 </head>
                       <body class="ep-magic-cursor"><?php include_once 'include/navbar.php'; ?>

@@ -37,7 +37,7 @@ try {
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title><?php echo $article ? htmlspecialchars($article['titre']) : 'Article non trouvé'; ?> - EduPath</title>
+    <title><?php echo $article ? htmlspecialchars($article['titre']) : 'Article non trouvé'; ?> - <?php include '../name.php' ;  ?></title>
     <?php include_once 'css.php'; ?>
 </head>
                       <body class="ep-magic-cursor"><?php include_once 'include/navbar.php'; ?>
