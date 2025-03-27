@@ -226,6 +226,6 @@ try {
         </div>
     </div>
 
-    <?php include_once 'edit/script.php'; ?>
+    <?php include_once 'script.php'; ?>
 </body>
 </html>
