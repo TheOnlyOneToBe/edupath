@@ -9,7 +9,7 @@
                 <div class="ep-footer__copyright">
                   <p>
                     ©
-                    <a target="_blank" href="../../index.php">ThemeCorn</a>
+                    <a target="_blank" href="dashboard.php">ThemeCorn</a>
                     | All Rights Reserved
                   </p>
                 </div>
@@ -24,7 +24,7 @@
                       <a href="#">Privacy Policy</a>
                     </li>
                     <li>
-                      <a href="../../contact.php">Contact Us</a>
+                      <a href="../contact.php">Contact Us</a>
                     </li>
                   </ul>
                 </div>
@@ -34,7 +34,7 @@
         </div>
         <div class="ep-footer__pattern">
           <img
-            src="../../assets/images/footer/footer-pattern.png"
+            src="../assets/images/footer/footer-pattern.png"
             alt="footer-pattern" />
         </div>
       </footer>

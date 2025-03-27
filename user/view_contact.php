@@ -1,12 +1,12 @@
 <?php
 session_start();
-require_once '../../config/database.php';
+require_once '../config/database.php';
 
 // Get contact ID from URL parameter
 $id_contact = $_GET['id'] ?? null;
 
 if (!$id_contact) {
-    header('Location: ../list/contacts.php');
+    header('Location: /contacts.php');
     exit();
 }
 
@@ -20,12 +20,12 @@ try {
 
     if (!$contact) {
         $_SESSION['error'] = "Ce message n'existe pas.";
-        header('Location: ../list/contacts.php');
+        header('Location: /contacts.php');
         exit();
     }
 } catch(PDOException $e) {
     $_SESSION['error'] = "Erreur lors de la récupération des détails du message.";
-    header('Location: ../list/contacts.php');
+    header('Location: /contacts.php');
     exit();
 }
 ?>
@@ -43,15 +43,15 @@ try {
     <meta name="keywords" content="online learning, education, e-learning, courses, tutorials, educational resources, skill development, career enhancement" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.svg" />
 
     <!-- Site Title -->
     <title>Détails du Message | EduPath</title>
-    <?php include_once '../edit/css.php'; ?>
+    <?php include_once 'css.php'; ?>
 </head>
 
-                      <body class="ep-magic-cursor"><?php include_once '../include/navbar.php'; ?>
-    <?php include_once '../magic.php'; ?>
+                      <body class="ep-magic-cursor"><?php include_once 'include/navbar.php'; ?>
+    <?php include_once 'magic.php'; ?>
 
     <!-- End Header Area -->
     <div id="smooth-wrapper">
@@ -60,7 +60,7 @@ try {
                 <!-- Start Breadcrumbs Area -->
                 <div
                     class="ep-breadcrumbs breadcrumbs-bg background-image"
-                    style="background-image: url('../../assets/images/breadcrumbs-bg.png')"
+                    style="background-image: url('../assets/images/breadcrumbs-bg.png')"
                 >
                     <div class="container">
                         <div class="row justify-content-center">
@@ -69,13 +69,13 @@ try {
                                     <h3 class="ep-breadcrumbs__title">Détails du Message</h3>
                                     <ul class="ep-breadcrumbs__menu">
                                         <li>
-                                            <a href="../dashboard.php">Tableau de bord</a>
+                                            <a href="  dashboard.php">Tableau de bord</a>
                                         </li>
                                         <li>
                                             <i class="fi-bs-angle-right"></i>
                                         </li>
                                         <li>
-                                            <a href="../list/contacts.php">Contacts</a>
+                                            <a href="/contacts.php">Contacts</a>
                                         </li>
                                         <li>
                                             <i class="fi-bs-angle-right"></i>
@@ -105,7 +105,7 @@ try {
                                         <div class="ep-blog__details-meta">
                                             <div class="ep-blog__details-author">
                                                 <div class="ep-blog__details-author-img">
-                                                    <img src="../../assets/images/blog/author-1.jpg" alt="author">
+                                                    <img src="../assets/images/blog/author-1.jpg" alt="author">
                                                 </div>
                                                 <div class="ep-blog__details-author-content">
                                                     <h5 class="ep-blog__details-author-title"><?php echo htmlspecialchars($contact['nom']); ?></h5>
@@ -132,14 +132,14 @@ try {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="../delete/delete_contact.php?id=<?php echo $contact['id_contact']; ?>" 
+                                                <a href="delete/delete_contact.php?id=<?php echo $contact['id_contact']; ?>" 
                                                    onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce message ?');" 
                                                    class="twitter">
                                                     <i class="icofont-trash"></i>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="../list/contacts.php" class="linkedin">
+                                                <a href="/contacts.php" class="linkedin">
                                                     <i class="icofont-listine-dots"></i>
                                                 </a>
                                             </li>
@@ -192,7 +192,7 @@ try {
                                             </a>
                                         </div>
                                         <div class="ep-blog__sidebar-btn mt-3">
-                                            <a href="../list/contacts.php" class="ep-btn ep-btn-secondary">
+                                            <a href="/contacts.php" class="ep-btn ep-btn-secondary">
                                                 <i class="icofont-listine-dots"></i> Retour à la liste
                                             </a>
                                         </div>
@@ -204,10 +204,10 @@ try {
                 </section>
                 <!-- End Blog Details Area -->
             </main>
-            <?php include_once '../include/footer.php'; ?>
+            <?php include_once 'include/footer.php'; ?>
         </div>
     </div>
 
-    <?php include_once '../edit/script.php'; ?>
+    <?php include_once 'script.php'; ?>
 </body>
 </html>

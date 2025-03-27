@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../../config/database.php';
+require_once '../config/database.php';
 
 $success = $error = '';
 
@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 ]);
 
                 $_SESSION['success'] = "L'association a été ajoutée avec succès!";
-                header('Location: ../list/avoir.php');
+                header('Location: avoir.php');
                 exit();
             }
         } catch (PDOException $e) {
@@ -75,15 +75,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         content="online learning, education, e-learning, courses, tutorials, educational resources, skill development, career enhancement" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/images/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.svg" />
 
     <!-- Site Title -->
     <title>Ajouter une association Filière-Cycle | Avoirs</title>
     <?php include_once 'css.php'; ?>
 </head>
 
-<body class="ep-magic-cursor"><?php include_once '../include/navbar.php'; ?>
-    <?php include_once '../magic.php'; ?>
+<body class="ep-magic-cursor">
+    <?php include_once 'include/navbar.php'; ?>
+    <?php include_once 'magic.php'; ?>
 
     <!-- End Header Area -->
     <div id="smooth-wrapper">
@@ -160,7 +161,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <!-- End Contact Area -->
 
             </main>
-            <?php include_once '../include/footer.php'; ?>
+            <?php include_once 'include/footer.php'; ?>
         </div>
     </div>
 

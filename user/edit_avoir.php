@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../../config/database.php'; // Fixed path
+require_once '../config/database.php'; // Fixed path
 
 $success = $error = '';
 $avoir = null;
@@ -10,7 +10,7 @@ $id_filiere = $_GET['filiere'] ?? null;
 $id_cycle = $_GET['cycle'] ?? null;
 
 if (!$id_filiere || !$id_cycle) {
-    header('Location: ../list/avoir.php'); // Fixed redirect path
+    header('Location: /avoir.php'); // Fixed redirect path
     exit();
 }
 
@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 ':id_cycle' => $id_cycle
             ]);
             $_SESSION['success'] = "Les frais ont été modifiés avec succès!";
-            header('Location: ../list/avoir.php'); // Fixed redirect path
+            header('Location: /avoir.php'); // Fixed redirect path
             exit();
         } catch (PDOException $e) {
             $error = "Une erreur est survenue lors de la modification des frais: " . $e->getMessage();
@@ -57,7 +57,7 @@ try {
     $avoir = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$avoir) {
-        header('Location: ../list/avoir.php');
+        header('Location: /avoir.php');
         exit();
     }
 } catch (PDOException $e) {
@@ -82,7 +82,7 @@ try {
         content="online learning, education, e-learning, courses, tutorials, educational resources, skill development, career enhancement" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/images/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.svg" />
 
     <!-- Site Title -->
     <title>Modifier les Frais | EduPath</title>
@@ -92,8 +92,8 @@ try {
 
 
 <body class="ep-magic-cursor">
-    <?php include_once '../include/navbar.php'; ?>
-    <?php include_once '../magic.php'; ?>
+    <?php include_once 'include/navbar.php'; ?>
+    <?php include_once 'magic.php'; ?>
 
     <!-- End Header Area -->
     <div id="smooth-wrapper">
@@ -143,7 +143,7 @@ try {
                                         </div>
                                         <div class="row">
                                             <div class="col-3">
-                                                <a href="../list/avoir.php" class="ep-btn">Retour</a>
+                                                <a href="/avoir.php" class="ep-btn">Retour</a>
                                             </div>
                                             <div class="col-9">
                                                 <button type="submit" class="">Enregistrer les modifications</button>
@@ -159,7 +159,7 @@ try {
             </main>
             <br>
             <br>
-            <?php include_once '../include/footer.php'; ?>
+            <?php include_once 'include/footer.php'; ?>
         </div>
     </div>
 

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../../config/database.php';
+require_once '../config/database.php';
 
 $success = $error = '';
 $partenaire = null;
@@ -9,7 +9,7 @@ $partenaire = null;
 $id_partenaire = $_GET['id'] ?? null;
 
 if (!$id_partenaire) {
-    header('Location: ../list/partenaires.php');
+    header('Location: /partenaires.php');
     exit();
 }
 
@@ -90,7 +90,7 @@ try {
 
 <body>
     
-    <?php include_once '../magic.php'; ?>
+    <?php include_once 'magic.php'; ?>
 
     <section class="section-gap">
         <div class="container">
@@ -137,7 +137,7 @@ try {
         </div>
     </section>
 
-    <?php include_once '../include/footer.php'; ?>
+    <?php include_once 'include/footer.php'; ?>
     </div>
     </div>
 

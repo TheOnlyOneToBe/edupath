@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../../config/database.php';
+require_once '../config/database.php';
 
 $id_filiere = $_GET['filiere'] ?? null;
 $id_cycle = $_GET['cycle'] ?? null;
@@ -8,7 +8,7 @@ $error = '';
 $avoir = null;
 
 if (!$id_filiere || !$id_cycle) {
-    header('Location: ../list/avoir.php');
+    header('Location: /avoir.php');
     exit();
 }
 
@@ -28,7 +28,7 @@ try {
     $avoir = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$avoir) {
-        header('Location: ../list/avoir.php');
+        header('Location: /avoir.php');
         exit();
     }
 } catch(PDOException $e) {
@@ -61,16 +61,16 @@ if ($avoir) {
         content="online learning, education, e-learning, courses, tutorials, educational resources, skill development, career enhancement" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.svg" />
 
     <!-- Site Title -->
     <title>Détails des Frais | EduPath</title>
-    <?php include_once '../edit/css.php'; ?>
-    <link rel="stylesheet" href="../list/style.css">
+    <?php include_once 'css.php'; ?>
+    <link rel="stylesheet" href="/style.css">
 </head>
 
-                      <body class="ep-magic-cursor"><?php include_once '../include/navbar.php'; ?>
-    <?php include_once '../magic.php'; ?>
+                      <body class="ep-magic-cursor"><?php include_once 'include/navbar.php'; ?>
+    <?php include_once 'magic.php'; ?>
 
     <!-- End Header Area -->
     <div id="smooth-wrapper">
@@ -79,7 +79,7 @@ if ($avoir) {
                 <!-- Start Breadcrumbs Area -->
                 <div
                     class="ep-breadcrumbs breadcrumbs-bg background-image"
-                    style="background-image: url('../../assets/images/breadcrumbs-bg.png')"
+                    style="background-image: url('../assets/images/breadcrumbs-bg.png')"
                 >
                     <div class="container">
                         <div class="row justify-content-center">
@@ -88,13 +88,13 @@ if ($avoir) {
                                     <h3 class="ep-breadcrumbs__title">Détails des Frais</h3>
                                     <ul class="ep-breadcrumbs__menu">
                                         <li>
-                                            <a href="../dashboard.php">Tableau de bord</a>
+                                            <a href="  dashboard.php">Tableau de bord</a>
                                         </li>
                                         <li>
                                             <i class="fi-bs-angle-right"></i>
                                         </li>
                                         <li>
-                                            <a href="../list/avoir.php">Frais de scolarité</a>
+                                            <a href="/avoir.php">Frais de scolarité</a>
                                         </li>
                                         <li>
                                             <i class="fi-bs-angle-right"></i>
@@ -129,7 +129,7 @@ if ($avoir) {
                                         <div class="ep-blog__details-cover">
                                             <div class="ep-blog__details-cover-img">
                                                 <img
-                                                    src="../../assets/img/concept-technologie-apprentissage-electronique-webinar-education-ligne-cours-ligne-ai-apprentissage-automatique_1006743-555.jpg"
+                                                    src="../assets/img/concept-technologie-apprentissage-electronique-webinar-education-ligne-cours-ligne-ai-apprentissage-automatique_1006743-555.jpg"
                                                     alt="filiere-img"
                                                 />
                                             </div>
@@ -181,19 +181,19 @@ if ($avoir) {
                                         <h4 class="ep-blog__details-share-title">Actions</h4>
                                         <ul class="ep-blog__details-share-list">
                                             <li>
-                                                <a href="../edit/edit_avoir.php?filiere=<?php echo $avoir['id_filiere']; ?>&cycle=<?php echo $avoir['id_cycle']; ?>" class="facebook">
+                                                <a href="edit_avoir.php?filiere=<?php echo $avoir['id_filiere']; ?>&cycle=<?php echo $avoir['id_cycle']; ?>" class="facebook">
                                                     <i class="icofont-edit"></i>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="../delete/delete_avoir.php?filiere=<?php echo $avoir['id_filiere']; ?>&cycle=<?php echo $avoir['id_cycle']; ?>" 
+                                                <a href="delete/delete_avoir.php?filiere=<?php echo $avoir['id_filiere']; ?>&cycle=<?php echo $avoir['id_cycle']; ?>" 
                                                    onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette association ?');" 
                                                    class="twitter">
                                                     <i class="icofont-trash"></i>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="../list/avoir.php" class="linkedin">
+                                                <a href="/avoir.php" class="linkedin">
                                                     <i class="icofont-listine-dots"></i>
                                                 </a>
                                             </li>
@@ -241,12 +241,12 @@ if ($avoir) {
                                     <div class="ep-blog__sidebar-widget">
                                         <h4 class="ep-blog__sidebar-widget-title">Actions</h4>
                                         <div class="ep-blog__sidebar-btn">
-                                            <a href="../edit/edit_avoir.php?filiere=<?php echo $avoir['id_filiere']; ?>&cycle=<?php echo $avoir['id_cycle']; ?>" class="ep-btn">
+                                            <a href="edit_avoir.php?filiere=<?php echo $avoir['id_filiere']; ?>&cycle=<?php echo $avoir['id_cycle']; ?>" class="ep-btn">
                                                 <i class="icofont-edit"></i> Modifier
                                             </a>
                                         </div>
                                         <div class="ep-blog__sidebar-btn mt-3">
-                                            <a href="../list/avoir.php" class="ep-btn ep-btn-secondary">
+                                            <a href="/avoir.php" class="ep-btn ep-btn-secondary">
                                                 <i class="icofont-listine-dots"></i> Retour à la liste
                                             </a>
                                         </div>
@@ -259,10 +259,10 @@ if ($avoir) {
                 </section>
                 <!-- End Blog Details Area -->
             </main>
-            <?php include_once '../include/footer.php'; ?>
+            <?php include_once 'include/footer.php'; ?>
         </div>
     </div>
 
-    <?php include_once '../edit/script.php'; ?>
+    <?php include_once 'script.php'; ?>
 </body>
 </html>

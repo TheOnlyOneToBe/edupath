@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../../config/database.php';
+require_once '../config/database.php';
 
 $error = '';
 $article = null;
@@ -9,7 +9,7 @@ $article = null;
 $id_article = $_GET['id'] ?? null;
 
 if (!$id_article) {
-    header('Location: ../list/articles.php');
+    header('Location: /articles.php');
     exit();
 }
 
@@ -38,26 +38,26 @@ try {
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title><?php echo $article ? htmlspecialchars($article['titre']) : 'Article non trouvé'; ?> - EduPath</title>
-    <?php include_once '../edit/css.php'; ?>
+    <?php include_once 'css.php'; ?>
 </head>
-                      <body class="ep-magic-cursor"><?php include_once '../include/navbar.php'; ?>
-    <?php include_once '../magic.php'; ?>
+                      <body class="ep-magic-cursor"><?php include_once 'include/navbar.php'; ?>
+    <?php include_once 'magic.php'; ?>
 
     <div id="smooth-wrapper">
         <div id="smooth-content">
             <main>
                 <!-- Start Breadcrumbs Area -->
                 <div class="ep-breadcrumbs breadcrumbs-bg background-image" 
-                     style="background-image: url('../../assets/images/breadcrumbs-bg.png')">
+                     style="background-image: url('../assets/images/breadcrumbs-bg.png')">
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-6 col-md-6 col-12">
                                 <div class="ep-breadcrumbs__content">
                                     <h3 class="ep-breadcrumbs__title">Détails de l'Article</h3>
                                     <ul class="ep-breadcrumbs__menu">
-                                        <li><a href="../dashboard.php">Tableau de bord</a></li>
+                                        <li><a href="  dashboard.php">Tableau de bord</a></li>
                                         <li><i class="fi-bs-angle-right"></i></li>
-                                        <li><a href="../list/articles.php">Articles</a></li>
+                                        <li><a href="/articles.php">Articles</a></li>
                                         <li><i class="fi-bs-angle-right"></i></li>
                                         <li class="active">Détails</li>
                                     </ul>
@@ -74,7 +74,7 @@ try {
                         <?php if ($error): ?>
                             <div class="alert alert-danger"><?php echo $error; ?></div>
                             <div class="text-center mt-4">
-                                <a href="../list/articles.php" class="ep-btn ep-btn-primary">
+                                <a href="/articles.php" class="ep-btn ep-btn-primary">
                                     <i class="fi fi-rs-arrow-left"></i> Retour à la liste
                                 </a>
                             </div>
@@ -90,11 +90,11 @@ try {
                                                     <span><i class="fi fi-rs-flag"></i> <?php echo htmlspecialchars($article['statut']); ?></span>
                                                 </div>
                                                 <div>
-                                                    <a href="../edit/edit_article.php?id=<?php echo $article['id_article']; ?>" 
+                                                    <a href="edit_article.php?id=<?php echo $article['id_article']; ?>" 
                                                        class="ep-btn ep-btn-sm ep-btn-primary me-2">
                                                         <i class="fi fi-rs-edit"></i> Modifier
                                                     </a>
-                                                    <a href="../delete/delete_article.php?id=<?php echo $article['id_article']; ?>" 
+                                                    <a href="delete/delete_article.php?id=<?php echo $article['id_article']; ?>" 
                                                        class="ep-btn ep-btn-sm ep-btn-danger"
                                                        onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?');">
                                                         <i class="fi fi-rs-trash"></i> Supprimer
@@ -118,7 +118,7 @@ try {
                                         </div>
                                         
                                         <div class="ep-blog-details__action mt-5">
-                                            <a href="../list/articles.php" class="ep-btn ep-btn-primary">
+                                            <a href="/articles.php" class="ep-btn ep-btn-primary">
                                                 <i class="fi fi-rs-arrow-left"></i> Retour à la liste
                                             </a>
                                         </div>
@@ -130,10 +130,10 @@ try {
                 </section>
                 <!-- End Article Detail Area -->
             </main>
-            <?php include_once '../include/footer.php'; ?>
+            <?php include_once 'include/footer.php'; ?>
         </div>
     </div>
 
-    <?php include_once '../edit/script.php'; ?>
+    <?php include_once 'script.php'; ?>
 </body>
 </html>

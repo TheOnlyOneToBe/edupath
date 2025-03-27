@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../../config/database.php';
+require_once '../config/database.php';
 
 $success = $error = '';
 
@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     
                     if (in_array(strtolower($filetype), $allowed)) {
                         $newname = uniqid() . '.' . $filetype;
-                        $upload_dir = '../../assets/imgs/partenaires/';
+                        $upload_dir = '../assets/imgs/partenaires/';
                         $relative_path = 'assets/imgs/partenaires/' . $newname;
                         
                         if (!is_dir($upload_dir)) {
@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 ]);
                 
                 $_SESSION['success'] = "Le partenaire a été ajouté avec succès!";
-                header('Location: ../list/partenaires.php');
+                header('Location: /partenaires.php');
                 exit();
             }
         } catch(PDOException $e) {
@@ -84,15 +84,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     content="online learning, education, e-learning, courses, tutorials, educational resources, skill development, career enhancement" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="assets/images/favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="../assets/images/favicon.svg" />
 
   <!-- Site Title -->
   <title>Ajouter un partenaire | Partenaires</title>
   <?php include_once 'css.php'; ?>
 </head>
 
-                      <body class="ep-magic-cursor"><?php include_once '../include/navbar.php'; ?>
-  <?php include_once '../magic.php'; ?>
+                      <body class="ep-magic-cursor"><?php include_once 'include/navbar.php'; ?>
+  <?php include_once 'magic.php'; ?>
 
   <!-- End Header Area -->
   <div id="smooth-wrapper">

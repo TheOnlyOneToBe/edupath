@@ -53,7 +53,7 @@ try {
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>Tableau de Bord - EduPath</title>
-    <?php include_once 'edit/css.php'; ?>
+    <?php include_once 'css.php'; ?>
     <style>
         .dashboard-card {
             transition: all 0.3s ease;
@@ -123,7 +123,7 @@ try {
                                     </div>
                                     <div class="dashboard-count"><?php echo $stats['utilisateurs']; ?></div>
                                     <div class="dashboard-title">Utilisateurs</div>
-                                    <a href="list/utilisateurs.php" class="btn btn-sm btn-outline-primary mt-3">Gérer</a>
+                                    <a href="utilisateurs.php" class="btn btn-sm btn-outline-primary mt-3">Gérer</a>
                                 </div>
                             </div>
 
@@ -135,7 +135,7 @@ try {
                                     </div>
                                     <div class="dashboard-count"><?php echo $stats['filieres']; ?></div>
                                     <div class="dashboard-title">Filières</div>
-                                    <a href="list/filieres.php" class="btn btn-sm btn-outline-success mt-3">Gérer</a>
+                                    <a href="filieres.php" class="btn btn-sm btn-outline-success mt-3">Gérer</a>
                                 </div>
                             </div>
 
@@ -147,7 +147,7 @@ try {
                                     </div>
                                     <div class="dashboard-count"><?php echo $stats['cycles']; ?></div>
                                     <div class="dashboard-title">Cycles</div>
-                                    <a href="list/cycles.php" class="btn btn-sm btn-outline-info mt-3">Gérer</a>
+                                    <a href="cycles.php" class="btn btn-sm btn-outline-info mt-3">Gérer</a>
                                 </div>
                             </div>
 
@@ -159,7 +159,7 @@ try {
                                     </div>
                                     <div class="dashboard-count"><?php echo $stats['bourses']; ?></div>
                                     <div class="dashboard-title">Bourses</div>
-                                    <a href="list/bourses.php" class="btn btn-sm btn-outline-warning mt-3">Gérer</a>
+                                    <a href="bourses.php" class="btn btn-sm btn-outline-warning mt-3">Gérer</a>
                                 </div>
                             </div>
 
@@ -171,7 +171,7 @@ try {
                                     </div>
                                     <div class="dashboard-count"><?php echo $stats['partenaires']; ?></div>
                                     <div class="dashboard-title">Partenaires</div>
-                                    <a href="list/partenaires.php" class="btn btn-sm btn-outline-danger mt-3">Gérer</a>
+                                    <a href="partenaires.php" class="btn btn-sm btn-outline-danger mt-3">Gérer</a>
                                 </div>
                             </div>
 
@@ -183,7 +183,7 @@ try {
                                     </div>
                                     <div class="dashboard-count"><?php echo $stats['articles']; ?></div>
                                     <div class="dashboard-title">Articles</div>
-                                    <a href="list/articles.php" class="btn btn-sm btn-outline-secondary mt-3">Gérer</a>
+                                    <a href="articles.php" class="btn btn-sm btn-outline-secondary mt-3">Gérer</a>
                                 </div>
                             </div>
                         </div>
@@ -195,25 +195,25 @@ try {
                             </div>
                             
                             <div class="col-lg-3 col-md-6 col-12 mb-3">
-                                <a href="add/add_user.php" class="btn btn-primary w-100 py-3">
+                                <a href="add_user.php" class="btn btn-primary w-100 py-3">
                                     <i class="fi fi-bs-user-add me-2"></i> Ajouter un utilisateur
                                 </a>
                             </div>
                             
                             <div class="col-lg-3 col-md-6 col-12 mb-3">
-                                <a href="add/add_filiere.php" class="btn btn-success w-100 py-3">
+                                <a href="add_filiere.php" class="btn btn-success w-100 py-3">
                                     <i class="fi fi-bs-book-alt me-2"></i> Ajouter une filière
                                 </a>
                             </div>
                             
                             <div class="col-lg-3 col-md-6 col-12 mb-3">
-                                <a href="add/add_cycle.php" class="btn btn-info w-100 py-3">
+                                <a href="add_cycle.php" class="btn btn-info w-100 py-3">
                                     <i class="fi fi-bs-refresh me-2"></i> Ajouter un cycle
                                 </a>
                             </div>
                             
                             <div class="col-lg-3 col-md-6 col-12 mb-3">
-                                <a href="add/add_bourse.php" class="btn btn-warning w-100 py-3">
+                                <a href="add_bourse.php" class="btn btn-warning w-100 py-3">
                                     <i class="fi fi-bs-usd-circle me-2"></i> Ajouter une bourse
                                 </a>
                             </div>

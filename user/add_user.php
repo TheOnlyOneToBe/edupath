@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../../config/database.php';
+require_once '../config/database.php';
 
 $success = $error = '';
 
@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 ]);
 
                 $_SESSION['success'] = "L'utilisateur a été ajouté avec succès!";
-                header('Location: ../list/users.php');
+                header('Location: /users.php');
                 exit();
             }
         } catch (PDOException $e) {
@@ -52,15 +52,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="robots" content="all" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.svg" />
 
     <!-- Site Title -->
     <title>Ajouter un utilisateur | EduPath</title>
     <?php include_once 'css.php'; ?>
 </head>
 
-                      <body class="ep-magic-cursor"><?php include_once '../include/navbar.php'; ?>
-    <?php include_once '../magic.php'; ?>
+                      <body class="ep-magic-cursor"><?php include_once 'include/navbar.php'; ?>
+    <?php include_once 'magic.php'; ?>
 
     <div id="smooth-wrapper">
         <div id="smooth-content">

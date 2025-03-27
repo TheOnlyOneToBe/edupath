@@ -1,12 +1,12 @@
 <?php
 session_start();
-require_once '../../config/database.php';
+require_once '../config/database.php';
 
 // Get filiere ID from URL parameter
 $id_filiere = $_GET['id'] ?? null;
 
 if (!$id_filiere) {
-    header('Location: ../list/filieres.php');
+    header('Location: /filieres.php');
     exit();
 }
 
@@ -23,7 +23,7 @@ try {
 
     if (!$filiere) {
         $_SESSION['error'] = "Cette filière n'existe pas.";
-        header('Location: ../list/filieres.php');
+        header('Location: /filieres.php');
         exit();
     }
 
@@ -39,7 +39,7 @@ try {
     
 } catch(PDOException $e) {
     $_SESSION['error'] = "Erreur lors de la récupération des détails de la filière.";
-    header('Location: ../list/filieres.php');
+    header('Location: /filieres.php');
     exit();
 }
 ?>
@@ -51,11 +51,11 @@ try {
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>Détails de la Filière | EduPath</title>
-    <?php include_once '../edit/css.php'; ?>
+    <?php include_once 'css.php'; ?>
 </head>
 
-<body class="ep-magic-cursor"><?php include_once '../include/navbar.php'; ?>
-    <?php include_once '../magic.php'; ?>
+<body class="ep-magic-cursor"><?php include_once 'include/navbar.php'; ?>
+    <?php include_once 'magic.php'; ?>
 
     <div id="smooth-wrapper">
         <div id="smooth-content">
@@ -129,11 +129,11 @@ try {
 
                                     <div class="row mt-4">
                                         <div class="col-md-6">
-                                            <a href="../list/filieres.php" class="ep-btn">Retour à la liste</a>
+                                            <a href="/filieres.php" class="ep-btn">Retour à la liste</a>
                                         </div>
                                         <?php if (isset($_SESSION['user']) && ($_SESSION['user']['fonction'] === 'admin' || $_SESSION['user']['id_utilisateur'] === $filiere['id_utilisateur'])): ?>
                                         <div class="col-md-6 text-end">
-                                            <a href="../edit/edit_filiere.php?id=<?php echo $filiere['id_filiere']; ?>" class="ep-btn">Modifier</a>
+                                            <a href="edit_filiere.php?id=<?php echo $filiere['id_filiere']; ?>" class="ep-btn">Modifier</a>
                                         </div>
                                         <?php endif; ?>
                                     </div>
@@ -143,10 +143,10 @@ try {
                     </div>
                 </section>
             </main>
-            <?php include_once '../include/footer.php'; ?>
+            <?php include_once 'include/footer.php'; ?>
         </div>
     </div>
 
-    <?php include_once '../edit/script.php'; ?>
+    <?php include_once 'script.php'; ?>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../../config/database.php';
+require_once '../config/database.php';
 
 $success = $error = '';
 $article = null;
@@ -9,7 +9,7 @@ $article = null;
 $id_article = $_GET['id'] ?? null;
 
 if (!$id_article) {
-    header('Location: ../list/articles.php');
+    header('Location: /articles.php');
     exit();
 }
 
@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (in_array(strtolower($filetype), $allowed)) {
             $newname = uniqid() . '.' . $filetype;
-            $upload_dir = '../../assets/imgs/articles/';
+            $upload_dir = '../assets/imgs/articles/';
             $relative_path = 'assets/imgs/articles/' . $newname;
 
             if (!is_dir($upload_dir)) {
@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->execute($params);
 
             $_SESSION['success'] = "L'article a été modifié avec succès!";
-            header('Location: ../list/articles.php');
+            header('Location: /articles.php');
             exit();
         } catch (PDOException $e) {
             $error = "Une erreur est survenue lors de la modification de l'article: " . $e->getMessage();
@@ -92,7 +92,7 @@ try {
     $article = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$article) {
-        header('Location: ../list/articles.php');
+        header('Location: /articles.php');
         exit();
     }
 } catch (PDOException $e) {
@@ -117,16 +117,16 @@ try {
         content="online learning, education, e-learning, courses, tutorials, educational resources, skill development, career enhancement" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/images/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.svg" />
 
     <!-- Site Title -->
     <title>Modifier un article | Articles</title>
     <?php include_once 'css.php'; ?>
 </head>
 
-<body class="ep-magic-cursor"><?php include_once '../include/navbar.php'; ?>
+<body class="ep-magic-cursor"><?php include_once 'include/navbar.php'; ?>
     
-    <?php include_once '../magic.php'; ?>
+    <?php include_once 'magic.php'; ?>
 
     <!-- End Header Area -->
     <div id="smooth-wrapper">
@@ -188,7 +188,7 @@ try {
                                         </div>
                                         <div class="row mt-4">
                                             <div class="col-6">
-                                                <a href="../list/articles.php" class="ep-btn ep-btn-secondary">Retour</a>
+                                                <a href="/articles.php" class="ep-btn ep-btn-secondary">Retour</a>
                                             </div>
                                             <div class="col-6 text-end">
                                                 <button type="submit" class="ep-btn ep-btn-primary">Modifier</button>
@@ -204,11 +204,11 @@ try {
             </main>
             <br>
             <br>
-            <?php include_once '../include/footer.php'; ?>
+            <?php include_once 'include/footer.php'; ?>
         </div>
     </div>
 
-    <?php include_once '../edit/script.php'; ?>
+    <?php include_once 'script.php'; ?>
 
 </body>
 

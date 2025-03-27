@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../../config/database.php';
+require_once '../config/database.php';
 
 $success = $error = '';
 
@@ -11,11 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $statut = $_POST['statut'] ?? '';
   $id_utilisateur = $_SESSION['user']['user_id'] ?? null;
 
-  // Vérifier si l'utilisateur est connecté
-  /*  if (!$id_utilisateur) {
-        $error = "Vous devez être connecté pour ajouter un article.";
-        exit();
-    } */
+
 
   // Traitement de l'upload de photo
   $photo = '';
@@ -26,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (in_array(strtolower($filetype), $allowed)) {
       $newname = uniqid() . '.' . $filetype;
-      $upload_dir = '../../assets/imgs/articles/';
+      $upload_dir = '../assets/imgs/articles/';
       $relative_path = 'assets/imgs/articles/' . $newname; // Chemin relatif pour la BD
 
       if (!is_dir($upload_dir)) {
@@ -59,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       ]);
 
       $_SESSION['success'] = "L'article a été ajouté avec succès!";
-      header('Location: ../list/articles.php');
+      header('Location: /articles.php');
       exit();
     } catch (PDOException $e) {
       $error = "Une erreur est survenue lors de l'ajout de l'article: " . $e->getMessage();
@@ -88,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     content="online learning, education, e-learning, courses, tutorials, educational resources, skill development, career enhancement" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="assets/images/favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="../assets/images/favicon.svg" />
 
   <!-- Site Title -->
   <title>Ajouter un article | Articles</title>
@@ -96,8 +92,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body class="ep-magic-cursor">
-  <?php include_once '../include/navbar.php'; ?>
-  <?php include_once '../magic.php'; ?>
+  <?php include_once 'include/navbar.php'; ?>
+  <?php include_once 'magic.php'; ?>
 
   <!-- End Header Area -->
   <div id="smooth-wrapper">
@@ -154,7 +150,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </main>
       <br>
       <br>
-      <?php include_once '../include/footer.php'; ?>
+      <?php include_once 'include/footer.php'; ?>
     </div>
   </div>
 

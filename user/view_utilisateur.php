@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../../config/database.php';
+require_once '../config/database.php';
 
 // Get user ID from URL parameter
 $id_utilisateur = $_GET['id'] ?? null;
@@ -8,7 +8,7 @@ $error = '';
 $utilisateur = null;
 
 if (!$id_utilisateur) {
-    header('Location: ../list/utilisateurs.php');
+    header('Location: utilisateurs.php');
     exit();
 }
 
@@ -21,7 +21,7 @@ try {
 
     if (!$utilisateur) {
         $_SESSION['error'] = "Cet utilisateur n'existe pas.";
-        header('Location: ../list/utilisateurs.php');
+        header('Location: /utilisateurs.php');
         exit();
     }
 
@@ -63,17 +63,17 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.svg" />
 
     <!-- Site Title -->
     <title>Profil Utilisateur | EduPath</title>
-    <?php include_once '../edit/css.php'; ?>
-    <link rel="stylesheet" href="../list/style.css">
+    <?php include_once 'css.php'; ?>
+    <link rel="stylesheet" href="/style.css">
 </head>
 
 <body class="ep-magic-cursor">
-    <?php include_once '../include/navbar.php'; ?>
-    <?php include_once '../magic.php'; ?>
+    <?php include_once 'include/navbar.php'; ?>
+    <?php include_once 'magic.php'; ?>
 
     <div id="smooth-wrapper">
         <div id="smooth-content">
@@ -81,7 +81,7 @@ try {
                 <!-- Start Breadcrumbs Area -->
                 <div
                     class="ep-breadcrumbs breadcrumbs-bg background-image"
-                    style="background-image: url('../../assets/images/breadcrumbs-bg.png')"
+                    style="background-image: url('../assets/images/breadcrumbs-bg.png')"
                 >
                     <div class="container">
                         <div class="row justify-content-center">
@@ -90,13 +90,13 @@ try {
                                     <h3 class="ep-breadcrumbs__title">Profil Utilisateur</h3>
                                     <ul class="ep-breadcrumbs__menu">
                                         <li>
-                                            <a href="../dashboard.php">Tableau de bord</a>
+                                            <a href="dashboard.php">Tableau de bord</a>
                                         </li>
                                         <li>
                                             <i class="fi-bs-angle-right"></i>
                                         </li>
                                         <li>
-                                            <a href="../list/utilisateurs.php">Utilisateurs</a>
+                                            <a href="utilisateurs.php">Utilisateurs</a>
                                         </li>
                                         <li>
                                             <i class="fi-bs-angle-right"></i>
@@ -131,7 +131,7 @@ try {
                                         <div class="ep-blog__details-cover">
                                             <div class="ep-blog__details-cover-img">
                                                 <img
-                                                    src="../../assets/img/user-profile.jpg"
+                                                    src="../assets/img/user-profile.jpg"
                                                     alt="user-profile"
                                                 />
                                             </div>
@@ -223,19 +223,19 @@ try {
                                         <h4 class="ep-blog__details-share-title">Actions</h4>
                                         <ul class="ep-blog__details-share-list">
                                             <li>
-                                                <a href="../edit/edit_utilisateur.php?id=<?php echo $utilisateur['id_utilisateur']; ?>" class="facebook">
+                                                <a href="edit_utilisateur.php?id=<?php echo $utilisateur['id_utilisateur']; ?>" class="facebook">
                                                     <i class="icofont-edit"></i>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="../delete/delete_utilisateur.php?id=<?php echo $utilisateur['id_utilisateur']; ?>" 
+                                                <a href="delete/delete_utilisateur.php?id=<?php echo $utilisateur['id_utilisateur']; ?>" 
                                                    onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ? Cette action est irréversible.');" 
                                                    class="twitter">
                                                     <i class="icofont-trash"></i>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="../list/utilisateurs.php" class="linkedin">
+                                                <a href="utilisateurs.php" class="linkedin">
                                                     <i class="icofont-listine-dots"></i>
                                                 </a>
                                             </li>
@@ -310,12 +310,12 @@ try {
                                     <div class="ep-blog__sidebar-widget">
                                         <h4 class="ep-blog__sidebar-widget-title">Actions</h4>
                                         <div class="ep-blog__sidebar-btn">
-                                            <a href="../edit/edit_utilisateur.php?id=<?php echo $utilisateur['id_utilisateur']; ?>" class="ep-btn">
+                                            <a href="edit_utilisateur.php?id=<?php echo $utilisateur['id_utilisateur']; ?>" class="ep-btn">
                                                 <i class="icofont-edit"></i> Modifier
                                             </a>
                                         </div>
                                         <div class="ep-blog__sidebar-btn mt-3">
-                                            <a href="../list/utilisateurs.php" class="ep-btn ep-btn-secondary">
+                                            <a href="utilisateurs.php" class="ep-btn ep-btn-secondary">
                                                 <i class="icofont-listine-dots"></i> Retour à la liste
                                             </a>
                                         </div>
@@ -328,10 +328,10 @@ try {
                 </section>
                 <!-- End User Profile Area -->
             </main>
-            <?php include_once '../include/footer.php'; ?>
+            <?php include_once 'include/footer.php'; ?>
         </div>
     </div>
 
-    <?php include_once '../edit/script.php'; ?>
+    <?php include_once 'script.php'; ?>
 </body>
 </html>

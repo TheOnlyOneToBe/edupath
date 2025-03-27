@@ -38,6 +38,6 @@ if ($id_filiere && $id_cycle) {
     }
 }
 
-header('Location: ../list/avoir.php');
+header('Location:avoir.php');
 exit();
 ?>

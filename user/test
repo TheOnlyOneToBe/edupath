@@ -60,16 +60,16 @@ try {
     content="online learning, education, e-learning, courses, tutorials, educational resources, skill development, career enhancement" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="assets/images/favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="../assets/images/favicon.svg" />
 
   <!-- Site Title -->
   <title>Gestion des Frais de Scolarité | EduPath</title>
-  <?php include_once '../edit/css.php'; ?>
+  <?php include_once 'css.php'; ?>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="ep-magic-cursor">
-  <?php include_once '../magic.php'; ?>
+  <?php include_once 'magic.php'; ?>
 
   <!-- End Header Area -->
   <div id="smooth-wrapper">
@@ -109,7 +109,7 @@ try {
                         <?php foreach ($associations as $assoc): ?>
                           <tr>
                             <td>
-                              <a href="../view/view_avoir.php?filiere=<?php echo $assoc['id_filiere']; ?>&cycle=<?php echo $assoc['id_cycle']; ?>">
+                              <a href="view_avoir.php?filiere=<?php echo $assoc['id_filiere']; ?>&cycle=<?php echo $assoc['id_cycle']; ?>">
                                 <?php echo htmlspecialchars($assoc['nom_filiere'] ?? null); ?>
                                 -
                                 <?php echo htmlspecialchars($assoc['nom_cycle'] ?? null); ?>
@@ -119,11 +119,11 @@ try {
                             <td><?php echo number_format($assoc['montant_inscription'] ?? null, 0, ',', ' '); ?> FCFA</td>
                             <td><?php echo number_format($assoc['montant_scolarite'] ?? null, 0, ',', ' '); ?> FCFA</td>
                             <td>
-                              <a href="../edit/edit_avoir.php?filiere=<?php echo $assoc['id_filiere']; ?>&cycle=<?php echo $assoc['id_cycle']; ?>"
+                              <a href="edit_avoir.php?filiere=<?php echo $assoc['id_filiere']; ?>&cycle=<?php echo $assoc['id_cycle']; ?>"
                                 class="btn btn-sm btn-primary">
                                 <i class="icofont-edit"></i>
                               </a>
-                              <a href="../delete/delete_avoir.php?filiere=<?php echo $assoc['id_filiere']; ?>&cycle=<?php echo $assoc['id_cycle']; ?>"
+                              <a href="delete/delete_avoir.php?filiere=<?php echo $assoc['id_filiere']; ?>&cycle=<?php echo $assoc['id_cycle']; ?>"
                                 class="btn btn-sm btn-danger"
                                 onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette association ?');">
                                 <i class="icofont-trash"></i>
@@ -143,11 +143,11 @@ try {
       </main>
       <br>
       <br>
-      <?php include_once '../include/footer.php'; ?>
+      <?php include_once 'include/footer.php'; ?>
     </div>
   </div>
 
-  <?php include_once '../edit/script.php'; ?>
+  <?php include_once 'script.php'; ?>
 </body>
 
 </html>

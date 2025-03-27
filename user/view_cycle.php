@@ -1,12 +1,12 @@
 <?php
 session_start();
-require_once '../../config/database.php';
+require_once '../config/database.php';
 
 // Get cycle ID from URL parameter
 $id_cycle = $_GET['id'] ?? null;
 
 if (!$id_cycle) {
-    header('Location: ../list/cycles.php');
+    header('Location: /cycles.php');
     exit();
 }
 
@@ -23,7 +23,7 @@ try {
 
     if (!$cycle) {
         $_SESSION['error'] = "Ce cycle n'existe pas.";
-        header('Location: ../list/cycles.php');
+        header('Location: /cycles.php');
         exit();
     }
     
@@ -39,7 +39,7 @@ try {
     
 } catch(PDOException $e) {
     $_SESSION['error'] = "Erreur lors de la récupération des détails du cycle.";
-    header('Location: ../list/cycles.php');
+    header('Location: /cycles.php');
     exit();
 }
 ?>
@@ -57,15 +57,15 @@ try {
     <meta name="keywords" content="online learning, education, e-learning, courses, tutorials, educational resources, skill development, career enhancement" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.svg" />
 
     <!-- Site Title -->
     <title>Détails du Cycle | EduPath</title>
-    <?php include_once '../edit/css.php'; ?>
+    <?php include_once 'css.php'; ?>
 </head>
 
-                      <body class="ep-magic-cursor"><?php include_once '../include/navbar.php'; ?>
-    <?php include_once '../magic.php'; ?>
+                      <body class="ep-magic-cursor"><?php include_once 'include/navbar.php'; ?>
+    <?php include_once 'magic.php'; ?>
 
     <!-- End Header Area -->
     <div id="smooth-wrapper">
@@ -79,13 +79,13 @@ try {
                                     <h3 class="ep-breadcrumbs__title">Détails du Cycle</h3>
                                     <ul class="ep-breadcrumbs__menu">
                                         <li>
-                                            <a href="../dashboard.php">Tableau de bord</a>
+                                            <a href="  dashboard.php">Tableau de bord</a>
                                         </li>
                                         <li>
                                             <i class="fi-bs-angle-right"></i>
                                         </li>
                                         <li>
-                                            <a href="../list/cycles.php">Cycles</a>
+                                            <a href="/cycles.php">Cycles</a>
                                         </li>
                                         <li>
                                             <i class="fi-bs-angle-right"></i>
@@ -149,7 +149,7 @@ try {
                                                         <td><?php echo number_format($filiere['montant_inscription'], 0, ',', ' '); ?> FCFA</td>
                                                         <td><?php echo number_format($filiere['montant_scolarite'], 0, ',', ' '); ?> FCFA</td>
                                                         <td>
-                                                            <a href="../view/view_avoir.php?filiere=<?php echo $filiere['id_filiere']; ?>&cycle=<?php echo $id_cycle; ?>" 
+                                                            <a href="view_avoir.php?filiere=<?php echo $filiere['id_filiere']; ?>&cycle=<?php echo $id_cycle; ?>" 
                                                                class="btn btn-sm btn-info">
                                                                 <i class="icofont-info-circle"></i>
                                                             </a>
@@ -170,19 +170,19 @@ try {
                                         <h4 class="ep-blog__details-share-title">Actions</h4>
                                         <ul class="ep-blog__details-share-list">
                                             <li>
-                                                <a href="../edit/edit_cycle.php?id=<?php echo $cycle['id_cycle']; ?>" class="facebook">
+                                                <a href="edit_cycle.php?id=<?php echo $cycle['id_cycle']; ?>" class="facebook">
                                                     <i class="icofont-edit"></i>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="../delete/delete_cycle.php?id=<?php echo $cycle['id_cycle']; ?>" 
+                                                <a href="delete/delete_cycle.php?id=<?php echo $cycle['id_cycle']; ?>" 
                                                    onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce cycle ?');" 
                                                    class="twitter">
                                                     <i class="icofont-trash"></i>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="../list/cycles.php" class="linkedin">
+                                                <a href="/cycles.php" class="linkedin">
                                                     <i class="icofont-listine-dots"></i>
                                                 </a>
                                             </li>
@@ -224,12 +224,12 @@ try {
                                     <div class="ep-blog__sidebar-widget">
                                         <h4 class="ep-blog__sidebar-widget-title">Actions</h4>
                                         <div class="ep-blog__sidebar-btn">
-                                            <a href="../edit/edit_cycle.php?id=<?php echo $cycle['id_cycle']; ?>" class="ep-btn">
+                                            <a href="edit_cycle.php?id=<?php echo $cycle['id_cycle']; ?>" class="ep-btn">
                                                 <i class="icofont-edit"></i> Modifier
                                             </a>
                                         </div>
                                         <div class="ep-blog__sidebar-btn mt-3">
-                                            <a href="../list/cycles.php" class="ep-btn ep-btn-secondary">
+                                            <a href="/cycles.php" class="ep-btn ep-btn-secondary">
                                                 <i class="icofont-listine-dots"></i> Retour à la liste
                                             </a>
                                         </div>
@@ -241,10 +241,10 @@ try {
                 </section>
                 <!-- End Blog Details Area -->
             </main>
-            <?php include_once '../include/footer.php'; ?>
+            <?php include_once 'include/footer.php'; ?>
         </div>
     </div>
 
-    <?php include_once '../edit/script.php'; ?>
+    <?php include_once 'script.php'; ?>
 </body>
 </html>

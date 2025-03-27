@@ -1,12 +1,12 @@
 <?php
 session_start();
-require_once '../../config/database.php';
+require_once '../config/database.php';
 
 // Get bourse ID from URL parameter
 $id_bourse = $_GET['id'] ?? null;
 
 if (!$id_bourse) {
-    header('Location: ../list/bourses.php');
+    header('Location: /bourses.php');
     exit();
 }
 
@@ -23,12 +23,12 @@ try {
 
     if (!$bourse) {
         $_SESSION['error'] = "Cette bourse n'existe pas.";
-        header('Location: ../list/bourses.php');
+        header('Location: /bourses.php');
         exit();
     }
 } catch(PDOException $e) {
     $_SESSION['error'] = "Erreur lors de la récupération des détails de la bourse.";
-    header('Location: ../list/bourses.php');
+    header('Location: /bourses.php');
     exit();
 }
 ?>
@@ -40,11 +40,11 @@ try {
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>Détails de la Bourse | EduPath</title>
-    <?php include_once '../edit/css.php'; ?>
+    <?php include_once 'css.php'; ?>
 </head>
 
-                      <body class="ep-magic-cursor"><?php include_once '../include/navbar.php'; ?>
-    <?php include_once '../magic.php'; ?>
+                      <body class="ep-magic-cursor"><?php include_once 'include/navbar.php'; ?>
+    <?php include_once 'magic.php'; ?>
 
     <div id="smooth-wrapper">
         <div id="smooth-content">
@@ -81,11 +81,11 @@ try {
 
                                     <div class="row mt-4">
                                         <div class="col-md-6">
-                                            <a href="../list/bourses.php" class="ep-btn">Retour à la liste</a>
+                                            <a href="/bourses.php" class="ep-btn">Retour à la liste</a>
                                         </div>
                                         <?php if (isset($_SESSION['user']) && ($_SESSION['user']['fonction'] === 'admin' || $_SESSION['user']['id_utilisateur'] === $bourse['id_utilisateur'])): ?>
                                         <div class="col-md-6 text-end">
-                                            <a href="../edit/edit_bourse.php?id=<?php echo $bourse['id_bourse']; ?>" class="ep-btn">Modifier</a>
+                                            <a href="edit_bourse.php?id=<?php echo $bourse['id_bourse']; ?>" class="ep-btn">Modifier</a>
                                         </div>
                                         <?php endif; ?>
                                     </div>
@@ -95,10 +95,10 @@ try {
                     </div>
                 </section>
             </main>
-            <?php include_once '../include/footer.php'; ?>
+            <?php include_once 'include/footer.php'; ?>
         </div>
     </div>
 
-    <?php include_once '../edit/script.php'; ?>
+    <?php include_once 'script.php'; ?>
 </body>
 </html>

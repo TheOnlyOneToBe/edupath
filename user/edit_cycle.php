@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../../config/database.php';
+require_once '../config/database.php';
 
 $success = $error = '';
 $cycle = null;
@@ -9,7 +9,7 @@ $cycle = null;
 $id_cycle = $_GET['id'] ?? null;
 
 if (!$id_cycle) {
-    header('Location: ../list/cycles.php');
+    header('Location: /cycles.php');
     exit();
 }
 
@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 ]);
                 
                 $_SESSION['success'] = "Le cycle a été modifié avec succès!";
-                header('Location: ../list/cycles.php');
+                header('Location: /cycles.php');
                 exit();
             }
         } catch(PDOException $e) {
@@ -52,7 +52,7 @@ try {
     $cycle = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$cycle) {
-        header('Location: ../list/cycles.php');
+        header('Location: /cycles.php');
         exit();
     }
 } catch(PDOException $e) {
@@ -73,15 +73,15 @@ try {
     <meta name="keywords" content="online learning, education, e-learning, courses, tutorials, educational resources, skill development, career enhancement" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.svg" />
 
     <!-- Site Title -->
     <title>Modifier un cycle | EduPath</title>
     <?php include_once 'css.php'; ?>
 </head>
 
-                      <body class="ep-magic-cursor"><?php include_once '../include/navbar.php'; ?>
-    <?php include_once '../magic.php'; ?>
+                      <body class="ep-magic-cursor"><?php include_once 'include/navbar.php'; ?>
+    <?php include_once 'magic.php'; ?>
 
     <!-- End Header Area -->
     <div id="smooth-wrapper">
@@ -114,7 +114,7 @@ try {
                                         </div>
                                         <div class="mt-4">
                                             <button type="submit" class="ep-btn">Enregistrer les modifications</button>
-                                            <a href="../list/cycles.php" class="ep-btn ep-btn-secondary">Retour</a>
+                                            <a href="/cycles.php" class="ep-btn ep-btn-secondary">Retour</a>
                                         </div>
                                     </form>
                                 </div>
@@ -123,7 +123,7 @@ try {
                     </div>
                 </section>
             </main>
-            <?php include_once '../include/footer.php'; ?>
+            <?php include_once 'include/footer.php'; ?>
         </div>
     </div>
 

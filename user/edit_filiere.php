@@ -65,7 +65,7 @@ try {
     <?php include_once 'css.php'; ?>
 </head>
 <body>
-    <?php include_once '../magic.php'; ?>
+    <?php include_once 'magic.php'; ?>
 
     <section class="section-gap">
         <div class="container">
@@ -104,7 +104,7 @@ try {
         </div>
     </section>
 
-      <?php include_once '../include/footer.php'; ?>
+      <?php include_once 'include/footer.php'; ?>
         </div>
     </div>
 

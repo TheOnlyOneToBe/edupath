@@ -7,7 +7,7 @@ $id_contact = $_GET['id'] ?? null;
 
 if (!$id_contact) {
     $_SESSION['error'] = "ID de contact non spécifié.";
-    header('Location: ../list/contacts.php');
+    header('Location: contacts.php');
     exit();
 }
 
@@ -19,7 +19,7 @@ try {
     
     if ($check_stmt->fetchColumn() == 0) {
         $_SESSION['error'] = "Ce message n'existe pas.";
-        header('Location: ../list/contacts.php');
+        header('Location: contacts.php');
         exit();
     }
     
@@ -29,11 +29,11 @@ try {
     $stmt->execute([':id' => $id_contact]);
     
     $_SESSION['success'] = "Le message a été supprimé avec succès.";
-    header('Location: ../list/contacts.php');
+    header('Location: contacts.php');
     exit();
     
 } catch(PDOException $e) {
     $_SESSION['error'] = "Erreur lors de la suppression du message.";
-    header('Location: ../list/contacts.php');
+    header('Location: contacts.php');
     exit();
 }

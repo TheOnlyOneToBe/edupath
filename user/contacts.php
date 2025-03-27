@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../../config/database.php';
+require_once '../config/database.php';
 
 $success = $error = '';
 
@@ -37,16 +37,16 @@ try {
     content="online learning, education, e-learning, courses, tutorials, educational resources, skill development, career enhancement" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="../assets/images/favicon.svg" />
 
   <!-- Site Title -->
   <title>Gestion des Contacts | EduPath</title>
-  <?php include_once '../edit/css.php'; ?>
+  <?php include_once 'css.php'; ?>
   <link rel="stylesheet" href="style.css">
 </head>
 
-<?php include_once '../include/navbar.php'; ?>                      <body class="ep-magic-cursor"><?php include_once '../include/navbar.php'; ?>                      <body class="ep-magic-cursor"><?php include_once '../include/navbar.php'; ?>
-  <?php include_once '../magic.php'; ?>
+<?php include_once 'include/navbar.php'; ?>                      <body class="ep-magic-cursor"><?php include_once 'include/navbar.php'; ?>                      <body class="ep-magic-cursor"><?php include_once 'include/navbar.php'; ?>
+  <?php include_once 'magic.php'; ?>
 
   <!-- End Header Area -->
   <div id="smooth-wrapper">
@@ -55,7 +55,7 @@ try {
         <!-- Start Breadcrumbs Area -->
         <div
           class="ep-breadcrumbs breadcrumbs-bg background-image"
-          style="background-image: url('../../assets/images/breadcrumbs-bg.png')"
+          style="background-image: url('../assets/images/breadcrumbs-bg.png')"
         >
           <div class="container">
             <div class="row justify-content-center">
@@ -64,7 +64,7 @@ try {
                   <h3 class="ep-breadcrumbs__title">Gestion des Contacts</h3>
                   <ul class="ep-breadcrumbs__menu">
                     <li>
-                      <a href="../dashboard.php">Tableau de bord</a>
+                      <a href="  dashboard.php">Tableau de bord</a>
                     </li>
                     <li>
                       <i class="fi-bs-angle-right"></i>
@@ -123,10 +123,10 @@ try {
                         </p>
                       </div>
                       <div class="ep-contact-card__footer">
-                        <a href="../view/view_contact.php?id=<?php echo $contact['id_contact']; ?>" class="ep-btn ep-btn-sm">
+                        <a href="view_contact.php?id=<?php echo $contact['id_contact']; ?>" class="ep-btn ep-btn-sm">
                           Voir détails <i class="fi fi-rs-arrow-small-right"></i>
                         </a>
-                        <a href="../delete/delete_contact.php?id=<?php echo $contact['id_contact']; ?>" 
+                        <a href="delete/delete_contact.php?id=<?php echo $contact['id_contact']; ?>" 
                            class="ep-btn ep-btn-sm ep-btn-danger"
                            onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce message ?');">
                           <i class="icofont-trash"></i>
@@ -145,10 +145,10 @@ try {
         </section>
         <!-- End Contact List Area -->
       </main>
-      <?php include_once '../include/footer.php'; ?>
+      <?php include_once 'include/footer.php'; ?>
     </div>
   </div>
 
-  <?php include_once '../edit/script.php'; ?>
+  <?php include_once 'script.php'; ?>
 </body>
 </html>
