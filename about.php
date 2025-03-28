@@ -3,12 +3,12 @@ session_start();
 require_once 'config/database.php';
 
 // Récupérer les formations populaires (limité à 3)
-$sql_formations = "SELECT f.*, COUNT(a.id_filiere) as nb_inscriptions 
+$sql_formations = "SELECT f.*,c.*, COUNT(a.id_filiere) as nb_inscriptions 
                   FROM Filiere f 
                   LEFT JOIN Avoir a ON f.id_filiere = a.id_filiere 
                   GROUP BY f.id_filiere 
                   ORDER BY nb_inscriptions DESC 
-                  LIMIT 3";
+                  ";
 $stmt_formations = $conn->query($sql_formations);
 $formations = $stmt_formations->fetchAll();
 
@@ -84,12 +84,82 @@ $articles = $stmt_articles->fetchAll();
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <img src="assets/images/about-main.jpg" alt="Campus <?php include 'name.php' ;  ?>" class="img-fluid rounded">
+                    <img src="assets/img/graduation_948100-880.avif" alt="Campus <?php include 'name.php' ;  ?>" class="img-fluid rounded">
                 </div>
             </div>
         </div>
     </section>
-
+    <section
+            class="ep-about ep-about--style2 ep-section section-gap position-relative"
+          >
+            <div class="container ep-container">
+              <div class="row">
+                <div class="col-12">
+                  <div class="ep-section-head ep-section-head--style2">
+                    <h3
+                      class="ep-section-head__color-title ep1-color ep1-border-color"
+                    >
+                      1.A propos de nous
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div class="row align-items-center">
+                <div class="col-lg-6 col-12">
+                  <div
+                    class="ep-section__img ep-section__img--style2 position-relative"
+                  >
+                    <div class="ep-section__img-main">
+                      <img
+                        src="assets/img/08.avif"
+                        alt="about-img"
+                      />
+                    </div>
+                    <div class="overview-card updown-ani">
+                      <div class="overview-card__icon">
+                        <img
+                          src="assets/images/about/about-1/user.svg"
+                          alt="user-icon"
+                        />
+                      </div>
+                      <div class="overview-card__info">
+                        <h4><span>2</span>k+</h4>
+                        <p>Etudiants</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6 col-12">
+                  <div class="ep-section__content ep-section__content--style2">
+                    <h3 class="ep-section__title ep-split-text left">
+                      Notre vision inspirante <br />
+                      Et decouvrez qui vous etes
+                    </h3>
+                    <p class="ep-section__text">
+                     Venez decouvrir et faire partie d'un des meilleurs cadres de vies en terme de vie universitaire et d'activités extra scolaire.
+                     Profitez d'une cadre excellents et des formateurs de qualité. Le tout a moindre cout
+                    </p>
+                    <div class="ep-section__widget ep-section__widget--style2">
+                      <ul class="ep-feature-list">
+                        <li>
+                          <i class="fi fi-ss-check-circle"></i>Explorer votre esprit
+                        </li>
+                        
+                      </ul>
+                      <ul class="ep-feature-list">
+                        <li>
+                          <i class="fi fi-ss-check-circle"></i>Université de formation
+                        </li>
+                        <li>
+                          <i class="fi fi-ss-check-circle"></i>Apprenez et avancez
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
     <!-- Section Formations Populaires -->
     <section class="popular-courses section-gap bg-light">
         <div class="container">
@@ -98,18 +168,28 @@ $articles = $stmt_articles->fetchAll();
                 <p>Découvrez nos programmes d'excellence</p>
             </div>
             <div class="row">
-                <?php foreach ($formations as $formation): ?>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="course-card">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title"><?php echo htmlspecialchars($formation['nom']); ?></h5>
-                                <p class="card-text"><?php echo htmlspecialchars($formation['description']); ?></p>
+                <div class="owl-carousel ep-event__slider">
+                    <?php foreach ($formations as $formation): ?>
+                    <div class="ep-event__card">
+                        <a href="formation_detail.php?id_filiere=<?php echo $formation['id_filiere']; ?>&&id_cycle=<?php echo $formation['id_cycle']; ?>" class="ep-event__img">
+                            <!-- Update the image source if you have a dedicated formation image -->
+                            <img src="assets/img/09.jpeg" alt="formation-img" />
+                        </a>
+                        <div class="ep-event__info">
+                            <div class="ep-event__date ep6-bg">
+                                <?php echo $formation['nb_inscriptions']; ?> <?php echo random_int(20,200);?> inscriptions
                             </div>
+                            <div class="ep-event__location">
+                                <i class="fi fi-rs-marker ep6-color"></i> 
+                                <?php echo htmlspecialchars($formation['nom']); ?>
+                            </div>
+                            <a href="formation_detail.php?id=<?php echo $formation['id_filiere']; ?>" class="ep-event__title">
+                                <?php echo htmlspecialchars($formation['nom']); ?>
+                            </a>
                         </div>
                     </div>
+                    <?php endforeach; ?>
                 </div>
-                <?php endforeach; ?>
             </div>
             <div class="text-center mt-4">
                 <a href="formations.php" class="ep-btn ep-btn--primary">Consulter nos formations</a>
@@ -161,19 +241,63 @@ $articles = $stmt_articles->fetchAll();
                 <p>Découvrez nos derniers articles</p>
             </div>
             <div class="row">
-                <?php foreach ($articles as $article): ?>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="article-card">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title"><?php echo htmlspecialchars($article['titre']); ?></h5>
-                                <p class="card-text"><?php echo htmlspecialchars($article['description_art']); ?></p>
-                                <a href="article_detail.php?id=<?php echo $article['id_article']; ?>" class="ep-btn ep-btn--primary">Lire plus</a>
-                            </div>
+                <?php 
+                  $delays = [0.3, 0.5, 0.7];
+                  // You can update these image paths if your articles provide an image column
+                  $images = [
+                      "assets/img/05.avif",
+                      "assets/img/18.jpg",
+                      "assets/img/16.avif"
+                  ];
+                  $i = 0;
+                  foreach ($articles as $article): 
+                ?>
+                <div class="col-lg-6 col-xl-4 col-md-6 col-12">
+                  <div
+                    class="ep-blog__card ep-blog__card--style2 wow fadeInUp"
+                    data-wow-delay="<?php echo $delays[$i]; ?>s"
+                    data-wow-duration="1s"
+                  >
+                    <a href="article-details.php?id=<?php echo $article['id_article']; ?>" class="ep-blog__img">
+                      <img
+                        src="<?php echo $images[$i]; ?>"
+                        alt="blog-img"
+                      />
+                    </a>
+                    <div class="ep-blog__info">
+                      <div class="ep-blog__date">
+                        <?php echo date("d M", strtotime($article['date_pub'])); ?>
+                      </div>
+                      <div class="ep-blog__content">
+                        <div class="ep-blog__meta">
+                          <ul>
+                            <li><i class="fi-rr-comments"></i>Comments (05)</li>
+                            <li>
+                              <a href="#">
+                                <i class="fi-rr-user"></i>By admin
+                              </a>
+                            </li>
+                          </ul>
                         </div>
+                        <a href="article-details.php?id=<?php echo $article['id_article']; ?>" class="ep-blog__title">
+                          <h5 class="m-0">
+                            <?php echo htmlspecialchars($article['titre']); ?>
+                          </h5>
+                        </a>
+                        <div class="ep-blog__btn">
+                          <a href="article-details.php?id=<?php echo $article['id_article']; ?>">
+                            Read More
+                            <i class="fi fi-rs-arrow-small-right"></i>
+                          </a>
+                        </div>
+                      </div>
                     </div>
+                  </div>
                 </div>
-                <?php endforeach; ?>
+                <?php 
+                    $i++;
+                  endforeach; 
+                ?>
             </div>
         </div>
     </section>
