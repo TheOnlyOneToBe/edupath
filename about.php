@@ -107,27 +107,25 @@ $partenaires = $stmt_partenaires->fetchAll();
         </div>
     </section>
 
-    <!-- Section Partenaires -->
-    <section class="partners section-gap">
-        <div class="container">
-            <div class="section-header text-center mb-5">
-                <h2>Nos partenaires</h2>
-                <p>Ils nous font confiance</p>
-            </div>
-            <div class="row">
+    <!-- Start Brand -->
+    <div class="ep-brand section-gap pt-0">
+        <div class="container ep-container">
+          <div class="row">
+            <div class="col-12">
+              <div class="owl-carousel ep-brand__slider">
                 <?php foreach ($partenaires as $partenaire): ?>
-                <div class="col-lg-3 col-md-4 col-6 mb-4">
-                    <div class="partner-card text-center">
-                        <img src="assets/imgs/partenaires/<?php echo htmlspecialchars($partenaire['photo']); ?>" 
-                             alt="<?php echo htmlspecialchars($partenaire['nom']); ?>" 
-                             class="img-fluid">
-                        <h5 class="mt-3"><?php echo htmlspecialchars($partenaire['nom']); ?></h5>
-                    </div>
-                </div>
+                  <a href="#" class="ep-brand__logo ep-brand__logo--style2">
+                    <img
+                      src="assets/imgs/partenaires/<?php echo htmlspecialchars($partenaire['photo']); ?>"
+                      alt="<?php echo htmlspecialchars($partenaire['nom']); ?>"
+                    />
+                  </a>
                 <?php endforeach; ?>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
+    </div>
 
     <?php include 'includes/footer.php'; ?>
 
