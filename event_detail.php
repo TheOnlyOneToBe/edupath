@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="ZXX">
   
-<!-- Mirrored from edupath-template.vercel.app/edupath/event.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 24 Sep 2024 03:29:07 GMT -->
+<!-- Mirrored from edupath-template.vercel.app/edupath/event-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 24 Sep 2024 03:29:07 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
     <!-- Meta Tags -->
@@ -255,10 +255,10 @@
                           >Events <i class="fi fi-ss-angle-small-down"></i>
                         </a>
                         <ul class="sub-menu">
-                          <li class="active">
+                          <li>
                             <a href="event.html">Event</a>
                           </li>
-                          <li>
+                          <li class="active">
                             <a href="event-details.html">Event Details</a>
                           </li>
                         </ul>
@@ -353,6 +353,7 @@
       </div>
     </header>
     <!-- End Header Area -->
+
     <div id="smooth-wrapper">
       <div id="smooth-content">
         <main>
@@ -365,7 +366,7 @@
               <div class="row justify-content-center">
                 <div class="col-lg-6 col-md-6 col-12">
                   <div class="ep-breadcrumbs__content">
-                    <h3 class="ep-breadcrumbs__title">Event</h3>
+                    <h3 class="ep-breadcrumbs__title">Event details</h3>
                     <ul class="ep-breadcrumbs__menu">
                       <li>
                         <a href="index.html">Home</a>
@@ -374,7 +375,7 @@
                         <i class="fi-bs-angle-right"></i>
                       </li>
                       <li class="active">
-                        <a href="event.html">Event</a>
+                        <a href="event-details.html">Event details</a>
                       </li>
                     </ul>
                   </div>
@@ -383,254 +384,115 @@
             </div>
           </div>
           <!-- End Breadcrumbs Area -->
-          <!-- Start Event Area -->
-          <section class="ep-blog section-gap position-relative pd-top-90">
+          <!-- Start Event Details Area -->
+          <section class="ep-event__details section-gap position-relative">
             <div class="container ep-container">
               <div class="row">
-                <!-- Single Event Card -->
-                <div class="col-lg-6 col-xl-4 col-md-6 col-12">
-                  <div
-                    class="ep-blog__card wow fadeInUp"
-                    data-wow-delay=".3s"
-                    data-wow-duration="1s"
-                  >
-                    <a href="event-details.html" class="ep-blog__img">
-                      <img
-                        src="assets/images/blog/blog-1/1.png"
-                        alt="blog-img"
-                      />
-                    </a>
-                    <div class="ep-blog__info">
-                      <div class="ep-blog__date ep1-bg">
-                        25 <br />
-                        Dec
-                      </div>
-                      <div class="ep-blog__location">
-                        <i class="fi fi-rs-marker"></i>
-                        <span>Mirpur Bangladesh</span>
-                      </div>
-                      <div class="ep-blog__content">
-                        <a href="event-details.html" class="ep-blog__title">
-                          <h5>Education foundation</h5>
-                        </a>
-                        <p class="ep-blog__text">
-                          Education is the key to stude Unlock your horizons
-                          education
-                        </p>
-                        <div class="ep-blog__btn">
-                          <a href="event-details.html"
-                            >Read More
-                            <i class="fi fi-rs-arrow-small-right"></i>
-                          </a>
+                <div class="col-lg-12 col-xl-8 col-12">
+                  <div class="ep-event__details-content">
+                    <div class="ep-event__widget">
+                      <h3 class="ep-event__widget-title">About The Event</h3>
+                      <p class="ep-event__widget-text">
+                        Aliquam eros justo, posuere loborti vive rra laoreet
+                        matti ullamc orper posu ere viverra .Aliquam eros the
+                        justo, posuere lobo, vive rra laoreet augue mattis
+                        fermentum ullamcorper viverra laoreet Aliquam eros a
+                        justo, posuere loborti viverra laoreet mat ullamcorper
+                        posue viverra .Aliquam
+                      </p>
+                      <br />
+                      <p class="ep-event__widget-text">
+                        Education is a vital aspect of a child's development.
+                        Preschools, elementary schools, and middle schools play
+                        a significant role in providing quality education and
+                        fostering growth in young minds Education is a vital
+                        aspect of a child's development. Preschools, elementary
+                        schools, and middle schools play a the a significant
+                        role in providing quality education and fostering growth
+                        in young minds
+                      </p>
+                      <br />
+                      <ul class="ep-event__widget-list">
+                        <li>
+                          <i class="fi-ss-check-circle"></i>Nurturing Young
+                          Minds
+                        </li>
+                        <li>
+                          <i class="fi-ss-check-circle"></i>Unlocking Potential
+                        </li>
+                        <li>
+                          <i class="fi-ss-check-circle"></i>Through Education
+                        </li>
+                        <li>
+                          <i class="fi-ss-check-circle"></i>Igniting Curiosity
+                          Imagination
+                        </li>
+                        <li>
+                          <i class="fi-ss-check-circle"></i>Nurturing Young Min
+                        </li>
+                        <li>
+                          <i class="fi-ss-check-circle"></i>Foundation for
+                          Success
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="ep-event__widget">
+                      <h3 class="ep-event__widget-title">Event Location</h3>
+                      <ul class="ep-event__widget-meta">
+                        <li>
+                          <i class="fi fi-rs-marker"></i>Mirpur Bangladesh
+                        </li>
+                        <li><i class="fi fi-rr-clock"></i>10Am To 3Pm</li>
+                      </ul>
+                      <div class="ep-event__location-map">
+                        <div class="gmap_canvas">
+                          <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7298.959613692403!2d90.36501104141328!3d23.83709017812546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c17cf9e11737%3A0x44c49aa5dd7c3f00!2sMirpur%20DOHS%20Cultural%20Center!5e0!3m2!1sen!2sbd!4v1721998237394!5m2!1sen!2sbd"
+                            width="830"
+                            height="320"
+                            style="border: 0"
+                          ></iframe>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <!-- Single Event Card -->
-                <div class="col-lg-6 col-xl-4 col-md-6 col-12">
-                  <div
-                    class="ep-blog__card wow fadeInUp"
-                    data-wow-delay=".5s"
-                    data-wow-duration="1s"
-                  >
-                    <a href="event-details.html" class="ep-blog__img">
-                      <img
-                        src="assets/images/blog/blog-1/2.png"
-                        alt="blog-img"
-                      />
-                    </a>
-                    <div class="ep-blog__info">
-                      <div class="ep-blog__date ep1-bg">
-                        25 <br />
-                        Dec
-                      </div>
-                      <div class="ep-blog__location">
-                        <i class="fi fi-rs-marker"></i>
-                        <span>Mirpur Bangladesh</span>
-                      </div>
-                      <div class="ep-blog__content">
-                        <a href="event-details.html" class="ep-blog__title">
-                          <h5>Introduction to Psychology</h5>
+                <div class="col-lg-8 col-xl-4 col-12">
+                  <div class="ep-event__sidebar">
+                    <h4 class="ep-event__sidebar-title">Event Info</h4>
+                    <p class="ep-event__sidebar-text">
+                      Aliquam eros justo, posuere loborti vive rra laoreet matti
+                      ullamc orper posu.
+                    </p>
+                    <div class="ep-event__checkout">
+                      <ul>
+                        <li>Cost: <span class="ep3-color">$250.00</span></li>
+                        <li>Total Slot: <span>250</span></li>
+                        <li>Booked Slot: <span>2</span></li>
+                      </ul>
+                      <div class="ep-event__checkout-btn">
+                        <a href="#" class="ep-btn"
+                          >Book Now <i class="fi-rs-arrow-small-right"></i>
                         </a>
-                        <p class="ep-blog__text">
-                          Education is the key to stude Unlock your horizons
-                          education
-                        </p>
-                        <div class="ep-blog__btn">
-                          <a href="event-details.html"
-                            >Read More
-                            <i class="fi fi-rs-arrow-small-right"></i>
-                          </a>
-                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-                <!-- Single Event Card -->
-                <div class="col-lg-6 col-xl-4 col-md-6 col-12">
-                  <div
-                    class="ep-blog__card wow fadeInUp"
-                    data-wow-delay=".7s"
-                    data-wow-duration="1s"
-                  >
-                    <a href="event-details.html" class="ep-blog__img">
-                      <img
-                        src="assets/images/blog/blog-1/3.png"
-                        alt="blog-img"
-                      />
-                    </a>
-                    <div class="ep-blog__info">
-                      <div class="ep-blog__date ep1-bg">
-                        25 <br />
-                        Dec
-                      </div>
-                      <div class="ep-blog__location">
-                        <i class="fi fi-rs-marker"></i>
-                        <span>Mirpur Bangladesh</span>
-                      </div>
-                      <div class="ep-blog__content">
-                        <a href="event-details.html" class="ep-blog__title">
-                          <h5>Principles of Economics</h5>
-                        </a>
-                        <p class="ep-blog__text">
-                          Education is the key to stude Unlock your horizons
-                          education
-                        </p>
-                        <div class="ep-blog__btn">
-                          <a href="event-details.html"
-                            >Read More
-                            <i class="fi fi-rs-arrow-small-right"></i>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Single Event Card -->
-                <div class="col-lg-6 col-xl-4 col-md-6 col-12">
-                  <div
-                    class="ep-blog__card wow fadeInUp"
-                    data-wow-delay=".3s"
-                    data-wow-duration="1s"
-                  >
-                    <a href="event-details.html" class="ep-blog__img">
-                      <img
-                        src="assets/images/blog/blog-1/1.png"
-                        alt="blog-img"
-                      />
-                    </a>
-                    <div class="ep-blog__info">
-                      <div class="ep-blog__date ep1-bg">
-                        25 <br />
-                        Dec
-                      </div>
-                      <div class="ep-blog__location">
-                        <i class="fi fi-rs-marker"></i>
-                        <span>Mirpur Bangladesh</span>
-                      </div>
-                      <div class="ep-blog__content">
-                        <a href="event-details.html" class="ep-blog__title">
-                          <h5>Creating Bright Minds</h5>
-                        </a>
-                        <p class="ep-blog__text">
-                          Education is the key to stude Unlock your horizons
-                          education
-                        </p>
-                        <div class="ep-blog__btn">
-                          <a href="event-details.html"
-                            >Read More
-                            <i class="fi fi-rs-arrow-small-right"></i>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Single Event Card -->
-                <div class="col-lg-6 col-xl-4 col-md-6 col-12">
-                  <div
-                    class="ep-blog__card wow fadeInUp"
-                    data-wow-delay=".5s"
-                    data-wow-duration="1s"
-                  >
-                    <a href="event-details.html" class="ep-blog__img">
-                      <img
-                        src="assets/images/blog/blog-1/2.png"
-                        alt="blog-img"
-                      />
-                    </a>
-                    <div class="ep-blog__info">
-                      <div class="ep-blog__date ep1-bg">
-                        25 <br />
-                        Dec
-                      </div>
-                      <div class="ep-blog__location">
-                        <i class="fi fi-rs-marker"></i>
-                        <span>Mirpur Bangladesh</span>
-                      </div>
-                      <div class="ep-blog__content">
-                        <a href="event-details.html" class="ep-blog__title">
-                          <h5>Nurturing Minds</h5>
-                        </a>
-                        <p class="ep-blog__text">
-                          Education is the key to stude Unlock your horizons
-                          education
-                        </p>
-                        <div class="ep-blog__btn">
-                          <a href="event-details.html"
-                            >Read More
-                            <i class="fi fi-rs-arrow-small-right"></i>
-                          </a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Single Event Card -->
-                <div class="col-lg-6 col-xl-4 col-md-6 col-12">
-                  <div
-                    class="ep-blog__card wow fadeInUp"
-                    data-wow-delay=".7s"
-                    data-wow-duration="1s"
-                  >
-                    <a href="event-details.html" class="ep-blog__img">
-                      <img
-                        src="assets/images/blog/blog-1/3.png"
-                        alt="blog-img"
-                      />
-                    </a>
-                    <div class="ep-blog__info">
-                      <div class="ep-blog__date ep1-bg">
-                        25 <br />
-                        Dec
-                      </div>
-                      <div class="ep-blog__location">
-                        <i class="fi fi-rs-marker"></i>
-                        <span>Mirpur Bangladesh</span>
-                      </div>
-                      <div class="ep-blog__content">
-                        <a href="event-details.html" class="ep-blog__title">
-                          <h5>Lighting Path to Success</h5>
-                        </a>
-                        <p class="ep-blog__text">
-                          Education is the key to stude Unlock your horizons
-                          education
-                        </p>
-                        <div class="ep-blog__btn">
-                          <a href="event-details.html"
-                            >Read More
-                            <i class="fi fi-rs-arrow-small-right"></i>
-                          </a>
-                        </div>
-                      </div>
+                    <div class="ep-event__time">
+                      <p class="ep-event__time-title">
+                        Remaining Time For Event
+                      </p>
+                      <ul class="ep-event__time-list">
+                        <li>302 Days</li>
+                        <li>3 Hours</li>
+                        <li>20 Min</li>
+                        <li>25 Sec</li>
+                      </ul>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </section>
-          <!-- End Event Area -->
+          <!-- End Event Details Area -->
         </main>
         <!-- Start Footer Area -->
         <footer class="ep-footer position-relative">
@@ -852,5 +714,5 @@
     <script src="assets/plugins/js/active.js"></script>
   </body>
 
-<!-- Mirrored from edupath-template.vercel.app/edupath/event.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 24 Sep 2024 03:29:07 GMT -->
+<!-- Mirrored from edupath-template.vercel.app/edupath/event-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 24 Sep 2024 03:29:07 GMT -->
 </html>
