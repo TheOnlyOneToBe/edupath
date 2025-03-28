@@ -107,18 +107,22 @@ $formations = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <section class="ep-course section-gap position-relative">
                     <div class="container ep-container">
                         <div class="row">
-                            <?php foreach($formations as $formation): ?>
+                           
+                           <?php foreach($formations as $formation): ?>
                                 <div class="col-lg-6 col-xl-4 col-md-6 col-12">
+                                
                                     <div class="ep-course__card wow fadeInUp" data-wow-delay=".3s" data-wow-duration="1s">
                                         <!-- Image statique de formation (à personnaliser ou récupérer dynamiquement) -->
                                         <a href="#" class="ep-course__img">
                                             <img src="assets/images/formation.jpg" alt="Image formation" />
                                         </a>
+                                        
                                         <!-- Affichage du nom de la filière en tant qu'étiquette -->
-                                        <a href="#" class="ep-course__tag ep1-bg"><?php echo htmlspecialchars($formation['filiere_nom']); ?></a>
+                                        
                                         <div class="ep-course__body">
                                             <!-- Affichage du nom du cycle (par exemple "Licence", "Master", etc.) -->
-                                            <a href="#" class="ep-course__title">
+                                            
+                                            <a href="formation_details.php?id_filiere=<?php echo $formation['id_filiere'] ;?>&&id_cycle=<?php echo $formation['id_cycle'] ;?>" class="ep-course__title">
                                                 <h5><?php echo htmlspecialchars($formation['cycle_nom']); ?></h5>
                                             </a>
                                             <!-- Affichage des tarifs -->
@@ -127,9 +131,12 @@ $formations = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                               Scolarité : <?php echo htmlspecialchars($formation['montant_scolarite']); ?> FCFA
                                             </p>
                                         </div>
+                                        
                                     </div>
+                                    
                                 </div>
                             <?php endforeach; ?>
+                           
                         </div>
 
                         <!-- Conteneur de pagination -->
