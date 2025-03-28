@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="ZXX">
   
-<!-- Mirrored from edupath-template.vercel.app/edupath/event-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 24 Sep 2024 03:29:07 GMT -->
+<!-- Mirrored from <?php include '../name.php' ;  ?>-template.vercel.app/<?php include '../name.php' ;  ?>/event-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 24 Sep 2024 03:29:07 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
     <!-- Meta Tags -->
@@ -21,7 +21,7 @@
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.svg" />
 
     <!-- Site Title -->
-    <title>Edupath - Education, Course & Online Learning HTML Template</title>
+    <title><?php include '../name.php' ;  ?> - Education, Course & Online Learning HTML Template</title>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="assets/plugins/css/bootstrap.min.css" />
@@ -714,5 +714,5 @@
     <script src="assets/plugins/js/active.js"></script>
   </body>
 
-<!-- Mirrored from edupath-template.vercel.app/edupath/event-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 24 Sep 2024 03:29:07 GMT -->
+<!-- Mirrored from <?php include '../name.php' ;  ?>-template.vercel.app/<?php include '../name.php' ;  ?>/event-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 24 Sep 2024 03:29:07 GMT -->
 </html>
