@@ -600,43 +600,14 @@
                   data-wow-delay=".3s"
                   data-wow-duration="1s">
                   <a href="team-details.html" class="ep-team__img">
-                    <img
-                      src="assets/images/team/team-1/1.png"
-                      alt="team-img" />
+                    <?php include_once 'team/t1.php' ; ?>
                   </a>
                   <div class="ep-team__content">
                     <div class="ep-team__author">
                       <a href="team-details.html">
-                        <h5>Bessie Cooper</h5>
+                        <h5><?php include_once 'team/t1-name.php' ;?></h5>
                       </a>
                       <p>Formateur</p>
-                    </div>
-                    <div class="ep-team__social">
-                      <span class="ep-team__social-btn">
-                        <i class="fi-rr-share"></i>
-                      </span>
-                      <ul>
-                        <li>
-                          <a href="#">
-                            <i class="icofont-twitter"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <i class="icofont-facebook"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <i class="icofont-instagram"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <i class="icofont-linkedin"></i>
-                          </a>
-                        </li>
-                      </ul>
                     </div>
                   </div>
                 </div>
@@ -648,43 +619,14 @@
                   data-wow-delay=".5s"
                   data-wow-duration="1s">
                   <a href="team-details.html" class="ep-team__img">
-                    <img
-                      src="assets/images/team/team-1/2.png"
-                      alt="team-img" />
+                  <?php include_once 'team/t2.php' ;?>
                   </a>
                   <div class="ep-team__content">
                     <div class="ep-team__author">
                       <a href="team-details.html">
-                        <h5>Arlene McCoy</h5>
+                        <h5><?php include_once 'team/t2-name.php' ;?></h5>
                       </a>
                       <p>Formateur Senior</p>
-                    </div>
-                    <div class="ep-team__social">
-                      <span class="ep-team__social-btn">
-                        <i class="fi-rr-share"></i>
-                      </span>
-                      <ul>
-                        <li>
-                          <a href="#">
-                            <i class="icofont-twitter"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <i class="icofont-facebook"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <i class="icofont-instagram"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <i class="icofont-linkedin"></i>
-                          </a>
-                        </li>
-                      </ul>
                     </div>
                   </div>
                 </div>
@@ -696,14 +638,12 @@
                   data-wow-delay=".7s"
                   data-wow-duration="1s">
                   <a href="team-details.html" class="ep-team__img">
-                    <img
-                      src="assets/images/team/team-1/3.png"
-                      alt="team-img" />
+                    <?php include_once 'team/t3.php' ;?>
                   </a>
                   <div class="ep-team__content">
                     <div class="ep-team__author">
                       <a href="team-details.html">
-                        <h5>Brooklyn Simmons</h5>
+                        <h5><?php include_once 'team/t3-name.php' ;?></h5>
                       </a>
                       <p>Formateur Assistant</p>
                     </div>

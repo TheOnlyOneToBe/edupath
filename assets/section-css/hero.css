@@ -100,8 +100,8 @@
 }
 
 .ep-hero__widget-img img {
-  width: 300px;
-  height: 400px;
+  width: 400px;
+  height: 500px;
   object-fit: contain;
   border-radius: 20px;
 }
