@@ -141,10 +141,8 @@ $formations = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </div>
 
                         <!-- Conteneur de pagination -->
-                        <div class="row">
-                          <div class="col-12">
+                        <div class="ep-pagination">
                             <ul class="ep-pagination__list" style="list-style:none; display:flex; gap:10px; justify-content:center;"></ul>
-                          </div>
                         </div>
                     </div>
                 </section>

@@ -2,7 +2,7 @@
 session_start(); 
 require_once 'config/database.php';
 
-$sql = "SELECT * FROM article LIMIT 6";
+$sql = "SELECT * FROM article";
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -132,6 +132,10 @@ $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <?php endforeach; ?>
                         </div>
                     </div>
+                     <!-- Conteneur de pagination -->
+                     <div class="ep-pagination">
+                            <ul class="ep-pagination__list" style="list-style:none; display:flex; gap:10px; justify-content:center;"></ul>
+                        </div>
                 </section>
                 <!-- End Course Area -->
             </main>
@@ -141,6 +145,66 @@ $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <!-- End Footer Area -->
         </div>
     </div>
+    <script>
+    document.addEventListener("DOMContentLoaded", function(){
+        // Sélectionne toutes les cartes de formation (en tenant compte de l'élément parent colonnes)
+        var cardContainers = document.querySelectorAll(".row > .col-lg-6, .row > .col-xl-4, .row > .col-md-6, .row > .col-12");
+        // Filtrer uniquement les colonnes contenant une carte de formation
+        var cards = [];
+        cardContainers.forEach(function(container) {
+          if (container.querySelector(".ep-course__card")) {
+            cards.push(container);
+          }
+        });
+        
+        var cartesParPage = 6; // nombre de formations par page
+        var pageActuelle = 1;
+        var nombrePages = Math.ceil(cards.length / cartesParPage);
+
+        function afficherPage(page) {
+            pageActuelle = page;
+            cards.forEach(function(card, index){
+                if (index >= (page - 1) * cartesParPage && index < page * cartesParPage){
+                    card.style.display = "";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+            // Met à jour les liens de pagination
+            var liens = document.querySelectorAll(".ep-pagination__list li");
+            liens.forEach(function(li, index){
+                if(index + 1 === page) {
+                    li.classList.add("active");
+                } else {
+                    li.classList.remove("active");
+                }
+            });
+        }
+
+        // Génère la pagination
+        var paginationContainer = document.querySelector(".ep-pagination__list");
+        if (paginationContainer) {
+            paginationContainer.innerHTML = "";
+            for (var i = 1; i <= nombrePages; i++) {
+                var li = document.createElement("li");
+                // Affichage avec un zéro devant si inférieur à 10 (ex: 01, 02, …)
+                var label = (i < 10) ? "0" + i : i;
+                li.innerHTML = '<a href="#">' + label + '</a>';
+                li.style.cursor = "pointer";
+                li.addEventListener("click", (function(page){
+                    return function(e) {
+                        e.preventDefault();
+                        afficherPage(page);
+                    }
+                })(i));
+                paginationContainer.appendChild(li);
+            }
+        }
+
+        // Affichage initial de la première page
+        afficherPage(1);
+    });
+    </script>
 </body>
 
 <!-- Mirrored from edupath-template.vercel.app/edupath/course.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 24 Sep 2024 03:29:05 GMT -->

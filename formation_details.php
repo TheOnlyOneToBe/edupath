@@ -1,5 +1,5 @@
 <?php
-session_start(); 
+session_start();
 require_once 'config/database.php';
 
 // Récupération des identifiants depuis l'URL
@@ -93,15 +93,8 @@ if (!$formation) {
                                                     <!-- Overview -->
                                                     <div class="tab-pane fade show active" id="overview" role="tabpanel">
                                                         <div class="ep-course__overview">
-                                                            <div class="ep-course__overview-widget">
-                                                                <h3 class="ep-course__overview-title">Description de la formation</h3>
-                                                                <p class="ep-course__overview-text">
-                                                                    <strong>Filière :</strong> <?php echo htmlspecialchars($formation['filiere_nom']); ?><br>
-                                                                    <strong>Description :</strong> <?php echo htmlspecialchars($formation['filiere_desc']); ?><br>
-                                                                    <strong>Cycle :</strong> <?php echo htmlspecialchars($formation['cycle_nom']); ?> (<?php echo htmlspecialchars($formation['cycle_annee']); ?> an<?php echo ($formation['cycle_annee'] > 1) ? 's' : ''; ?>)<br>
-                                                                    <strong>Frais d'inscription :</strong> <?php echo htmlspecialchars($formation['montant_inscription']); ?> FCFA<br>
-                                                                    <strong>Frais de scolarité :</strong> <?php echo htmlspecialchars($formation['montant_scolarite']); ?> FCFA
-                                                                </p>
+                                                            <div class="ep-course__overview-widget text-end">
+                                                            <img src="assets/imgs/formations/<?php echo $formation['photo']; ?>" alt="" sizes="120%" srcset="">
                                                             </div>
                                                             <!-- Vous pouvez ajouter d'autres sections ou éléments dynamiques ici -->
                                                         </div>

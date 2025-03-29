@@ -159,8 +159,7 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <?php endforeach; ?>
               </div>
               <!-- Pagination -->
-              <div class="row">
-                <div class="col-12">
+              <div class="ep-pagination">
                   <ul class="ep-pagination__list" style="list-style:none; display:flex; gap:10px; justify-content:center;">
                     <?php for ($i = 1; $i <= $totalPages; $i++) : ?>
                     <li class="<?php echo ($i === $page) ? 'active' : ''; ?>">
@@ -170,7 +169,6 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </li>
                     <?php endfor; ?>
                   </ul>
-                </div>
               </div>
             </div>
           </section>
