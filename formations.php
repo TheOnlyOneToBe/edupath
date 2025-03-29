@@ -131,6 +131,11 @@ $formations = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                               Inscription : <?php echo htmlspecialchars($formation['montant_inscription']); ?> FCFA<br>
                                               Scolarité : <?php echo htmlspecialchars($formation['montant_scolarite']); ?> FCFA
                                             </p>
+                                            <div class="ep-course__bottom">
+                                                <a href="formation_details.php?id_filiere=<?php echo $formation['id_filiere'] ;?>&&id_cycle=<?php echo $formation['id_cycle'] ;?>" class="ep-course__btn">
+                                                    En savoir plus <i class="fi fi-rs-arrow-small-right"></i>
+                                                </a>
+                                            </div>
                                         </div>
                                         
                                     </div>

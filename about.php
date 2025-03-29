@@ -24,7 +24,7 @@ $stmt_events = $conn->query($sql_events);
 $events = $stmt_events->fetchAll();
 
 // Récupérer les derniers articles (3 éléments)
-$sql_articles = "SELECT * FROM article ORDER BY date_pub DESC LIMIT 3";
+$sql_articles = "SELECT * FROM article ORDER BY date_pub DESC";
 $stmt_articles = $conn->query($sql_articles);
 $articles = $stmt_articles->fetchAll();
 ?>
@@ -236,25 +236,18 @@ $articles = $stmt_articles->fetchAll();
                 <p>Découvrez nos derniers articles</p>
             </div>
             <div class="row">
+                <div class="owl-carousel ep-event__slider">
                 <?php
-                $delays = [0.3, 0.5, 0.7];
-                // You can update these image paths if your articles provide an image column
-                $images = [
-                    "assets/img/05.avif",
-                    "assets/img/18.jpg",
-                    "assets/img/16.avif"
-                ];
-                $i = 0;
                 foreach ($articles as $article):
                 ?>
-                    <div class="col-lg-6 col-xl-4 col-md-6 col-12">
+                    <div class="ep-event__card">
                         <div
                             class="ep-blog__card ep-blog__card--style2 wow fadeInUp"
                             data-wow-delay="0,5s"
                             data-wow-duration="1s">
                             <a href="article-details.php?id=<?php echo $article['id_article']; ?>" class="ep-blog__img">
                                 <img
-                                    src="<?php echo $images[$i]; ?>"
+                                    src="assets/imgs/articles/<?php echo $article['photo'];?>"
                                     alt="blog-img" />
                             </a>
                             <div class="ep-blog__info">
@@ -264,10 +257,10 @@ $articles = $stmt_articles->fetchAll();
                                 <div class="ep-blog__content">
                                     <div class="ep-blog__meta">
                                         <ul>
-                                            <li><i class="fi-rr-comments"></i>Comments (05)</li>
+                                            <li><i class="fi-rr-comments"></i>Commentaires (<?php echo random_int(5,25);?>)</li>
                                             <li>
                                                 <a href="#">
-                                                    <i class="fi-rr-user"></i>By admin
+                                                    <i class="fi-rr-user"></i>
                                                 </a>
                                             </li>
                                         </ul>
@@ -279,7 +272,7 @@ $articles = $stmt_articles->fetchAll();
                                     </a>
                                     <div class="ep-blog__btn">
                                         <a href="article-details.php?id=<?php echo $article['id_article']; ?>">
-                                            Read More
+                                            Lire plus
                                             <i class="fi fi-rs-arrow-small-right"></i>
                                         </a>
                                     </div>
@@ -288,9 +281,10 @@ $articles = $stmt_articles->fetchAll();
                         </div>
                     </div>
                 <?php
-                    $i++;
                 endforeach;
                 ?>
+                </div>
+               
             </div>
         </div>
     </section>

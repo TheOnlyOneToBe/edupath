@@ -123,7 +123,7 @@ $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <div class="ep-course__bottom">
                                                 <span class="ep-course__price"><?php echo $article['date_pub']; ?></span>
                                                 <a href="article-details.php?id=<?php echo $article['id_article']; ?>" class="ep-course__btn">
-                                                    S'inscrire <i class="fi fi-rs-arrow-small-right"></i>
+                                                    En savoir plus <i class="fi fi-rs-arrow-small-right"></i>
                                                 </a>
                                             </div>
                                         </div>

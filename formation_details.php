@@ -92,9 +92,9 @@ if (!$formation) {
                                                 <div class="tab-content" id="nav-tabContent">
                                                     <!-- Overview -->
                                                     <div class="tab-pane fade show active" id="overview" role="tabpanel">
-                                                        <div class="ep-course__overview">
-                                                            <div class="ep-course__overview-widget text-end">
-                                                            <img src="assets/imgs/formations/<?php echo $formation['photo']; ?>" alt="" sizes="120%" srcset="">
+                                                    <div class="ep-blog__details-cover">
+                                                    <div class="ep-blog__details-cover-img">
+                                                            <img src="assets/imgs/formations/<?php echo $formation['photo']; ?>"  alt=""  srcset="">
                                                             </div>
                                                             <!-- Vous pouvez ajouter d'autres sections ou éléments dynamiques ici -->
                                                         </div>

@@ -107,7 +107,7 @@ try {
                     <div class="article-details">
                       <?php if(!empty($article['photo'])): ?>
                         <div class="article-image mb-4">
-                          <img src="<?php echo $article['photo']; ?>" class="img-fluid rounded" alt="<?php echo $article['titre']; ?>">
+                          <img src="assets/imgs/articles/<?php echo $article['photo']; ?>" class="img-fluid rounded" alt="<?php echo $article['titre']; ?>">
                         </div>
                       <?php endif; ?>
                       
