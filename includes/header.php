@@ -37,11 +37,18 @@
                       <li>
                         <a href="contact.php">Contact</a>
                       </li>
-                      <li>
+                      <?php if(!isset($_SESSION['user'])): ?>
+                        <li>
                         <a href="login.php">Se connecter</a>
                       </li>
-                    </ul>
-                  </nav>
+                    <?php else: ?>
+                      <li> 
+                        </li>
+                        <a href="user/dashboard.php"><?php echo $_SESSION['user']['user_login'] ;?> (User )</a>
+                    <?php endif; ?>
+                      </ul>
+                      
+                    </nav>
                   <div class="ep-header__btn">
                     <a href="formations.php" class="ep-btn ep5-bg"
                       >Nos formations <i class="fi fi-rs-arrow-small-right"></i>
