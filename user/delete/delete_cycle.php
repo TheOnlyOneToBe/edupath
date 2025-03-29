@@ -5,6 +5,15 @@ require_once '../../config/database.php';
 
 $id_cycle = $_GET['id'] ?? null;
 
+$check=$conn->prepare('SELECT * FROM cycle WHERE id_cycle=:id');
+$check->execute(['id'=>$id_cycle]);
+
+if($check->fetchColumn()==0){
+    $_SESSION['error']= "Le cycle n'a pas éte trouvé";
+    header('Location: ../cycles.php');
+    exit();
+}
+
 if ($id_cycle) {
     try {
         $sl= "SELECT * FROM avoir WHERE id_cycle = :id";

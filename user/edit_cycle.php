@@ -12,14 +12,7 @@ if (!$id_cycle) {
     header('Location: cycles.php');
     exit();
 }
-$check_cycle = $conn->prepare("SELECT * FROM Cycle WHERE id_cycle = :id");
-$check_cycle->execute([':id' => $id_cycle]);
-// Vérification de l'existence du cycle
-if ($check_cycle->rowCount() == 0) {
-    $_SESSION['error'] = "Cycle introuvable.";
-    header('Location: cycles.php');
-    exit();
-}
+
 // Traitement du formulaire de modification
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nom = $_POST['nom'] ?? '';
@@ -59,6 +52,7 @@ try {
     $cycle = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$cycle) {
+        $_SESSION['error']="Le cycle n'a pas été trouvé";
         header('Location: cycles.php');
         exit();
     }

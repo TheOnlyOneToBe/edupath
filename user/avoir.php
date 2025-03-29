@@ -10,6 +10,11 @@ if (isset($_SESSION['success'])) {
   unset($_SESSION['success']);
 }
 
+if(isset($_SESSION['error'])){
+  $error=$_SESSION['error'];
+  unset($_SESSION['error']);
+}
+
 // Récupération des associations existantes
 try {
   $sql = "SELECT a.*, f.nom as nom_filiere, c.nom as nom_cycle, c.nbre_annee 

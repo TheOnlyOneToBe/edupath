@@ -9,9 +9,19 @@ $article = null;
 $id_article = $_GET['id'] ?? null;
 
 if (!$id_article) {
-    header('Location: /articles.php');
+    header('Location: articles.php');
     exit();
 }
+
+$check=$conn->prepare('SELECT * FROM article WHERE id_article=:id');
+$check->execute(['id'=>$id_article]);
+
+if($check->fetchColumn()==0){
+    $_SESSION['error']= "L'article n'a pas éte trouvé";
+    header('Location: articles.php');
+    exit();
+}
+
 
 // Traitement du formulaire de modification
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -74,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->execute($params);
 
             $_SESSION['success'] = "L'article a été modifié avec succès!";
-            header('Location: /articles.php');
+            header('Location: articles.php');
             exit();
         } catch (PDOException $e) {
             $error = "Une erreur est survenue lors de la modification de l'article: " . $e->getMessage();
@@ -124,7 +134,8 @@ try {
     <?php include_once 'css.php'; ?>
 </head>
 
-<body class="ep-magic-cursor"><?php include_once 'include/navbar.php'; ?>
+<body class="ep-magic-cursor">
+    <?php include_once 'include/navbar.php'; ?>
     
     <?php include_once 'magic.php'; ?>
 
@@ -177,7 +188,7 @@ try {
                                                     <label for="photo" class="form-label">Photo</label>
                                                     <?php if (!empty($article['photo'])): ?>
                                                         <div class="mb-2">
-                                                            <img src="../..//assets/imgs/articles/<?php echo htmlspecialchars($article['photo']); ?>"
+                                                            <img src="../assets/imgs/articles/<?php echo htmlspecialchars($article['photo']); ?>"
                                                                 alt="Photo actuelle" style="max-width: 200px;">
                                                         </div>
                                                     <?php endif; ?>
@@ -188,7 +199,7 @@ try {
                                         </div>
                                         <div class="row mt-4">
                                             <div class="col-6">
-                                                <a href="/articles.php" class="ep-btn ep-btn-secondary">Retour</a>
+                                                <a href="articles.php" class="ep-btn ep-btn-secondary">Retour</a>
                                             </div>
                                             <div class="col-6 text-end">
                                                 <button type="submit" class="ep-btn ep-btn-primary">Modifier</button>

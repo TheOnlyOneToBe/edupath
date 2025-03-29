@@ -5,6 +5,20 @@ require_once '../../config/database.php';
 $id_filiere = $_GET['filiere'] ?? null;
 $id_cycle = $_GET['cycle'] ?? null;
 
+$check=$conn->prepare('SELECT * FROM avoir WHERE id_filiere=:id1 AND id_cycle=:id2');
+$check->execute([
+    'id1'=>$id_filiere,
+     'id2'=>$id_cycle
+]);
+
+if($check->fetchColumn()==0){
+    $_SESSION['error']= "L'association  n'a pas éte trouvé";
+    header('Location: ../avoir.php');
+    exit();
+}
+
+
+
 if ($id_filiere && $id_cycle) {
     try {
         // Récupérer les informations avant suppression pour le message de confirmation

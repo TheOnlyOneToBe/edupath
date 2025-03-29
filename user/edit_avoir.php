@@ -14,6 +14,18 @@ if (!$id_filiere || !$id_cycle) {
     exit();
 }
 
+$check=$conn->prepare('SELECT * FROM avoir WHERE id_filiere=:id1 AND id_cycle=:id2');
+$check->execute([
+    'id1'=>$id_filiere,
+     'id2'=>$id_cycle
+]);
+
+if($check->fetchColumn()==0){
+    $_SESSION['error']= "L'association  n'a pas éte trouvé";
+    header('Location: avoir.php');
+    exit();
+}
+
 // Traitement du formulaire de modification
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $montant_inscription = $_POST['montant_inscription'] ?? '';
@@ -143,7 +155,7 @@ try {
                                         </div>
                                         <div class="row">
                                             <div class="col-3">
-                                                <a href="/avoir.php" class="ep-btn">Retour</a>
+                                                <a href="avoir.php" class="ep-btn">Retour</a>
                                             </div>
                                             <div class="col-9">
                                                 <button type="submit" class="">Enregistrer les modifications</button>

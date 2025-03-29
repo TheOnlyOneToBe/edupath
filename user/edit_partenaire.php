@@ -9,7 +9,7 @@ $partenaire = null;
 $id_partenaire = $_GET['id'] ?? null;
 
 if (!$id_partenaire) {
-    header('Location: /partenaires.php');
+    header('Location: partenaires.php');
     exit();
 }
 
@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (in_array(strtolower($filetype), $allowed)) {
             $newname = uniqid() . '.' . $filetype;
-            $upload_dir = 'uploads/partenaires/';
+            $upload_dir = '../assets/imgs/partenaires/';
             if (!is_dir($upload_dir)) {
                 mkdir($upload_dir, 0777, true);
             }
@@ -68,6 +68,7 @@ try {
     $partenaire = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$partenaire) {
+        $_SESSION['error'] = "Ce partenaire n'as pas été trouvée";
         header('Location: partenaires.php');
         exit();
     }
@@ -83,15 +84,14 @@ try {
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Modifier le Partenaire - <?php include '../name.php' ;  ?></title>
+    <title>Modifier le Partenaire - <?php include '../name.php';  ?></title>
     <?php include_once 'css.php'; ?>
 </head>
 
 
 <body>
-    
+    <?php include_once 'include/navbar.php'; ?>
     <?php include_once 'magic.php'; ?>
-
     <section class="section-gap">
         <div class="container">
             <div class="row">
@@ -136,11 +136,7 @@ try {
             </div>
         </div>
     </section>
-
     <?php include_once 'include/footer.php'; ?>
-    </div>
-    </div>
-
     <?php include_once 'script.php'; ?>
 </body>
 

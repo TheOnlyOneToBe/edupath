@@ -6,7 +6,7 @@ require_once '../config/database.php';
 $id_evenement = $_GET['id'] ?? null;
 
 if (!$id_evenement) {
-    header('Location: /evenements.php');
+    header('Location: evenements.php');
     exit();
 }
 
@@ -23,12 +23,12 @@ try {
 
     if (!$evenement) {
         $_SESSION['error'] = "Cet événement n'existe pas.";
-        header('Location: /evenements.php');
+        header('Location: evenements.php');
         exit();
     }
 } catch(PDOException $e) {
     $_SESSION['error'] = "Erreur lors de la récupération des détails de l'événement.";
-    header('Location: /evenements.php');
+    header('Location: evenements.php');
     exit();
 }
 ?>
@@ -43,7 +43,8 @@ try {
     <?php include_once 'css.php'; ?>
 </head>
 
-                      <body class="ep-magic-cursor"><?php include_once 'include/navbar.php'; ?>
+<body class="ep-magic-cursor">
+    <?php include_once 'include/navbar.php'; ?>
     <?php include_once 'magic.php'; ?>
 
     <div id="smooth-wrapper">
@@ -60,7 +61,7 @@ try {
                                     <ul class="ep-breadcrumbs__menu">
                                         <li><a href="  dashboard.php">Tableau de bord</a></li>
                                         <li><i class="fi-bs-angle-right"></i></li>
-                                        <li><a href="/evenements.php">Événements</a></li>
+                                        <li><a href="evenements.php">Événements</a></li>
                                         <li><i class="fi-bs-angle-right"></i></li>
                                         <li class="active">Détails</li>
                                     </ul>
@@ -103,7 +104,7 @@ try {
                                             </div>
 
                                             <div class="ep-blog__btn d-flex justify-content-between">
-                                                <a href="/evenements.php" class="ep-btn">
+                                                <a href="evenements.php" class="ep-btn">
                                                     <i class="fi fi-rs-arrow-small-left"></i> Retour à la liste
                                                 </a>
                                                 <?php if (isset($_SESSION['id_utilisateur']) && $_SESSION['id_utilisateur'] == $evenement['id_utilisateur']): ?>

@@ -10,6 +10,14 @@ if (!$id_contact) {
     header('Location: ../contacts.php');
     exit();
 }
+$check=$conn->prepare('SELECT * FROM contact WHERE id_contact=:id');
+$check->execute(['id'=>$id_contact]);
+
+if($check->fetchColumn()==0){
+    $_SESSION['error']= "Le message n'a pas éte trouvé";
+    header('Location: ../contacts.php');
+    exit();
+}
 
 try {
     // Check if contact exists

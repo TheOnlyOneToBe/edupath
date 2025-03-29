@@ -10,6 +10,14 @@ if (!$id_bourse) {
     exit();
 }
 
+$check=$conn->prepare('SELECT * FROM bourse WHERE id_bourse=:id');
+$check->execute(['id'=>$id_bourse]);
+
+if($check->fetchColumn()==0){
+    $_SESSION['error']= "La bourse  n'a pas éte trouvé";
+    header('Location: bourses.php');
+    exit();
+}
 try {
     // Get detailed information about the scholarship
     $sql = "SELECT b.*, u.login as gestionnaire, u.fonction as fonction_gestionnaire

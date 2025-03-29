@@ -10,6 +10,10 @@ if (isset($_SESSION['success'])) {
   unset($_SESSION['success']);
 }
 
+if(isset($_SESSION['error'])){
+  $error=$_SESSION['error'];
+  unset($_SESSION['error']);
+}
 // Récupération des contacts existants
 try {
   $sql = "SELECT * FROM Contact ORDER BY date_envoi DESC";

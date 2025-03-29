@@ -9,7 +9,15 @@ $article = null;
 $id_article = $_GET['id'] ?? null;
 
 if (!$id_article) {
-    header('Location: /articles.php');
+    header('Location: articles.php');
+    exit();
+}
+$check=$conn->prepare('SELECT * FROM article WHERE id_article=:id');
+$check->execute(['id'=>$id_article]);
+
+if($check->fetchColumn()==0){
+    $_SESSION['error']= "L'article n'a pas éte trouvé";
+    header('Location: articles.php');
     exit();
 }
 

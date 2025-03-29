@@ -55,7 +55,7 @@ try {
                                 <div class="ep-breadcrumbs__content">
                                     <h3 class="ep-breadcrumbs__title">Gestion des Articles</h3>
                                     <ul class="ep-breadcrumbs__menu">
-                                        <li><a href="  dashboard.php">Tableau de bord</a></li>
+                                        <li><a href="dashboard.php">Tableau de bord</a></li>
                                         <li><i class="fi-bs-angle-right"></i></li>
                                         <li class="active">Articles</li>
                                     </ul>

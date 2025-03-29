@@ -9,7 +9,10 @@ if (isset($_SESSION['success'])) {
     $success = $_SESSION['success'];
     unset($_SESSION['success']);
 }
-
+if(isset($_SESSION['error'])){
+    $error=$_SESSION['error'];
+    unset($_SESSION['error']);
+}
 // Récupération des filières existantes
 try {
     $sql = "SELECT f.*, u.login as createur
@@ -32,7 +35,8 @@ try {
     <title>Gestion des Filières - <?php include '../name.php' ;  ?></title>
     <?php include_once 'css.php'; ?>
 </head>
-                      <body class="ep-magic-cursor"><?php include_once 'include/navbar.php'; ?>
+<body class="ep-magic-cursor">
+    <?php include_once 'include/navbar.php'; ?>
     <?php include_once 'magic.php'; ?>
 
     <div id="smooth-wrapper">

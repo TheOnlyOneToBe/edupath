@@ -21,7 +21,7 @@ try {
 
     if (!$utilisateur) {
         $_SESSION['error'] = "Cet utilisateur n'existe pas.";
-        header('Location: /utilisateurs.php');
+        header('Location: utilisateurs.php');
         exit();
     }
 

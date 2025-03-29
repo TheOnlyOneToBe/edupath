@@ -5,6 +5,14 @@ require_once '../../config/database.php';
 
 $id_partenaire = $_GET['id'] ?? null;
 
+$check=$conn->prepare('SELECT * FROM Partenaire WHERE id_partenaire = :id');
+$check->execute(['id'=>$id_partenaire]);
+
+if($check->fetchColumn()==0){
+    $_SESSION['error']= "Le partenaire n'a pas éte trouvé";
+    header('Location: ../partenaires.php');
+    exit();
+}
 if ($id_partenaire) {
     try {
         // Récupérer le nom de la photo avant la suppression

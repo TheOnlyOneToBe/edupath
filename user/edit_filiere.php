@@ -47,6 +47,7 @@ try {
     $filiere = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$filiere) {
+        $_SESSION['error']= "Cette filière n'as pas été trouvée";
         header('Location: filieres.php');
         exit();
     }
@@ -65,6 +66,7 @@ try {
     <?php include_once 'css.php'; ?>
 </head>
 <body>
+<?php include_once 'include/navbar.php';?>
     <?php include_once 'magic.php'; ?>
 
     <section class="section-gap">

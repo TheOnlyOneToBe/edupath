@@ -6,7 +6,7 @@ require_once '../config/database.php';
 $id_filiere = $_GET['id'] ?? null;
 
 if (!$id_filiere) {
-    header('Location: /filieres.php');
+    header('Location: filieres.php');
     exit();
 }
 
@@ -23,7 +23,7 @@ try {
 
     if (!$filiere) {
         $_SESSION['error'] = "Cette filière n'existe pas.";
-        header('Location: /filieres.php');
+        header('Location: filieres.php');
         exit();
     }
 
@@ -39,7 +39,7 @@ try {
     
 } catch(PDOException $e) {
     $_SESSION['error'] = "Erreur lors de la récupération des détails de la filière.";
-    header('Location: /filieres.php');
+    header('Location: filieres.php');
     exit();
 }
 ?>
@@ -54,7 +54,8 @@ try {
     <?php include_once 'css.php'; ?>
 </head>
 
-<body class="ep-magic-cursor"><?php include_once 'include/navbar.php'; ?>
+<body class="ep-magic-cursor">
+    <?php include_once 'include/navbar.php'; ?>
     <?php include_once 'magic.php'; ?>
 
     <div id="smooth-wrapper">
@@ -129,7 +130,7 @@ try {
 
                                     <div class="row mt-4">
                                         <div class="col-md-6">
-                                            <a href="/filieres.php" class="ep-btn">Retour à la liste</a>
+                                            <a href="filieres.php" class="ep-btn">Retour à la liste</a>
                                         </div>
                                         <?php if (isset($_SESSION['user']) && ($_SESSION['user']['fonction'] === 'admin' || $_SESSION['user']['id_utilisateur'] === $filiere['id_utilisateur'])): ?>
                                         <div class="col-md-6 text-end">

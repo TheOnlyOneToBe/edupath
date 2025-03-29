@@ -10,6 +10,11 @@ if (isset($_SESSION['success'])) {
     unset($_SESSION['success']);
 }
 
+if(isset($_SESSION['error'])){
+    $error=$_SESSION['error'];
+    unset($_SESSION['error']);
+}
+
 // Récupération des utilisateurs existants
 try {
     $sql = "SELECT * FROM utilisateur ORDER BY id_utilisateur DESC";
@@ -31,8 +36,8 @@ try {
     <?php include_once 'css.php'; ?>
 </head>
 
-<body class="ep-magic-cursor"><?php include_once 'include/navbar.php'; ?>
-    
+<body class="ep-magic-cursor">
+    <?php include_once 'include/navbar.php'; ?> 
     <?php include_once 'magic.php'; ?>
 
     <div id="smooth-wrapper">
@@ -47,7 +52,7 @@ try {
                                 <div class="ep-breadcrumbs__content">
                                     <h3 class="ep-breadcrumbs__title">Gestion des Utilisateurs</h3>
                                     <ul class="ep-breadcrumbs__menu">
-                                        <li><a href="  dashboard.php">Tableau de bord</a></li>
+                                        <li><a href="dashboard.php">Tableau de bord</a></li>
                                         <li><i class="fi-bs-angle-right"></i></li>
                                         <li class="active">Utilisateurs</li>
                                     </ul>
@@ -72,7 +77,7 @@ try {
                         <!-- Add User Button -->
                         <div class="row mb-4">
                             <div class="col-12 text-end">
-                                <a href="../add_utilisateur.php" class="ep-btn ep-btn-primary">
+                                <a href="add_utilisateur.php" class="ep-btn ep-btn-primary">
                                     <i class="fi fi-rs-plus"></i> Ajouter un utilisateur
                                 </a>
                             </div>

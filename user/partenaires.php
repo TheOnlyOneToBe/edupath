@@ -10,6 +10,11 @@ if (isset($_SESSION['success'])) {
     unset($_SESSION['success']);
 }
 
+if(isset($_SESSION['error'])){
+    $error=$_SESSION['error'];
+    unset($_SESSION['error']);
+}
+
 // Récupération des partenaires existants
 try {
     $sql = "SELECT * FROM partenaire ORDER BY id_partenaire DESC";
@@ -29,7 +34,8 @@ try {
     <title>Gestion des Partenaires - <?php include '../name.php' ;  ?></title>
     <?php include_once 'css.php'; ?>
 </head>
-                      <body class="ep-magic-cursor"><?php include_once 'include/navbar.php'; ?>
+<body class="ep-magic-cursor">
+    <?php include_once 'include/navbar.php'; ?>
     <?php include_once 'magic.php'; ?>
 
     <div id="smooth-wrapper">
@@ -44,7 +50,7 @@ try {
                                 <div class="ep-breadcrumbs__content">
                                     <h3 class="ep-breadcrumbs__title">Gestion des Partenaires</h3>
                                     <ul class="ep-breadcrumbs__menu">
-                                        <li><a href="  dashboard.php">Tableau de bord</a></li>
+                                        <li><a href="dashboard.php">Tableau de bord</a></li>
                                         <li><i class="fi-bs-angle-right"></i></li>
                                         <li class="active">Partenaires</li>
                                     </ul>
@@ -69,7 +75,7 @@ try {
                         <!-- Add Partenaire Button -->
                         <div class="row mb-4">
                             <div class="col-12 text-end">
-                                <a href="../add_partenaire.php" class="ep-btn ep-btn-primary">
+                                <a href="add_partenaire.php" class="ep-btn ep-btn-primary">
                                     <i class="fi fi-rs-plus"></i> Ajouter un partenaire
                                 </a>
                             </div>

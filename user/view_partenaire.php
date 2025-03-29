@@ -6,7 +6,7 @@ require_once '../config/database.php';
 $id_partenaire = $_GET['id'] ?? null;
 
 if (!$id_partenaire) {
-    header('Location: /partenaires.php');
+    header('Location: partenaires.php');
     exit();
 }
 
@@ -19,12 +19,12 @@ try {
 
     if (!$partenaire) {
         $_SESSION['error'] = "Ce partenaire n'existe pas.";
-        header('Location: /partenaires.php');
+        header('Location: partenaires.php');
         exit();
     }
 } catch(PDOException $e) {
     $_SESSION['error'] = "Erreur lors de la récupération des détails du partenaire.";
-    header('Location: /partenaires.php');
+    header('Location: partenaires.php');
     exit();
 }
 ?>

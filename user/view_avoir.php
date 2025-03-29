@@ -12,6 +12,18 @@ if (!$id_filiere || !$id_cycle) {
     exit();
 }
 
+$check=$conn->prepare('SELECT * FROM avoir WHERE id_filiere=:id1 AND id_cycle=:id2');
+$check->execute([
+    'id1'=>$id_filiere,
+     'id2'=>$id_cycle
+]);
+
+if($check->fetchColumn()==0){
+    $_SESSION['error']= "L'association  n'a pas éte trouvé";
+    header('Location: avoir.php');
+    exit();
+}
+
 // Récupération des données de l'association
 try {
     $sql = "SELECT a.*, f.nom as nom_filiere, f.description as description_filiere, 
@@ -28,7 +40,7 @@ try {
     $avoir = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$avoir) {
-        header('Location: user/avoir.php');
+        header('Location: avoir.php');
         exit();
     }
 } catch(PDOException $e) {
@@ -89,7 +101,7 @@ if ($avoir) {
                                     <h3 class="ep-breadcrumbs__title">Détails des Frais</h3>
                                     <ul class="ep-breadcrumbs__menu">
                                         <li>
-                                            <a href="  dashboard.php">Tableau de bord</a>
+                                            <a href="dashboard.php">Tableau de bord</a>
                                         </li>
                                         <li>
                                             <i class="fi-bs-angle-right"></i>

@@ -16,7 +16,7 @@ if (!$id_utilisateur) {
 }
 
 // Liste des fonctions disponibles
-$fonctions = ['admin', 'gestionnaire', 'enseignant', 'etudiant'];
+$fonctions = ['admin', 'gestionnaire',  'secretaire'];
 
 // Traitement du formulaire de modification
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -65,6 +65,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if ($id_utilisateur == $_SESSION['user']['user_id']) {
                     $_SESSION['user']['user_login'] = $login;
                     $_SESSION['user']['user_fonction'] = $fonction;
+                    header('location:logout.php');
+                    exit();
                 }
                 
                 header('Location: utilisateurs.php');
@@ -86,6 +88,7 @@ try {
     $utilisateur = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$utilisateur) {
+        $_SESSION['error']= "L'utilisateur n'as pas été trouvé";
         header('Location: utilisateurs.php');
         exit();
     }
@@ -104,6 +107,7 @@ try {
     <?php include_once 'css.php'; ?>
 </head>
 <body>
+<?php include_once 'include/navbar.php';?>
     <?php include_once 'magic.php'; ?>
 
     <section class="section-gap">

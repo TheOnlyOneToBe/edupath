@@ -9,6 +9,7 @@ $evenement = null;
 $id_evenement = $_GET['id'] ?? null;
 
 if (!$id_evenement) {
+    $_SESSION['error']= "Cycle n'as pas été précisé";
     header('Location: evenements.php');
     exit();
 }
@@ -46,6 +47,7 @@ try {
     $evenement = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$evenement) {
+        $_SESSION['error']= "Cet évènement n'as pas été trouvé";
         header('Location: evenements.php');
         exit();
     }
@@ -66,7 +68,7 @@ try {
 </head>
 
 <body>
-    
+    <?php include_once 'include/navbar.php';?>
     <?php include_once 'magic.php'; ?>
 
     <section class="section-gap">

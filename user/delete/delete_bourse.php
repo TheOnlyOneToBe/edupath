@@ -5,6 +5,15 @@ require_once '../../config/database.php';
 
 $id_bourse = $_GET['id'] ?? null;
 
+$check=$conn->prepare('SELECT * FROM bourse WHERE id_bourse=:id');
+$check->execute(['id'=>$id_bourse]);
+
+if($check->fetchColumn()==0){
+    $_SESSION['error']= "La bourse  n'a pas éte trouvé";
+    header('Location: ../bourses.php');
+    exit();
+}
+
 if ($id_bourse) {
     try {
         $sql = "DELETE FROM Bourse WHERE id_bourse = :id";

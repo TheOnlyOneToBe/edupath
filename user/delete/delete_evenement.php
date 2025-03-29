@@ -5,6 +5,15 @@ require_once '../../config/database.php';
 
 $id_evenement = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 
+$check=$conn->prepare('SELECT * FROM evenement WHERE id_evenement = :id');
+$check->execute(['id'=>$id_evenement]);
+
+if($check->fetchColumn()==0){
+    $_SESSION['error']= "L'évenement  n'a pas éte trouvé";
+    header('Location: ../evenements.php');
+    exit();
+}
+
 if ($id_evenement) {
     try {
         // Vérifier si l'utilisateur est le propriétaire de l'événement

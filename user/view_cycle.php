@@ -6,7 +6,7 @@ require_once '../config/database.php';
 $id_cycle = $_GET['id'] ?? null;
 
 if (!$id_cycle) {
-    header('Location: /cycles.php');
+    header('Location: cycles.php');
     exit();
 }
 
@@ -23,7 +23,7 @@ try {
 
     if (!$cycle) {
         $_SESSION['error'] = "Ce cycle n'existe pas.";
-        header('Location: /cycles.php');
+        header('Location: cycles.php');
         exit();
     }
     
@@ -39,7 +39,7 @@ try {
     
 } catch(PDOException $e) {
     $_SESSION['error'] = "Erreur lors de la récupération des détails du cycle.";
-    header('Location: /cycles.php');
+    header('Location: cycles.php');
     exit();
 }
 ?>
