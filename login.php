@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                ];
 
                 // Redirection vers la page d'accueil
-                header('Location: index.php');
+                header('Location: user/dashboard.php');
                 exit();
             } else {
                 $error = "Email ou mot de passe incorrect";

@@ -107,7 +107,7 @@
                     <a href="event.html">Event</a>
                   </li>
                   <li>
-                    <a href="event-details.html">Event Details</a>
+                    <a href="event_detail.html">Event Details</a>
                   </li>
                 </ul>
               </li>
@@ -176,7 +176,7 @@
   </div>
   <!-- End Mobile Menu Modal -->
 
-  <?php include_once 'includes/header.php' ;?>
+  <?php include_once 'includes/header.php'; ?>
 
   <div id="smooth-wrapper">
     <div id="smooth-content">
@@ -472,336 +472,99 @@
               </div>
             </div>
             <div class="row">
-              <!-- Single Course Card -->
-              <div class="col-lg-6 col-xl-4 col-md-6 col-12">
-                <div
-                  class="ep-course__card wow fadeInUp"
-                  data-wow-delay=".3s"
-                  data-wow-duration="1s">
-                  <a href="course-details.html" class="ep-course__img">
-                    <img
-                      src="assets/images/course/course-1/1.png"
-                      alt="course-img" />
-                  </a>
-                  <a href="formations.php" class="ep-course__tag ep1-bg">Math</a>
-                  <div class="ep-course__body">
-                    <div class="ep-course__lesson">
-                      <div class="ep-course__student">
-                        <i class="fi-rr-user"></i>
-                        <p>250 Student</p>
-                      </div>
-                      <div class="ep-course__teacher">
-                        <p>Steve Smith</p>
-                      </div>
-                    </div>
-                    <div class="ep-course__rattings">
-                      <ul>
-                        <li>
-                          <i class="icofont-star"></i>
-                        </li>
-                        <li>
-                          <i class="icofont-star"></i>
-                        </li>
-                        <li>
-                          <i class="icofont-star"></i>
-                        </li>
-                        <li>
-                          <i class="icofont-star"></i>
-                        </li>
-                        <li>
-                          <i class="icofont-star off-color"></i>
-                        </li>
-                        <li>
-                          <span>(5.0/ 2 Ratings)</span>
-                        </li>
-                      </ul>
-                    </div>
-                    <a href="course-details.html" class="ep-course__title">
-                      <h5>World History: Ancient to Modern Times</h5>
-                    </a>
-                    <div class="ep-course__bottom">
-                      <a href="course-details.html" class="ep-course__btn">Enroll Now <i class="fi fi-rs-arrow-small-right"></i>
+              <?php
+              require_once 'config/database.php';
+
+              try {
+                // Récupérer les formations avec les informations de filière et cycle
+                $sql = "SELECT f.id_filiere,a.photo as photo, f.nom as nom_filiere, f.description, 
+                        c.nom as nom_cycle, c.nbre_annee, 
+                        a.montant_inscription, a.montant_scolarite
+                  FROM avoir a
+                  JOIN filiere f ON a.id_filiere = f.id_filiere
+                  JOIN cycle c ON a.id_cycle = c.id_cycle
+                  ORDER BY RAND()
+                  LIMIT 6";
+                $stmt = $conn->prepare($sql);
+                $stmt->execute();
+                $formations = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                // Récupérer les partenaires
+                $sql_partenaires = "SELECT * FROM Partenaire ORDER BY nom";
+                $stmt_partenaires = $conn->query($sql_partenaires);
+                $partenaires = $stmt_partenaires->fetchAll();
+
+                // Tableau des classes de couleurs pour les tags
+                $colorClasses = ['ep1-bg', 'ep2-bg', 'ep3-bg', 'ep4-bg', 'ep7-bg', 'ep8-bg'];
+
+                // Compteur pour les couleurs
+                $colorIndex = 0;
+
+                // Afficher les formations
+                foreach ($formations as $formation) {
+                  $colorClass = $colorClasses[$colorIndex % count($colorClasses)];
+                  $colorIndex++;
+              ?>
+                  <!-- Single Course Card -->
+                  <div class="col-lg-6 col-xl-4 col-md-6 col-12">
+                    <div
+                      class="ep-course__card wow fadeInUp"
+                      data-wow-delay=".<?php echo $colorIndex; ?>s"
+                      data-wow-duration="1s">
+                      <a href="formation_details.php?id=<?php echo $formation['id_filiere']; ?>" class="ep-course__img">
+                        <img
+                          src="assets/imgs/formations/<?php echo $formation['photo'];?>"
+                          alt="<?php echo $formation['nom_filiere']; ?>" />
                       </a>
-                      <span class="ep-course__price">$50.00</span>
+                      <a href="formations.php" class="ep-course__tag <?php echo $colorClass; ?>"><?php echo $formation['nom_cycle']; ?></a>
+                      <div class="ep-course__body">
+                        <div class="ep-course__lesson">
+                          <div class="ep-course__student">
+                            <i class="fi-rr-user"></i>
+                            <p>Durée: <?php echo $formation['nbre_annee']; ?></p>
+                          </div>
+                          <div class="ep-course__teacher">
+                            <p>Filière</p>
+                          </div>
+                        </div>
+                        <div class="ep-course__rattings">
+                          <ul>
+                            <li>
+                              <i class="icofont-star"></i>
+                            </li>
+                            <li>
+                              <i class="icofont-star"></i>
+                            </li>
+                            <li>
+                              <i class="icofont-star"></i>
+                            </li>
+                            <li>
+                              <i class="icofont-star"></i>
+                            </li>
+                            <li>
+                              <i class="icofont-star"></i>
+                            </li>
+                            <li>
+                              <span>(5.0)</span>
+                            </li>
+                          </ul>
+                        </div>
+                        <a href="formation_details.php?id=<?php echo $formation['id_filiere']; ?>" class="ep-course__title">
+                          <h5><?php echo $formation['nom_filiere']; ?></h5>
+                        </a>
+                        <div class="ep-course__bottom">
+                          <a href="formation_details.php?id=<?php echo $formation['id_filiere']; ?>" class="ep-course__btn">S'inscrire <i class="fi fi-rs-arrow-small-right"></i>
+                          </a>
+                          <span class="ep-course__price"><?php echo number_format($formation['montant_scolarite'], 0, ',', ' '); ?> FCFA</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-              <!-- Single Course Card -->
-              <div class="col-lg-6 col-xl-4 col-md-6 col-12">
-                <div
-                  class="ep-course__card wow fadeInUp"
-                  data-wow-delay=".5s"
-                  data-wow-duration="1s">
-                  <a href="course-details.html" class="ep-course__img">
-                    <img
-                      src="assets/images/course/course-1/2.png"
-                      alt="course-img" />
-                  </a>
-                  <a href="formations.php" class="ep-course__tag ep2-bg">Math</a>
-                  <div class="ep-course__body">
-                    <div class="ep-course__lesson">
-                      <div class="ep-course__student">
-                        <i class="fi-rr-user"></i>
-                        <p>250 Student</p>
-                      </div>
-                      <div class="ep-course__teacher">
-                        <p>Steve Smith</p>
-                      </div>
-                    </div>
-                    <div class="ep-course__rattings">
-                      <ul>
-                        <li>
-                          <i class="icofont-star"></i>
-                        </li>
-                        <li>
-                          <i class="icofont-star"></i>
-                        </li>
-                        <li>
-                          <i class="icofont-star"></i>
-                        </li>
-                        <li>
-                          <i class="icofont-star"></i>
-                        </li>
-                        <li>
-                          <i class="icofont-star off-color"></i>
-                        </li>
-                        <li>
-                          <span>(5.0/ 2 Ratings)</span>
-                        </li>
-                      </ul>
-                    </div>
-                    <a href="course-details.html" class="ep-course__title">
-                      <h5>Environmental Science and Sustainability</h5>
-                    </a>
-                    <div class="ep-course__bottom">
-                      <a href="course-details.html" class="ep-course__btn">Enroll Now <i class="fi fi-rs-arrow-small-right"></i>
-                      </a>
-                      <span class="ep-course__price">$50.00</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Single Course Card -->
-              <div class="col-lg-6 col-xl-4 col-md-6 col-12">
-                <div
-                  class="ep-course__card wow fadeInUp"
-                  data-wow-delay=".7s"
-                  data-wow-duration="1s">
-                  <a href="course-details.html" class="ep-course__img">
-                    <img
-                      src="assets/images/course/course-1/3.png"
-                      alt="course-img" />
-                  </a>
-                  <a href="formations.php" class="ep-course__tag ep4-bg">Math</a>
-                  <div class="ep-course__body">
-                    <div class="ep-course__lesson">
-                      <div class="ep-course__student">
-                        <i class="fi-rr-user"></i>
-                        <p>250 Student</p>
-                      </div>
-                      <div class="ep-course__teacher">
-                        <p>Steve Smith</p>
-                      </div>
-                    </div>
-                    <div class="ep-course__rattings">
-                      <ul>
-                        <li>
-                          <i class="icofont-star"></i>
-                        </li>
-                        <li>
-                          <i class="icofont-star"></i>
-                        </li>
-                        <li>
-                          <i class="icofont-star"></i>
-                        </li>
-                        <li>
-                          <i class="icofont-star"></i>
-                        </li>
-                        <li>
-                          <i class="icofont-star off-color"></i>
-                        </li>
-                        <li>
-                          <span>(5.0/ 2 Ratings)</span>
-                        </li>
-                      </ul>
-                    </div>
-                    <a href="course-details.html" class="ep-course__title">
-                      <h5>Modern Physics: Concepts and Applications</h5>
-                    </a>
-                    <div class="ep-course__bottom">
-                      <a href="course-details.html" class="ep-course__btn">Enroll Now <i class="fi fi-rs-arrow-small-right"></i>
-                      </a>
-                      <span class="ep-course__price">$50.00</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Single Course Card -->
-              <div class="col-lg-6 col-xl-4 col-md-6 col-12">
-                <div
-                  class="ep-course__card wow fadeInUp"
-                  data-wow-delay=".3s"
-                  data-wow-duration="1s">
-                  <a href="course-details.html" class="ep-course__img">
-                    <img
-                      src="assets/images/course/course-1/4.png"
-                      alt="course-img" />
-                  </a>
-                  <a href="formations.php" class="ep-course__tag ep7-bg">Math</a>
-                  <div class="ep-course__body">
-                    <div class="ep-course__lesson">
-                      <div class="ep-course__student">
-                        <i class="fi-rr-user"></i>
-                        <p>250 Student</p>
-                      </div>
-                      <div class="ep-course__teacher">
-                        <p>Steve Smith</p>
-                      </div>
-                    </div>
-                    <div class="ep-course__rattings">
-                      <ul>
-                        <li>
-                          <i class="icofont-star"></i>
-                        </li>
-                        <li>
-                          <i class="icofont-star"></i>
-                        </li>
-                        <li>
-                          <i class="icofont-star"></i>
-                        </li>
-                        <li>
-                          <i class="icofont-star"></i>
-                        </li>
-                        <li>
-                          <i class="icofont-star off-color"></i>
-                        </li>
-                        <li>
-                          <span>(5.0/ 2 Ratings)</span>
-                        </li>
-                      </ul>
-                    </div>
-                    <a href="course-details.html" class="ep-course__title">
-                      <h5>Early Childhood Education Practices</h5>
-                    </a>
-                    <div class="ep-course__bottom">
-                      <a href="course-details.html" class="ep-course__btn">Enroll Now <i class="fi fi-rs-arrow-small-right"></i>
-                      </a>
-                      <span class="ep-course__price">$50.00</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Single Course Card -->
-              <div class="col-lg-6 col-xl-4 col-md-6 col-12">
-                <div
-                  class="ep-course__card wow fadeInUp"
-                  data-wow-delay=".5s"
-                  data-wow-duration="1s">
-                  <a href="course-details.html" class="ep-course__img">
-                    <img
-                      src="assets/images/course/course-1/5.png"
-                      alt="course-img" />
-                  </a>
-                  <a href="formations.php" class="ep-course__tag ep4-bg">Math</a>
-                  <div class="ep-course__body">
-                    <div class="ep-course__lesson">
-                      <div class="ep-course__student">
-                        <i class="fi-rr-user"></i>
-                        <p>250 Student</p>
-                      </div>
-                      <div class="ep-course__teacher">
-                        <p>Steve Smith</p>
-                      </div>
-                    </div>
-                    <div class="ep-course__rattings">
-                      <ul>
-                        <li>
-                          <i class="icofont-star"></i>
-                        </li>
-                        <li>
-                          <i class="icofont-star"></i>
-                        </li>
-                        <li>
-                          <i class="icofont-star"></i>
-                        </li>
-                        <li>
-                          <i class="icofont-star"></i>
-                        </li>
-                        <li>
-                          <i class="icofont-star off-color"></i>
-                        </li>
-                        <li>
-                          <span>(5.0/ 2 Ratings)</span>
-                        </li>
-                      </ul>
-                    </div>
-                    <a href="course-details.html" class="ep-course__title">
-                      <h5>Embrace the power of better tomorrow education</h5>
-                    </a>
-                    <div class="ep-course__bottom">
-                      <a href="course-details.html" class="ep-course__btn">Enroll Now <i class="fi fi-rs-arrow-small-right"></i>
-                      </a>
-                      <span class="ep-course__price">$50.00</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Single Course Card -->
-              <div class="col-lg-6 col-xl-4 col-md-6 col-12">
-                <div
-                  class="ep-course__card wow fadeInUp"
-                  data-wow-delay=".7s"
-                  data-wow-duration="1s">
-                  <a href="course-details.html" class="ep-course__img">
-                    <img
-                      src="assets/images/course/course-1/6.png"
-                      alt="course-img" />
-                  </a>
-                  <a href="formations.php" class="ep-course__tag ep3-bg">Math</a>
-                  <div class="ep-course__body">
-                    <div class="ep-course__lesson">
-                      <div class="ep-course__student">
-                        <i class="fi-rr-user"></i>
-                        <p>250 Student</p>
-                      </div>
-                      <div class="ep-course__teacher">
-                        <p>Steve Smith</p>
-                      </div>
-                    </div>
-                    <div class="ep-course__rattings">
-                      <ul>
-                        <li>
-                          <i class="icofont-star"></i>
-                        </li>
-                        <li>
-                          <i class="icofont-star"></i>
-                        </li>
-                        <li>
-                          <i class="icofont-star"></i>
-                        </li>
-                        <li>
-                          <i class="icofont-star"></i>
-                        </li>
-                        <li>
-                          <i class="icofont-star off-color"></i>
-                        </li>
-                        <li>
-                          <span>(5.0/ 2 Ratings)</span>
-                        </li>
-                      </ul>
-                    </div>
-                    <a href="course-details.html" class="ep-course__title">
-                      <h5>Basic Programming with Python</h5>
-                    </a>
-                    <div class="ep-course__bottom">
-                      <a href="course-details.html" class="ep-course__btn">Enroll Now <i class="fi fi-rs-arrow-small-right"></i>
-                      </a>
-                      <span class="ep-course__price">$50.00</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <?php
+                }
+              } catch (PDOException $e) {
+                echo '<div class="alert alert-danger">Erreur: ' . $e->getMessage() . '</div>';
+              }
+              ?>
             </div>
           </div>
         </section>
@@ -818,15 +581,13 @@
               <div class="col-12">
                 <div class="ep-section-head d-flex-end-between">
                   <div class="ep-section-head__info">
-                    <span class="ep-section-head__sm-title ep2-color">Our Mentor</span>
+                    <span class="ep-section-head__sm-title ep2-color">Nos Formateurs | Mentors</span>
                     <h3 class="ep-section-head__big-title ep-split-text left">
-                      Meet Our <span>Inspiring</span> <br />
-                      Dedicated Mentor
+                      Rencontrez Nos <span>Formateurs</span> <br />
+                      Dévoués et Inspirants
                     </h3>
                   </div>
                   <div class="ep-section-head__btn">
-                    <a href="team.html" class="ep-btn">View More <i class="fi fi-rs-arrow-small-right"></i>
-                    </a>
                   </div>
                 </div>
               </div>
@@ -848,7 +609,7 @@
                       <a href="team-details.html">
                         <h5>Bessie Cooper</h5>
                       </a>
-                      <p>Mentor</p>
+                      <p>Formateur</p>
                     </div>
                     <div class="ep-team__social">
                       <span class="ep-team__social-btn">
@@ -896,7 +657,7 @@
                       <a href="team-details.html">
                         <h5>Arlene McCoy</h5>
                       </a>
-                      <p>Senior Mentor</p>
+                      <p>Formateur Senior</p>
                     </div>
                     <div class="ep-team__social">
                       <span class="ep-team__social-btn">
@@ -944,7 +705,7 @@
                       <a href="team-details.html">
                         <h5>Brooklyn Simmons</h5>
                       </a>
-                      <p>Assistant Teacher</p>
+                      <p>Formateur Assistant</p>
                     </div>
                     <div class="ep-team__social">
                       <span class="ep-team__social-btn">
@@ -1146,7 +907,7 @@
                             </div>
                           </div>
                         </div>
-                       
+
                       </div>
                     </div>
                   </div>
@@ -1156,7 +917,7 @@
           </section>
           <!-- End Faq Area -->
         </div>
-        
+
 
         <!-- Start Event Area -->
         <section class="ep-blog section-gap position-relative">
@@ -1170,133 +931,133 @@
               src="assets/images/blog/blog-1/shape-2.svg"
               alt="shape-2" />
           </div>
-          <div class="container ep-container">
-            <div class="row justify-content-center">
-              <div class="col-lg-12 col-xl-6 col-md-8 col-12">
-                <div class="ep-section-head text-center">
-                  <span class="ep-section-head__sm-title ep2-color">Evènements a venir</span>
-                  <h3 class="ep-section-head__big-title ep-split-text left">
-                    Lisez nos recents<span>Evenements</span> <br />
-                  </h3>
+          <!-- Start Event Area -->
+          <section class="ep-blog section-gap position-relative">
+            <div class="ep-blog__shape-1 rotate-ani">
+              <img
+                src="assets/images/blog/blog-1/shape-1.svg"
+                alt="shape-1" />
+            </div>
+            <div class="ep-blog__shape-2 updown-ani">
+              <img
+                src="assets/images/blog/blog-1/shape-2.svg"
+                alt="shape-2" />
+            </div>
+            <div class="container ep-container">
+              <div class="row justify-content-center">
+                <div class="col-lg-12 col-xl-6 col-md-8 col-12">
+                  <div class="ep-section-head text-center">
+                    <span class="ep-section-head__sm-title ep2-color">Événements à venir</span>
+                    <h3 class="ep-section-head__big-title ep-split-text left">
+                      Découvrez nos <span>Actualités</span> <br />récentes
+                    </h3>
+                  </div>
                 </div>
+              </div>
+              <div class="row">
+                <?php
+                require_once 'config/database.php';
+
+                try {
+                  // Récupérer les 6 articles les plus récents
+                  $sql = "SELECT a.id_article, a.titre, a.description_art, a.date_pub, a.photo, 
+                                 u.login as auteur
+                          FROM article a
+                          LEFT JOIN utilisateur u ON a.id_utilisateur = u.id_utilisateur
+                          WHERE a.statut = 'Publié'
+                          ORDER BY a.date_pub DESC
+                          LIMIT 6";
+                  $stmt = $conn->prepare($sql);
+                  $stmt->execute();
+                  $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                  // Tableau des délais d'animation
+                  $delays = ['.3s', '.5s', '.7s', '.9s', '1.1s', '1.3s'];
+
+                  // Compteur pour les délais
+                  $delayIndex = 0;
+
+                  // Afficher les articles
+                  foreach ($articles as $article) {
+                    // Formater la date
+                    $date = new DateTime($article['date_pub']);
+                    $jour = $date->format('d');
+                    $mois = $date->format('M');
+                ?>
+                    <!-- Single Event Card -->
+                    <div class="col-lg-6 col-xl-4 col-md-6 col-12">
+                      <div
+                        class="ep-blog__card wow fadeInUp"
+                        data-wow-delay="<?php echo $delays[$delayIndex % count($delays)]; ?>"
+                        data-wow-duration="1s">
+                        <a href="event_detail.php?id=<?php echo $article['id_article']; ?>" class="ep-blog__img">
+                          <img
+                            src="assets/images/blog/blog-1/<?php echo ($delayIndex % 3) + 1; ?>.png"
+                            alt="<?php echo $article['titre']; ?>" />
+                        </a>
+                        <div class="ep-blog__info">
+                          <div class="ep-blog__date">
+                            <?php echo $jour; ?> <br />
+                            <?php echo $mois; ?>
+                          </div>
+                          <div class="ep-blog__location">
+                            <i class="fi fi-rs-marker"></i>
+                            <span>Campus principal</span>
+                          </div>
+                          <div class="ep-blog__content">
+                            <a href="event_detail.php?id=<?php echo $article['id_article']; ?>" class="ep-blog__title">
+                              <h5><?php echo $article['titre']; ?></h5>
+                            </a>
+                            <p class="ep-blog__text">
+                              <?php echo substr($article['description_art'], 0, 80) . '...'; ?>
+                            </p>
+                            <div class="ep-blog__btn">
+                              <a href="event_detail.php?id=<?php echo $article['id_article']; ?>">Lire plus
+                                <i class="fi fi-rs-arrow-small-right"></i>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Start Brand -->
+                    
+                <?php
+                    $delayIndex++;
+                  }
+                } catch (PDOException $e) {
+                  echo '<div class="alert alert-danger">Erreur: ' . $e->getMessage() . '</div>';
+                }
+                ?>
               </div>
             </div>
-            <div class="row">
-              <!-- Single Event Card -->
-              <div class="col-lg-6 col-xl-4 col-md-6 col-12">
-                <div
-                  class="ep-blog__card wow fadeInUp"
-                  data-wow-delay=".3s"
-                  data-wow-duration="1s">
-                  <a href="event-details.html" class="ep-blog__img">
-                    <img
-                      src="assets/images/blog/blog-1/1.png"
-                      alt="blog-img" />
-                  </a>
-                  <div class="ep-blog__info">
-                    <div class="ep-blog__date">
-                      25 <br />
-                      Dec
-                    </div>
-                    <div class="ep-blog__location">
-                      <i class="fi fi-rs-marker"></i>
-                      <span>Mirpur Bangladesh</span>
-                    </div>
-                    <div class="ep-blog__content">
-                      <a href="event-details.html" class="ep-blog__title">
-                        <h5>Education foundation</h5>
-                      </a>
-                      <p class="ep-blog__text">
-                        Education is the key to stude Unlock your horizons
-                        education
-                      </p>
-                      <div class="ep-blog__btn">
-                        <a href="event-details.html">Read More
-                          <i class="fi fi-rs-arrow-small-right"></i>
-                        </a>
+          </section>
+          <div class="ep-section-head text-center">
+                    <span class="ep-section-head__sm-title ep2-color">Nos partenaires</span>
+                    <h3 class="ep-section-head__big-title ep-split-text left">
+                      Découvrez nos<span>partenaires</span>qui nous font confiance <br />
+                    </h3>
+                  </div>
+                  <br>  
+                  <br>
+          <div class="ep-brand section-gap pt-0">
+                      <div class="container ep-container">
+                        <div class="row">
+                          <div class="col-12">
+                            <div class="owl-carousel ep-brand__slider">
+                              <?php foreach ($partenaires as $partenaire): ?>
+                                <a href="#" class="ep-brand__logo ep-brand__logo--style2">
+                                  <img
+                                    src="assets/imgs/partenaires/<?php echo htmlspecialchars($partenaire['photo']); ?>"
+                                    alt="<?php echo htmlspecialchars($partenaire['nom']); ?>" />
+                                </a>
+                              <?php endforeach; ?>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Single Event Card -->
-              <div class="col-lg-6 col-xl-4 col-md-6 col-12">
-                <div
-                  class="ep-blog__card wow fadeInUp"
-                  data-wow-delay=".5s"
-                  data-wow-duration="1s">
-                  <a href="event-details.html" class="ep-blog__img">
-                    <img
-                      src="assets/images/blog/blog-1/2.png"
-                      alt="blog-img" />
-                  </a>
-                  <div class="ep-blog__info">
-                    <div class="ep-blog__date">
-                      25 <br />
-                      Dec
-                    </div>
-                    <div class="ep-blog__location">
-                      <i class="fi fi-rs-marker"></i>
-                      <span>Mirpur Bangladesh</span>
-                    </div>
-                    <div class="ep-blog__content">
-                      <a href="event-details.html" class="ep-blog__title">
-                        <h5>Introduction to Psychology</h5>
-                      </a>
-                      <p class="ep-blog__text">
-                        Education is the key to stude Unlock your horizons
-                        education
-                      </p>
-                      <div class="ep-blog__btn">
-                        <a href="event-details.html">Read More
-                          <i class="fi fi-rs-arrow-small-right"></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- Single Event Card -->
-              <div class="col-lg-6 col-xl-4 col-md-6 col-12">
-                <div
-                  class="ep-blog__card wow fadeInUp"
-                  data-wow-delay=".7s"
-                  data-wow-duration="1s">
-                  <a href="event-details.html" class="ep-blog__img">
-                    <img
-                      src="assets/images/blog/blog-1/3.png"
-                      alt="blog-img" />
-                  </a>
-                  <div class="ep-blog__info">
-                    <div class="ep-blog__date">
-                      25 <br />
-                      Dec
-                    </div>
-                    <div class="ep-blog__location">
-                      <i class="fi fi-rs-marker"></i>
-                      <span>Mirpur Bangladesh</span>
-                    </div>
-                    <div class="ep-blog__content">
-                      <a href="event-details.html" class="ep-blog__title">
-                        <h5>Principles of Economics</h5>
-                      </a>
-                      <p class="ep-blog__text">
-                        Education is the key to stude Unlock your horizons
-                        education
-                      </p>
-                      <div class="ep-blog__btn">
-                        <a href="event-details.html">Read More
-                          <i class="fi fi-rs-arrow-small-right"></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!-- End Event Area -->
+          <!-- End Event Area -->
       </main>
       <!-- Start Footer Area -->
       <?php include_once 'includes/footer.php'; ?>
@@ -1304,7 +1065,7 @@
     </div>
   </div>
 
-  <?php include_once 'includes/scripts.php' ;?>
+  <?php include_once 'includes/scripts.php'; ?>
 </body>
 
 <!-- Mirrored from <?php include 'name.php';  ?>-template.vercel.app/<?php include 'name.php';  ?>/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 24 Sep 2024 03:28:30 GMT -->

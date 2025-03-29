@@ -126,7 +126,7 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
                       data-wow-delay=".3s"
                       data-wow-duration="1s"
                     >
-                      <a href="event-details.php?id=<?php echo $event['id_evenement']; ?>" class="ep-blog__img">
+                      <a href="event_detail.php?id=<?php echo $event['id_evenement']; ?>" class="ep-blog__img">
                         <!-- You can change the image source if needed -->
                         <img src="assets/images/blog/blog-1/1.png" alt="Event Image" />
                       </a>
@@ -147,7 +147,7 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <?php echo htmlspecialchars($event['description_ev']); ?>
                           </p>
                           <div class="ep-blog__btn">
-                            <a href="event-details.php?id=<?php echo $event['id_evenement']; ?>">
+                            <a href="event_detail.php?id=<?php echo $event['id_evenement']; ?>">
                               En apprendre plus <i class="fi fi-rs-arrow-small-right"></i>
                             </a>
                           </div>

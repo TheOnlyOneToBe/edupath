@@ -54,14 +54,40 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php include 'includes/head.php'; ?>
   </head>
   <body class="ep-magic-cursor">
-    <!-- Start Preloader  -->
-    <div id="preloader">
+   <!-- Start Preloader  -->
+   <div id="preloader">
       <div id="ep-preloader" class="ep-preloader">
         <div class="animation-preloader">
           <div class="spinner"></div>
         </div>
       </div>
     </div>
+    <!-- End Preloader -->
+
+    <!-- Start Cursor To Top  -->
+    <div class="cursor"></div>
+    <div class="cursor2"></div>
+    <!-- End Cursor To Top -->
+
+    <!-- Start Begin Magic Cursor -->
+    <div id="magic-cursor">
+      <div id="ball"></div>
+    </div>
+    <!-- End Begin Magic Cursor -->
+
+    <!-- Start Back To Top  -->
+    <div class="progress-wrap">
+      <svg
+        class="progress-circle svg-content"
+        width="100%"
+        height="100%"
+        viewBox="-1 -1 102 102"
+      >
+        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
+      </svg>
+    </div>
+    <!-- End Back To Top -->
+
  <?php include 'includes/header.php';
 ?>
 
@@ -88,21 +114,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <i class="fa-solid fa-location-dot"></i>
                             <div class="info-content">
                                 <h5>Notre adresse</h5>
-                                <p>123 Rue Example, Ville, Pays</p>
+                                <p>Bonabéri-rail Douala, Cameroun</p>
                             </div>
                         </div>
                         <div class="single-info">
                             <i class="fa-solid fa-phone"></i>
                             <div class="info-content">
                                 <h5>Téléphone</h5>
-                                <p>+1 234 567 890</p>
+                                <p>+237 695 271 348</p>
                             </div>
                         </div>
                         <div class="single-info">
                             <i class="fa-solid fa-envelope"></i>
                             <div class="info-content">
                                 <h5>Email</h5>
-                                <p>contact@<?php include 'name.php' ;  ?>.com</p>
+                                <p>astridfangue@yahoo<?php include 'name.php' ;  ?>.com</p>
                             </div>
                         </div>
                     </div>
@@ -142,11 +168,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </div>
         </div>
+        <?php include 'includes/footer.php'; ?>
     </div>
 </section>
 <!-- End Contact Area -->
 
-<?php include 'includes/footer.php'; ?>
+
 <?php include 'includes/scripts.php'; ?>
   </body>
 </html>

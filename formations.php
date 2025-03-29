@@ -114,7 +114,7 @@ $formations = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="ep-course__card wow fadeInUp" data-wow-delay=".3s" data-wow-duration="1s">
                                         <!-- Image statique de formation (à personnaliser ou récupérer dynamiquement) -->
                                         <a href="#" class="ep-course__img">
-                                            <img src="assets/images/formation.jpg" alt="Image formation" />
+                                            <img src="assets/imgs/formations/<?php echo $formation['photo'];?>" alt="Image formation" />
                                         </a>
                                         
                                         <!-- Affichage du nom de la filière en tant qu'étiquette -->
