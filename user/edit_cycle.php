@@ -9,10 +9,17 @@ $cycle = null;
 $id_cycle = $_GET['id'] ?? null;
 
 if (!$id_cycle) {
-    header('Location: /cycles.php');
+    header('Location: cycles.php');
     exit();
 }
-
+$check_cycle = $conn->prepare("SELECT * FROM Cycle WHERE id_cycle = :id");
+$check_cycle->execute([':id' => $id_cycle]);
+// Vérification de l'existence du cycle
+if ($check_cycle->rowCount() == 0) {
+    $_SESSION['error'] = "Cycle introuvable.";
+    header('Location: cycles.php');
+    exit();
+}
 // Traitement du formulaire de modification
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nom = $_POST['nom'] ?? '';
@@ -33,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 ]);
                 
                 $_SESSION['success'] = "Le cycle a été modifié avec succès!";
-                header('Location: /cycles.php');
+                header('Location: cycles.php');
                 exit();
             }
         } catch(PDOException $e) {
@@ -52,7 +59,7 @@ try {
     $cycle = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$cycle) {
-        header('Location: /cycles.php');
+        header('Location: cycles.php');
         exit();
     }
 } catch(PDOException $e) {
@@ -80,7 +87,8 @@ try {
     <?php include_once 'css.php'; ?>
 </head>
 
-                      <body class="ep-magic-cursor"><?php include_once 'include/navbar.php'; ?>
+<body class="ep-magic-cursor">
+    <?php include_once 'include/navbar.php'; ?>
     <?php include_once 'magic.php'; ?>
 
     <!-- End Header Area -->
@@ -114,7 +122,7 @@ try {
                                         </div>
                                         <div class="mt-4">
                                             <button type="submit" class="ep-btn">Enregistrer les modifications</button>
-                                            <a href="/cycles.php" class="ep-btn ep-btn-secondary">Retour</a>
+                                            <a href="cycles.php" class="ep-btn ep-btn-secondary">Retour</a>
                                         </div>
                                     </form>
                                 </div>
@@ -123,7 +131,7 @@ try {
                     </div>
                 </section>
             </main>
-            <?php include_once '    include/footer.php'; ?>
+            <?php include_once 'include/footer.php'; ?>
         </div>
     </div>
 

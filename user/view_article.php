@@ -130,7 +130,7 @@ try {
                 </section>
                 <!-- End Article Detail Area -->
             </main>
-            <?php include_once '    include/footer.php'; ?>
+            <?php include_once 'include/footer.php'; ?>
         </div>
     </div>
 

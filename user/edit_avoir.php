@@ -159,7 +159,7 @@ try {
             </main>
             <br>
             <br>
-            <?php include_once '    include/footer.php'; ?>
+            <?php include_once 'include/footer.php'; ?>
         </div>
     </div>
 

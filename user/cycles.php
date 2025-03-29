@@ -9,6 +9,12 @@ if (isset($_SESSION['success'])) {
     $success = $_SESSION['success'];
     unset($_SESSION['success']);
 }
+// Get error message from session
+if (isset($_SESSION['error'])) {
+    $error = $_SESSION['error'];
+    unset($_SESSION['error']);
+}
+
 
 // Récupération des cycles existants
 try {
@@ -31,8 +37,8 @@ try {
     <?php include_once 'css.php'; ?>
 </head>
 
-<body class="ep-magic-cursor"><?php include_once 'include/navbar.php'; ?>
-    
+<body class="ep-magic-cursor">
+    <?php include_once 'include/navbar.php'; ?> 
     <?php include_once 'magic.php'; ?>
 
     <div id="smooth-wrapper">
@@ -47,7 +53,7 @@ try {
                                 <div class="ep-breadcrumbs__content">
                                     <h3 class="ep-breadcrumbs__title">Gestion des Cycles</h3>
                                     <ul class="ep-breadcrumbs__menu">
-                                        <li><a href="  dashboard.php">Tableau de bord</a></li>
+                                        <li><a href="dashboard.php">Tableau de bord</a></li>
                                         <li><i class="fi-bs-angle-right"></i></li>
                                         <li class="active">Cycles</li>
                                     </ul>
@@ -72,7 +78,7 @@ try {
                         <!-- Add Cycle Button -->
                         <div class="row mb-4">
                             <div class="col-12 text-end">
-                                <a href="../add_cycle.php" class="ep-btn ep-btn-primary">
+                                <a href="add_cycle.php" class="ep-btn ep-btn-primary">
                                     <i class="fi fi-rs-plus"></i> Ajouter un cycle
                                 </a>
                             </div>
@@ -120,7 +126,7 @@ try {
                     </div>
                 </section>
             </main>
-            <?php include_once '    include/footer.php'; ?>
+            <?php include_once 'include/footer.php'; ?>
         </div>
     </div>
 
