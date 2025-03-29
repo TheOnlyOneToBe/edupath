@@ -2,13 +2,6 @@
 session_start();
 require_once '../../config/database.php';
 
-
-// Vérifier si l'utilisateur est connecté et a la fonction d'administrateur
-if (!isset($_SESSION['user']) || $_SESSION['user']['user_fonction'] !== 'admin') {
-    header('Location: login.php');
-    exit();
-}
-
 $id_utilisateur = $_GET['id'] ?? null;
 
 // Empêcher la suppression de son propre compte

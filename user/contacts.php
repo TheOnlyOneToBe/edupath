@@ -42,10 +42,10 @@ try {
   <!-- Site Title -->
   <title>Gestion des Contacts | <?php include '../name.php' ;  ?></title>
   <?php include_once 'css.php'; ?>
-  <link rel="stylesheet" href="style.css">
 </head>
 
-<?php include_once 'include/navbar.php'; ?>                      <body class="ep-magic-cursor"><?php include_once 'include/navbar.php'; ?>                      <body class="ep-magic-cursor"><?php include_once 'include/navbar.php'; ?>
+<body class="ep-magic-cursor">
+  <?php include_once 'include/navbar.php'; ?>
   <?php include_once 'magic.php'; ?>
 
   <!-- End Header Area -->
@@ -64,7 +64,7 @@ try {
                   <h3 class="ep-breadcrumbs__title">Gestion des Contacts</h3>
                   <ul class="ep-breadcrumbs__menu">
                     <li>
-                      <a href="  dashboard.php">Tableau de bord</a>
+                      <a href="dashboard.php">Tableau de bord</a>
                     </li>
                     <li>
                       <i class="fi-bs-angle-right"></i>
@@ -145,7 +145,7 @@ try {
         </section>
         <!-- End Contact List Area -->
       </main>
-      <?php include_once '    include/footer.php'; ?>
+      <?php include_once 'include/footer.php'; ?>
     </div>
   </div>
 

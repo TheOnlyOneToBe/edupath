@@ -7,7 +7,7 @@ $id_contact = $_GET['id'] ?? null;
 
 if (!$id_contact) {
     $_SESSION['error'] = "ID de contact non spécifié.";
-    header('Location: contacts.php');
+    header('Location: ../contacts.php');
     exit();
 }
 
@@ -19,7 +19,7 @@ try {
     
     if ($check_stmt->fetchColumn() == 0) {
         $_SESSION['error'] = "Ce message n'existe pas.";
-        header('Location: contacts.php');
+        header('Location: ../contacts.php');
         exit();
     }
     

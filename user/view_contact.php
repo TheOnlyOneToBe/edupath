@@ -6,7 +6,7 @@ require_once '../config/database.php';
 $id_contact = $_GET['id'] ?? null;
 
 if (!$id_contact) {
-    header('Location: /contacts.php');
+    header('Location: contacts.php');
     exit();
 }
 
@@ -20,12 +20,12 @@ try {
 
     if (!$contact) {
         $_SESSION['error'] = "Ce message n'existe pas.";
-        header('Location: /contacts.php');
+        header('Location: contacts.php');
         exit();
     }
 } catch(PDOException $e) {
     $_SESSION['error'] = "Erreur lors de la récupération des détails du message.";
-    header('Location: /contacts.php');
+    header('Location: contacts.php');
     exit();
 }
 ?>
@@ -50,7 +50,8 @@ try {
     <?php include_once 'css.php'; ?>
 </head>
 
-                      <body class="ep-magic-cursor"><?php include_once 'include/navbar.php'; ?>
+<body class="ep-magic-cursor">
+    <?php include_once 'include/navbar.php'; ?>
     <?php include_once 'magic.php'; ?>
 
     <!-- End Header Area -->
@@ -69,13 +70,13 @@ try {
                                     <h3 class="ep-breadcrumbs__title">Détails du Message</h3>
                                     <ul class="ep-breadcrumbs__menu">
                                         <li>
-                                            <a href="  dashboard.php">Tableau de bord</a>
+                                            <a href="dashboard.php">Tableau de bord</a>
                                         </li>
                                         <li>
                                             <i class="fi-bs-angle-right"></i>
                                         </li>
                                         <li>
-                                            <a href="/contacts.php">Contacts</a>
+                                            <a href="contacts.php">Contacts</a>
                                         </li>
                                         <li>
                                             <i class="fi-bs-angle-right"></i>
@@ -139,7 +140,7 @@ try {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="/contacts.php" class="linkedin">
+                                                <a href="contacts.php" class="linkedin">
                                                     <i class="icofont-listine-dots"></i>
                                                 </a>
                                             </li>
@@ -192,7 +193,7 @@ try {
                                             </a>
                                         </div>
                                         <div class="ep-blog__sidebar-btn mt-3">
-                                            <a href="/contacts.php" class="ep-btn ep-btn-secondary">
+                                            <a href="contacts.php" class="ep-btn ep-btn-secondary">
                                                 <i class="icofont-listine-dots"></i> Retour à la liste
                                             </a>
                                         </div>
@@ -204,7 +205,7 @@ try {
                 </section>
                 <!-- End Blog Details Area -->
             </main>
-            <?php include_once '    include/footer.php'; ?>
+            <?php include_once 'include/footer.php'; ?>
         </div>
     </div>
 

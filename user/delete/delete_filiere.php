@@ -3,12 +3,6 @@ session_start();
 require_once '../../config/database.php';
 
 
-// Vérifier si l'utilisateur est connecté
-if (!isset($_SESSION['user'])) {
-    header('Location: login.php');
-    exit();
-}
-
 $id_filiere = $_GET['id'] ?? null;
 
 if ($id_filiere) {
