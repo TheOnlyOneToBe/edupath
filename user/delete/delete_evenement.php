@@ -29,6 +29,6 @@ if ($id_evenement) {
     $_SESSION['error'] = "ID d'événement invalide.";
 }
 
-header('Location: evenements.php');
+header('Location: ../evenements.php');
 exit();
 ?>

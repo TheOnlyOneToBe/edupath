@@ -23,5 +23,5 @@ if ($id_filiere) {
     }
 }
 
-header('Location: filieres.php');
+header('Location: ../filieres.php');
 exit();

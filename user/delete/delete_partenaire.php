@@ -29,5 +29,5 @@ if ($id_partenaire) {
     }
 }
 
-header('Location: partenaires.php');
+header('Location: ../partenaires.php');
 exit();

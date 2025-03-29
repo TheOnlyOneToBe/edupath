@@ -28,5 +28,5 @@ if ($id_article) {
     }
 }
 
-header('Location: articles.php');
+header('Location: ../articles.php');
 exit();

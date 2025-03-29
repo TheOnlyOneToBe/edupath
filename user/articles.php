@@ -80,7 +80,7 @@ try {
                         <!-- Add Article Button -->
                         <div class="row mb-4">
                             <div class="col-12 text-end">
-                                <a href="../add_article.php" class="ep-btn ep-btn-primary">
+                                <a href="add_article.php" class="ep-btn ep-btn-primary">
                                     <i class="fi fi-rs-plus"></i> Ajouter un article
                                 </a>
                             </div>

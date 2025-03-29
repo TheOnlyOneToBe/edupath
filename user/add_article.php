@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       ]);
 
       $_SESSION['success'] = "L'article a été ajouté avec succès!";
-      header('Location: /articles.php');
+      header('Location: articles.php');
       exit();
     } catch (PDOException $e) {
       $error = "Une erreur est survenue lors de l'ajout de l'article: " . $e->getMessage();

@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ]);
 
             $_SESSION['success'] = "La bourse a été ajoutée avec succès!";
-            header('Location: /bourses.php');
+            header('Location: bourses.php');
             exit();
             
         } catch (PDOException $e) {
@@ -56,7 +56,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php include_once 'css.php'; ?>
 </head>
 
-                      <body class="ep-magic-cursor"><?php include_once 'include/navbar.php'; ?>
+<body class="ep-magic-cursor">
+    <?php include_once 'include/navbar.php'; ?>
     <?php include_once 'magic.php'; ?>
 
     <!-- End Header Area -->
@@ -91,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </section>
                
             </main>
-            <?php include_once '../include/footer.php' ;?>
+            <?php include_once 'include/footer.php' ;?>
         </div>
     </div>
 

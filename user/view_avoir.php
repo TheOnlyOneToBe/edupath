@@ -8,7 +8,7 @@ $error = '';
 $avoir = null;
 
 if (!$id_filiere || !$id_cycle) {
-    header('Location: /avoir.php');
+    header('Location: avoir.php');
     exit();
 }
 
@@ -28,7 +28,7 @@ try {
     $avoir = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$avoir) {
-        header('Location: /avoir.php');
+        header('Location: user/avoir.php');
         exit();
     }
 } catch(PDOException $e) {
@@ -69,7 +69,8 @@ if ($avoir) {
     <link rel="stylesheet" href="/style.css">
 </head>
 
-                      <body class="ep-magic-cursor"><?php include_once 'include/navbar.php'; ?>
+<body class="ep-magic-cursor">
+    <?php include_once 'include/navbar.php'; ?>
     <?php include_once 'magic.php'; ?>
 
     <!-- End Header Area -->
@@ -94,7 +95,7 @@ if ($avoir) {
                                             <i class="fi-bs-angle-right"></i>
                                         </li>
                                         <li>
-                                            <a href="/avoir.php">Frais de scolarité</a>
+                                            <a href="avoir.php">Frais de scolarité</a>
                                         </li>
                                         <li>
                                             <i class="fi-bs-angle-right"></i>
@@ -129,7 +130,7 @@ if ($avoir) {
                                         <div class="ep-blog__details-cover">
                                             <div class="ep-blog__details-cover-img">
                                                 <img
-                                                    src="../assets/img/concept-technologie-apprentissage-electronique-webinar-education-ligne-cours-ligne-ai-apprentissage-automatique_1006743-555.jpg"
+                                                    src="../assets/imgs/formations/<?php echo htmlspecialchars($avoir['photo']); ?>"
                                                     alt="filiere-img"
                                                 />
                                             </div>
@@ -193,7 +194,7 @@ if ($avoir) {
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="/avoir.php" class="linkedin">
+                                                <a href="avoir.php" class="linkedin">
                                                     <i class="icofont-listine-dots"></i>
                                                 </a>
                                             </li>
@@ -246,7 +247,7 @@ if ($avoir) {
                                             </a>
                                         </div>
                                         <div class="ep-blog__sidebar-btn mt-3">
-                                            <a href="/avoir.php" class="ep-btn ep-btn-secondary">
+                                            <a href="avoir.php" class="ep-btn ep-btn-secondary">
                                                 <i class="icofont-listine-dots"></i> Retour à la liste
                                             </a>
                                         </div>

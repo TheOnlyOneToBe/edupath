@@ -109,7 +109,7 @@ try {
                 </section>
                 <!-- End Partner Details Area -->
             </main>
-            <?php include_once 'include/footer.php'; ?>
+            <?php include_once '    include/footer.php'; ?>
         </div>
     </div>
 

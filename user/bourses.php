@@ -33,7 +33,8 @@ try {
     <title>Gestion des Bourses - <?php include '../name.php' ;  ?></title>
     <?php include_once 'css.php'; ?>
 </head>
-                      <body class="ep-magic-cursor"><?php include_once 'include/navbar.php'; ?>
+<body class="ep-magic-cursor">
+    <?php include_once 'include/navbar.php'; ?>
     <?php include_once 'magic.php'; ?>
 
     <div id="smooth-wrapper">

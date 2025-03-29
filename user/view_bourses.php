@@ -6,7 +6,7 @@ require_once '../config/database.php';
 $id_bourse = $_GET['id'] ?? null;
 
 if (!$id_bourse) {
-    header('Location: /bourses.php');
+    header('Location: bourses.php');
     exit();
 }
 
@@ -16,34 +16,36 @@ try {
             FROM Bourse b 
             LEFT JOIN Utilisateur u ON b.id_utilisateur = u.id_utilisateur 
             WHERE b.id_bourse = :id_bourse";
-    
+
     $stmt = $conn->prepare($sql);
     $stmt->execute([':id_bourse' => $id_bourse]);
     $bourse = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$bourse) {
         $_SESSION['error'] = "Cette bourse n'existe pas.";
-        header('Location: /bourses.php');
+        header('Location: bourses.php');
         exit();
     }
-} catch(PDOException $e) {
+} catch (PDOException $e) {
     $_SESSION['error'] = "Erreur lors de la récupération des détails de la bourse.";
-    header('Location: /bourses.php');
+    header('Location: bourses.php');
     exit();
 }
 ?>
 
 <!DOCTYPE html>
 <html class="no-js" lang="fr">
+
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Détails de la Bourse | <?php include '../name.php' ;  ?></title>
+    <title>Détails de la Bourse | <?php include '../name.php';  ?></title>
     <?php include_once 'css.php'; ?>
 </head>
 
-                      <body class="ep-magic-cursor"><?php include_once 'include/navbar.php'; ?>
+<body class="ep-magic-cursor">
+    <?php include_once 'include/navbar.php'; ?>
     <?php include_once 'magic.php'; ?>
 
     <div id="smooth-wrapper">
@@ -76,23 +78,29 @@ try {
                                                     </p>
                                                 </div>
                                             </div>
+                                            <div class="col-md-3">
+                                            <a href="delete/delete_bourse.php?id=<?php echo $bourse['id_bourse']; ?>"
+                                                class="text-danger"
+                                                onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette bourse ?');">
+                                                <i class="fi fi-rs-trash"></i>
+                                            </a>
+                                        </div>
                                         </div>
                                     </div>
 
                                     <div class="row mt-4">
-                                        <div class="col-md-6">
-                                            <a href="/bourses.php" class="ep-btn">Retour à la liste</a>
+                                        <div class="col-md-3">
+                                            <a href="bourses.php" class="ep-btn">Retour à la liste</a>
                                         </div>
-                                        <?php if (isset($_SESSION['user']) && ($_SESSION['user']['fonction'] === 'admin' || $_SESSION['user']['id_utilisateur'] === $bourse['id_utilisateur'])): ?>
-                                        <div class="col-md-6 text-end">
+
+                                        <div class="col-md-3">
+
                                             <a href="edit_bourse.php?id=<?php echo $bourse['id_bourse']; ?>" class="ep-btn">Modifier</a>
                                         </div>
-                                        <?php endif; ?>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                 </section>
             </main>
             <?php include_once 'include/footer.php'; ?>
@@ -101,4 +109,5 @@ try {
 
     <?php include_once 'script.php'; ?>
 </body>
+
 </html>

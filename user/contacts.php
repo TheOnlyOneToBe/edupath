@@ -145,7 +145,7 @@ try {
         </section>
         <!-- End Contact List Area -->
       </main>
-      <?php include_once 'include/footer.php'; ?>
+      <?php include_once '    include/footer.php'; ?>
     </div>
   </div>
 

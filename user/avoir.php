@@ -112,7 +112,7 @@ try {
                 <div class="col-lg-6 col-xl-4 col-md-6 col-12 mb-4">
                   <div class="ep-blog__card wow fadeInUp" data-wow-delay=".3s" data-wow-duration="1s">
                     <a href="view_avoir.php?filiere=<?php echo $assoc['id_filiere']; ?>&cycle=<?php echo $assoc['id_cycle']; ?>" class="ep-blog__img">
-                      <img src="../assets/img/souriante-jeune-etudiante-livres-sac_13339-196812.avif" alt="frais-img" />
+                      <img src="../assets/imgs/formations/<?php echo $assoc['photo'];?>" alt="frais-img" />
                     </a>
                     <div class="ep-blog__info">
                       <div class="ep-blog__date ep1-bg">

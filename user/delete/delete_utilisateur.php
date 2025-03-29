@@ -24,5 +24,5 @@ if ($id_utilisateur && $id_utilisateur != $_SESSION['user']['user_id']) {
     }
 }
 
-header('Location: utilisateurs.php');
+header('Location: ../utilisateurs.php');
 exit();

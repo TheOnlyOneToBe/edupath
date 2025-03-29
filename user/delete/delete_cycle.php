@@ -17,5 +17,5 @@ if ($id_cycle) {
     }
 }
 
-header('Location: cycles.php');
+header('Location: ../cycles.php');
 exit();
