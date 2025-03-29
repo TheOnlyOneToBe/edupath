@@ -1,4 +1,5 @@
 <?php
+session_start(); 
 require_once 'config/database.php';
 
 $sql = "SELECT avoir.*, filiere.nom AS filiere_nom, cycle.nom AS cycle_nom
@@ -123,7 +124,7 @@ $formations = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <!-- Affichage du nom du cycle (par exemple "Licence", "Master", etc.) -->
                                             
                                             <a href="formation_details.php?id_filiere=<?php echo $formation['id_filiere'] ;?>&&id_cycle=<?php echo $formation['id_cycle'] ;?>" class="ep-course__title">
-                                                <h5><?php echo htmlspecialchars($formation['cycle_nom']); ?></h5>
+                                                <h5><?php echo htmlspecialchars($formation['filiere_nom']); ?> - <?php echo htmlspecialchars($formation['cycle_nom']); ?></h5>
                                             </a>
                                             <!-- Affichage des tarifs -->
                                             <p>

@@ -3,12 +3,13 @@ session_start();
 require_once 'config/database.php';
 
 // Récupérer les formations populaires (limité à 3) depuis la table avoir
-$sql_formations = "SELECT a.id_filiere, a.id_cycle, f.nom, f.description, COUNT(*) as nb_inscriptions 
+$sql_formations = "SELECT a.id_filiere,a.photo as photo, a.id_cycle,c.nom as nom, f.nom, f.description, COUNT(*) as nb_inscriptions 
                    FROM avoir a 
                    JOIN filiere f ON a.id_filiere = f.id_filiere 
+                   JOIN cycle c ON a.id_cycle = c.id_cycle
                    GROUP BY a.id_filiere, a.id_cycle, f.nom, f.description 
                    ORDER BY nb_inscriptions DESC 
-                   LIMIT 3";
+                   ";
 $stmt_formations = $conn->query($sql_formations);
 $formations = $stmt_formations->fetchAll();
 
@@ -18,7 +19,7 @@ $stmt_partenaires = $conn->query($sql_partenaires);
 $partenaires = $stmt_partenaires->fetchAll();
 
 // Récupérer les derniers évènements (3 éléments)
-$sql_events = "SELECT * FROM evenement ORDER BY id_evenement DESC LIMIT 3";
+$sql_events = "SELECT * FROM evenement ORDER BY id_evenement DESC LIMIT 50";
 $stmt_events = $conn->query($sql_events);
 $events = $stmt_events->fetchAll();
 
@@ -166,10 +167,10 @@ $articles = $stmt_articles->fetchAll();
                 <div class="owl-carousel ep-event__slider">
                     <?php foreach ($formations as $formation): ?>
                         <div class="ep-event__card">
-                            <a href="formation_detail.php?id_filiere=<?php echo $formation['id_filiere']; ?>&&id_cycle=<?php echo $formation['id_cycle']; ?>" class="ep-event__img">
-                                <!-- Update the image source if you have a dedicated formation image -->
-                                <img src="assets/img/09.jpeg" alt="formation-img" />
+                            <a href="formation_details.php?id_filiere=<?php echo $formation['id_filiere']; ?>&&id_cycle=<?php echo $formation['id_cycle']; ?>" class="ep-event__img">
+                                
                             </a>
+                            <img src="assets/imgs/formations/<?php echo $formation['photo'] ;?>" alt="formation-img" />
                             <div class="ep-event__info">
                                 <div class="ep-event__date ep6-bg">
                                     <?php echo $formation['nb_inscriptions']; ?> <?php echo random_int(20, 200); ?> inscriptions
@@ -178,7 +179,7 @@ $articles = $stmt_articles->fetchAll();
                                     <i class="fi fi-rs-marker ep6-color"></i>
                                     <?php echo htmlspecialchars($formation['nom']); ?>
                                 </div>
-                                <a href="formation_detail.php?id=<?php echo $formation['id_filiere']; ?>" class="ep-event__title">
+                                <a href="formation_details.php?id_filiere=<?php echo $formation['id_filiere']; ?>&id_cycle=<?php echo $formation['id_cycle']; ?>" class="ep-event__title">
                                     <?php echo htmlspecialchars($formation['nom']); ?>
                                 </a>
                             </div>
@@ -214,7 +215,7 @@ $articles = $stmt_articles->fetchAll();
                                     <?php echo random_int(1, 32); ?> Dec
                                 </div>
                                 <div class="ep-event__location">
-                                    <i class="fi fi-rs-marker ep6-color"></i>Mirpur Bangladesh
+                                    <i class="fi fi-rs-marker ep6-color"></i>
                                 </div>
                                 <a href="event_detail.php?id=<?php echo $event['id_evenement']; ?>" class="ep-event__title">
                                     <?php echo htmlspecialchars($event['nom']); ?>
@@ -249,7 +250,7 @@ $articles = $stmt_articles->fetchAll();
                     <div class="col-lg-6 col-xl-4 col-md-6 col-12">
                         <div
                             class="ep-blog__card ep-blog__card--style2 wow fadeInUp"
-                            data-wow-delay="<?php echo $delays[$i]; ?>s"
+                            data-wow-delay="0,5s"
                             data-wow-duration="1s">
                             <a href="article-details.php?id=<?php echo $article['id_article']; ?>" class="ep-blog__img">
                                 <img
