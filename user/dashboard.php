@@ -2,11 +2,6 @@
 session_start();
 require_once '../config/database.php';
 
-
-/* 
-$user = $_SESSION['user'];
-$fonction = $user['user_fonction'] ?? 'utilisateur'; */
-
 // Récupérer des statistiques pour le tableau de bord
 $stats = [
     'utilisateurs' => 0,
