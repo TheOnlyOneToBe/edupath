@@ -1,5 +1,13 @@
-<!DOCTYPE html>
 <?php session_start() ;?>
+<?php require_once 'config/database.php';
+$sts=$conn->prepare('SELECT COUNT("*") FROM avoir');
+$sts->execute();
+$sm=$sts->fetchColumn();
+
+?>
+
+
+<!DOCTYPE html>
 <html class="no-js" lang="fr">
 
 <head>
@@ -122,7 +130,7 @@
                     <a href="team.html">Team</a>
                   </li>
                   <li>
-                    <a href="team-details.html">Team Details</a>
+                    <a href="">Team Details</a>
                   </li>
                   <li>
                     <a href="login.html">Login</a>
@@ -257,7 +265,8 @@
                   <!-- Widget Two  -->
                   <div class="ep-hero__widget-column">
                     <div class="ep-hero__course">
-                      <span class="counter"></span>
+                      <?php ?>
+                      <span class="counter"><?php echo $sm;?></span>
                       <p>Filières<br />disponibles</p>
                     </div>
                     <!-- Image Two -->
@@ -521,7 +530,7 @@
                         <div class="ep-course__lesson">
                           <div class="ep-course__student">
                             <i class="fi-rr-user"></i>
-                            <p>Durée: <?php echo $formation['nbre_annee']; ?></p>
+                            <p>Durée: <?php echo $formation['nbre_annee']; ?> an(s)</p>
                           </div>
                           <div class="ep-course__teacher">
                             <p>Filière</p>
@@ -600,12 +609,12 @@
                   class="ep-team__card wow fadeInUp"
                   data-wow-delay=".3s"
                   data-wow-duration="1s">
-                  <a href="team-details.html" class="ep-team__img">
+                  <a href="" class="ep-team__img">
                     <?php include_once 'team/t1.php' ; ?>
                   </a>
                   <div class="ep-team__content">
                     <div class="ep-team__author">
-                      <a href="team-details.html">
+                      <a href="">
                         <h5><?php include_once 'team/t1-name.php' ;?></h5>
                       </a>
                       <p>Formateur</p>
@@ -619,12 +628,12 @@
                   class="ep-team__card wow fadeInUp"
                   data-wow-delay=".5s"
                   data-wow-duration="1s">
-                  <a href="team-details.html" class="ep-team__img">
+                  <a href="" class="ep-team__img">
                   <?php include_once 'team/t2.php' ;?>
                   </a>
                   <div class="ep-team__content">
                     <div class="ep-team__author">
-                      <a href="team-details.html">
+                      <a href="">
                         <h5><?php include_once 'team/t2-name.php' ;?></h5>
                       </a>
                       <p>Formateur Senior</p>
@@ -638,12 +647,12 @@
                   class="ep-team__card wow fadeInUp"
                   data-wow-delay=".7s"
                   data-wow-duration="1s">
-                  <a href="team-details.html" class="ep-team__img">
+                  <a href="" class="ep-team__img">
                     <?php include_once 'team/t3.php' ;?>
                   </a>
                   <div class="ep-team__content">
                     <div class="ep-team__author">
-                      <a href="team-details.html">
+                      <a href="">
                         <h5><?php include_once 'team/t3-name.php' ;?></h5>
                       </a>
                       <p>Formateur Assistant</p>
@@ -750,8 +759,8 @@
                         alt="funfact-icon" />
                     </div>
                     <div class="ep-funfact__info">
-                      <h4><span class="counter">900</span>+</h4>
-                      <p>Top Instructors</p>
+                      <h4><span class="counter">45</span>+</h4>
+                      <p>Meilleurs formateurs</p>
                     </div>
                   </div>
                 </div>
