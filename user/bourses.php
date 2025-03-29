@@ -16,7 +16,7 @@ try {
     $sql = "SELECT b.*, u.login as createur
             FROM Bourse b 
             LEFT JOIN Utilisateur u ON b.id_utilisateur = u.id_utilisateur 
-            ORDER BY b.id_bourse DESC";
+            ORDER BY b.id_bourse ASC";
     $stmt = $conn->query($sql);
     $bourses = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch(PDOException $e) {

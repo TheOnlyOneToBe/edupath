@@ -9,7 +9,7 @@ $bourse = null;
 $id_bourse = $_GET['id'] ?? null;
 
 if (!$id_bourse) {
-    header('Location: /bourses.php'); // Fixed path
+    header('Location: bourses.php'); // Fixed path
     exit();
 }
 
@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 ':id' => $id_bourse
             ]);
             $_SESSION['success'] = "La bourse a été modifiée avec succès!";
-            header('Location: /bourses.php'); // Fixed path
+            header('Location: bourses.php'); // Fixed path
             exit();
         } catch(PDOException $e) {
             $error = "Une erreur est survenue lors de la modification de la bourse: " . $e->getMessage();
@@ -47,7 +47,7 @@ try {
     $bourse = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$bourse) {
-        header('Location: /bourses.php');
+        header('Location: bourses.php');
         exit();
     }
 } catch(PDOException $e) {
@@ -64,7 +64,8 @@ try {
     <title>Modifier la Bourse | <?php include '../name.php' ;  ?></title>
     <?php include_once 'css.php'; ?>
 </head>
-                      <body class="ep-magic-cursor"><?php include_once 'include/navbar.php'; ?>
+<body class="ep-magic-cursor">
+    <?php include_once 'include/navbar.php'; ?>
     <?php include_once 'magic.php'; ?>
     
     <div id="smooth-wrapper">
@@ -97,9 +98,9 @@ try {
                                         
                                         <div class="row mt-4">
                                             <div class="col-6">
-                                                <a href="/bourses.php" class="ep-btn">Retour</a>
+                                                <a href="bourses.php" class="ep-btn">Retour</a>
                                             </div>
-                                            <div class="col-6 text-end">
+                                            <div class="col-6 text-center">
                                                 <button type="submit" class="ep-btn">Enregistrer</button>
                                             </div>
                                         </div>
@@ -110,7 +111,7 @@ try {
                     </div>
                 </section>
             </main>
-            <?php include_once '    include/footer.php'; ?>
+            <?php include_once 'include/footer.php'; ?>
         </div>
     </div>
 
