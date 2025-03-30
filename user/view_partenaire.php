@@ -1,6 +1,12 @@
 <?php
 session_start();
-require_once '../config/database.php';
+include_once '../config/database.php';
+include_once 'include/auth.php';
+
+if(!isLoggedIn() && isAdmin()){
+    header('Location:../login.php');
+    exit();
+}
 
 // Récupération de l'ID du partenaire
 $id_partenaire = $_GET['id'] ?? null;

@@ -1,6 +1,11 @@
 <?php
 function isLoggedIn() {
-    return isset($_SESSION['user']) && !empty($_SESSION['user']['user_id']);
+    if(isset($_SESSION['user']) && !empty($_SESSION['user']['user_id'])){
+     return null;
+    }
+    else {
+    return 0;
+    };
 }
 
 function requireLogin() {
@@ -18,11 +23,19 @@ function logout() {
 }
 
 function isAdmin() {
-    return isLoggedIn() && (strtolower($_SESSION['user']['user_fonction']) === 'admin');
+    if((strtolower($_SESSION['user']['user_fonction']) === 'admin')){
+        return 1;
+    }   
+    else {
+        return 0;
+    }
 }
 
 function isGerant() {
     return isLoggedIn() && (strtolower($_SESSION['user']['user_fonction']) === 'gerant');
+}
+function is_secretaire(){
+    return isLoggedIn() && (strtolower($_SESSION['user']['user_fonction']) === 'sect');
 }
 
 function isUser() {

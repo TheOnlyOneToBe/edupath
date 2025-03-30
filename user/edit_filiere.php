@@ -1,6 +1,12 @@
 <?php
 session_start();
-require_once 'config/database.php';
+include_once '../config/database.php';
+include_once 'include/auth.php';
+
+if(!isLoggedIn() && isAdmin()){
+    header('Location:../login.php');
+    exit();
+}
 
 
 $success = $error = '';

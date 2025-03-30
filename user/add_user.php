@@ -1,6 +1,12 @@
 <?php
 session_start();
-require_once '../config/database.php';
+include_once '../config/database.php';
+include_once 'include/auth.php';
+
+if(!isLoggedIn() && isAdmin()){
+    header('Location:../login.php');
+    exit();
+}
 
 $success = $error = '';
 
@@ -92,8 +98,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <select class="form-control" id="fonction" name="fonction" required>
                                                 <option value="">Sélectionner une fonction</option>
                                                 <option value="admin">Administrateur</option>
-                                                <option value="editor">Éditeur</option>
-                                                <option value="user">Utilisateur</option>
+                                                <option value="sect">Secrétaire</option>
+                                                <option value="gerant">Utilisateur</option>
                                             </select>
                                         </div>
                                         <br>
