@@ -3,7 +3,7 @@ session_start();
 include_once '../config/database.php';
 include_once 'include/auth.php';
 
-if(!isLoggedIn() && isAdmin()){
+if(!isLoggedIn() && !isAdmin()){
     header('Location:../login.php');
     exit();
 } // Fixed path
