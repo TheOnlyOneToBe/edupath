@@ -116,7 +116,7 @@
                       />
                     </div>
                     <div class="ep-error__content">
-                      <h3>OPPS! Vous n" etes pas autorisé a acceder a ce dossier</h3>
+                      <h3>OPPS! Vous n'etes pas autorisé a acceder a ce dossier</h3>
                       <p>
                         Nous sommes désoler mais vous ne disposez pas des permissions nécessaires pour acceder a cette ressource
                       </p>
