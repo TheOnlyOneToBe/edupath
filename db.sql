@@ -17,7 +17,6 @@
 CREATE DATABASE IF NOT EXISTS `bd` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `bd`;
 
-
 -- Listage de la structure de la table bd. utilisateur
 CREATE TABLE IF NOT EXISTS `utilisateur` (
   `id_utilisateur` int NOT NULL AUTO_INCREMENT,
@@ -25,9 +24,9 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `password` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `fonction` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_utilisateur`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table bd.utilisateur : ~16 rows (environ)
+-- Listage des données de la table bd.utilisateur : ~17 rows (environ)
 /*!40000 ALTER TABLE `utilisateur` DISABLE KEYS */;
 INSERT INTO `utilisateur` (`id_utilisateur`, `login`, `password`, `fonction`) VALUES
 	(1, 'j', 'j', 'admin'),
@@ -46,7 +45,8 @@ INSERT INTO `utilisateur` (`id_utilisateur`, `login`, `password`, `fonction`) VA
 	(14, 'assistant', 'assist123', 'Assistant'),
 	(15, 'responsable', 'resp123', 'Responsable'),
 	(16, 'superviseur', 'super123', 'Superviseur'),
-	(18, 'jm', '$2y$10$C9S3GSPD3t0eoMDWgDLnauW70ZJbQr6vY7wpalyzevJcL2Rwu9czG', 'admin');
+	(18, 'jm', '$2y$10$C9S3GSPD3t0eoMDWgDLnauW70ZJbQr6vY7wpalyzevJcL2Rwu9czG', 'admin'),
+	(19, 'astrid', '$2y$10$Z2wAKhttklEWRYVRZl5pN.cL/XivcE7xrPMQKzbZcVT5vYNtt66TG', 'admin');
 /*!40000 ALTER TABLE `utilisateur` ENABLE KEYS */;
 
 -- Listage de la structure de la table bd. article
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `article` (
   CONSTRAINT `article_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id_utilisateur`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table bd.article : ~19 rows (environ)
+-- Listage des données de la table bd.article : ~15 rows (environ)
 /*!40000 ALTER TABLE `article` DISABLE KEYS */;
 INSERT INTO `article` (`id_article`, `titre`, `description_art`, `date_pub`, `statut`, `photo`, `id_utilisateur`) VALUES
 	(1, 'Introduction à la programmation', 'Découvrez les bases de la programmation', '2025-01-15', 'publié', 'prog1.jpg', 1),
@@ -84,97 +84,6 @@ INSERT INTO `article` (`id_article`, `titre`, `description_art`, `date_pub`, `st
 /*!40000 ALTER TABLE `article` ENABLE KEYS */;
 
 
--- Listage de la structure de la table bd. cycle
-CREATE TABLE IF NOT EXISTS `cycle` (
-  `id_cycle` int NOT NULL AUTO_INCREMENT,
-  `nom` varchar(50) DEFAULT NULL,
-  `nbre_annee` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`id_cycle`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Listage des données de la table bd.cycle : ~15 rows (environ)
-/*!40000 ALTER TABLE `cycle` DISABLE KEYS */;
-INSERT INTO `cycle` (`id_cycle`, `nom`, `nbre_annee`) VALUES
-	(1, 'Licence', '4'),
-	(2, 'Master', '2 '),
-	(3, 'Doctorat', '3 '),
-	(5, 'BTS', '2 '),
-	(6, 'Bachelore', '8'),
-	(7, 'MBA', '2 '),
-	(9, 'DEA', '1 '),
-	(10, 'Certificat', '1 '),
-	(11, 'Formation Continue', '1 '),
-	(12, 'Formation Professionnelle', '2 '),
-	(13, 'Cycle Préparatoire', '2 '),
-	(14, 'Cycle Ingénieur', '3 '),
-	(15, 'Cycle Spécialisé', '2 ');
-/*!40000 ALTER TABLE `cycle` ENABLE KEYS */;
-
--- Listage de la structure de la table bd. filiere
-CREATE TABLE IF NOT EXISTS `filiere` (
-  `id_filiere` int NOT NULL AUTO_INCREMENT,
-  `nom` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `description` varchar(200) DEFAULT NULL,
-  `id_utilisateur` int DEFAULT NULL,
-  PRIMARY KEY (`id_filiere`),
-  KEY `id_utilisateur` (`id_utilisateur`),
-  CONSTRAINT `filiere_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id_utilisateur`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Listage des données de la table bd.filiere : ~15 rows (environ)
-/*!40000 ALTER TABLE `filiere` DISABLE KEYS */;
-INSERT INTO `filiere` (`id_filiere`, `nom`, `description`, `id_utilisateur`) VALUES
-	(1, 'Informatique', 'Formation en développement et systèmes informatiques', 1),
-	(2, 'Gestion', 'Formation en management et administration', 2),
-	(3, 'Marketing', 'Formation en marketing et communication', 3),
-	(4, 'Finance', 'Formation en finance et comptabilité', 4),
-	(5, 'Ressources Humaines', 'Formation en gestion des ressources humaines', 5),
-	(6, 'Commerce International', 'Formation en commerce international', 1),
-	(7, 'Génie Civil', 'Formation en construction et infrastructure', 2),
-	(8, 'Architecture', 'Formation en conception architecturale', 3),
-	(9, 'Design', 'Formation en design graphique et multimédia', 4),
-	(10, 'Médecine', 'Formation en sciences médicales', 5),
-	(11, 'Droit', 'Formation en sciences juridiques', 1),
-	(12, 'Psychologie', 'Formation en sciences comportementales', 2),
-	(13, 'Langues', 'Formation en langues étrangères', 3),
-	(14, 'Sciences Politiques', 'Formation en sciences politiques', 4),
-	(15, 'Journalisme', 'Formation en communication médiatique', 5);
-/*!40000 ALTER TABLE `filiere` ENABLE KEYS */;
--- Listage de la structure de la table bd. avoir
-CREATE TABLE IF NOT EXISTS `avoir` (
-  `id_filiere` int NOT NULL,
-  `id_cycle` int NOT NULL,
-  `montant_inscription` int DEFAULT NULL,
-  `montant_scolarite` int DEFAULT NULL,
-  `photo` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id_filiere`,`id_cycle`),
-  KEY `id_cycle` (`id_cycle`),
-  CONSTRAINT `avoir_ibfk_1` FOREIGN KEY (`id_filiere`) REFERENCES `filiere` (`id_filiere`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `avoir_ibfk_2` FOREIGN KEY (`id_cycle`) REFERENCES `cycle` (`id_cycle`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-
-
-
-
--- Listage des données de la table bd.avoir : ~14 rows (environ)
-/*!40000 ALTER TABLE `avoir` DISABLE KEYS */;
-INSERT INTO `avoir` (`id_filiere`, `id_cycle`, `montant_inscription`, `montant_scolarite`, `photo`) VALUES
-	(1, 1, 50000, 750000, 'il.jpeg'),
-	(1, 2, 45000, 500000, 'im.jpeg'),
-	(2, 1, 65000, 450000, 'gl.jpeg'),
-	(2, 2, 70000, 800000, 'gm.jpeg'),
-	(3, 1, 45000, 385000, 'mkl.jpeg'),
-	(3, 2, 55000, 580000, 'mkm.jpeg'),
-	(4, 1, 59000, 720000, 'financelicence.jpeg'),
-	(4, 2, 59000, 258000, 'finm.jpeg'),
-	(5, 1, 87450, 550000, 'rhl.jpeg'),
-	(5, 2, 50000, 450000, 'rhm.jpeg'),
-	(5, 5, 75000, 650000, 'rhbts.jpeg'),
-	(6, 2, 50000, 250000, 'cim.jpeg'),
-	(7, 1, 65000, 750000, 'gcill.jpeg'),
-	(7, 2, 78000, 1475000, 'gcilm.jpeg');
-/*!40000 ALTER TABLE `avoir` ENABLE KEYS */;
 
 -- Listage de la structure de la table bd. bourse
 CREATE TABLE IF NOT EXISTS `bourse` (
@@ -237,7 +146,31 @@ INSERT INTO `contact` (`id_contact`, `nom`, `email`, `sujet`, `message`, `date_e
 	(20, 'jean', 'kj@gmail.com', 'Demande d\'adhesion', 'Je veux m\'inscrire', '2025-03-21 12:07:36');
 /*!40000 ALTER TABLE `contact` ENABLE KEYS */;
 
+-- Listage de la structure de la table bd. cycle
+CREATE TABLE IF NOT EXISTS `cycle` (
+  `id_cycle` int NOT NULL AUTO_INCREMENT,
+  `nom` varchar(50) DEFAULT NULL,
+  `nbre_annee` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id_cycle`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+-- Listage des données de la table bd.cycle : ~15 rows (environ)
+/*!40000 ALTER TABLE `cycle` DISABLE KEYS */;
+INSERT INTO `cycle` (`id_cycle`, `nom`, `nbre_annee`) VALUES
+	(1, 'Licence', '4'),
+	(2, 'Master', '2 '),
+	(3, 'Doctorat', '3 '),
+	(5, 'BTS', '2 '),
+	(6, 'Bachelore', '8'),
+	(7, 'MBA', '2 '),
+	(9, 'DEA', '1 '),
+	(10, 'Certificat', '1 '),
+	(11, 'Formation Continue', '1 '),
+	(12, 'Formation Professionnelle', '2 '),
+	(13, 'Cycle Préparatoire', '2 '),
+	(14, 'Cycle Ingénieur', '3 '),
+	(15, 'Cycle Spécialisé', '2 ');
+/*!40000 ALTER TABLE `cycle` ENABLE KEYS */;
 
 -- Listage de la structure de la table bd. evenement
 CREATE TABLE IF NOT EXISTS `evenement` (
@@ -271,6 +204,68 @@ INSERT INTO `evenement` (`id_evenement`, `nom`, `description_ev`, `photo`, `id_u
 	(15, 'Cérémonie de remise', 'Remise des prix d\'excellence', NULL, 5);
 /*!40000 ALTER TABLE `evenement` ENABLE KEYS */;
 
+-- Listage de la structure de la table bd. filiere
+CREATE TABLE IF NOT EXISTS `filiere` (
+  `id_filiere` int NOT NULL AUTO_INCREMENT,
+  `nom` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `description` varchar(200) DEFAULT NULL,
+  `id_utilisateur` int DEFAULT NULL,
+  PRIMARY KEY (`id_filiere`),
+  KEY `id_utilisateur` (`id_utilisateur`),
+  CONSTRAINT `filiere_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id_utilisateur`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Listage des données de la table bd.filiere : ~15 rows (environ)
+/*!40000 ALTER TABLE `filiere` DISABLE KEYS */;
+INSERT INTO `filiere` (`id_filiere`, `nom`, `description`, `id_utilisateur`) VALUES
+	(1, 'Informatique', 'Formation en développement et systèmes informatiques', 1),
+	(2, 'Gestion', 'Formation en management et administration', 2),
+	(3, 'Marketing', 'Formation en marketing et communication', 3),
+	(4, 'Finance', 'Formation en finance et comptabilité', 4),
+	(5, 'Ressources Humaines', 'Formation en gestion des ressources humaines', 5),
+	(6, 'Commerce International', 'Formation en commerce international', 1),
+	(7, 'Génie Civil', 'Formation en construction et infrastructure', 2),
+	(8, 'Architecture', 'Formation en conception architecturale', 3),
+	(9, 'Design', 'Formation en design graphique et multimédia', 4),
+	(10, 'Médecine', 'Formation en sciences médicales', 5),
+	(11, 'Droit', 'Formation en sciences juridiques', 1),
+	(12, 'Psychologie', 'Formation en sciences comportementales', 2),
+	(13, 'Langues', 'Formation en langues étrangères', 3),
+	(14, 'Sciences Politiques', 'Formation en sciences politiques', 4),
+	(15, 'Journalisme', 'Formation en communication médiatique', 5);
+/*!40000 ALTER TABLE `filiere` ENABLE KEYS */;
+
+-- Listage de la structure de la table bd. avoir
+CREATE TABLE IF NOT EXISTS `avoir` (
+  `id_filiere` int NOT NULL,
+  `id_cycle` int NOT NULL,
+  `montant_inscription` int DEFAULT NULL,
+  `montant_scolarite` int DEFAULT NULL,
+  `photo` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id_filiere`,`id_cycle`),
+  KEY `id_cycle` (`id_cycle`),
+  CONSTRAINT `avoir_ibfk_1` FOREIGN KEY (`id_filiere`) REFERENCES `filiere` (`id_filiere`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `avoir_ibfk_2` FOREIGN KEY (`id_cycle`) REFERENCES `cycle` (`id_cycle`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Listage des données de la table bd.avoir : ~14 rows (environ)
+/*!40000 ALTER TABLE `avoir` DISABLE KEYS */;
+INSERT INTO `avoir` (`id_filiere`, `id_cycle`, `montant_inscription`, `montant_scolarite`, `photo`) VALUES
+	(1, 1, 50000, 750000, 'il.jpeg'),
+	(1, 2, 45000, 500000, 'im.jpeg'),
+	(2, 1, 65000, 450000, 'gl.jpeg'),
+	(2, 2, 70000, 800000, 'gm.jpeg'),
+	(3, 1, 45000, 385000, 'mkl.jpeg'),
+	(3, 2, 55000, 580000, 'mkm.jpeg'),
+	(4, 1, 59000, 720000, 'financelicence.jpeg'),
+	(4, 2, 59000, 258000, 'finm.jpeg'),
+	(5, 1, 87450, 550000, 'rhl.jpeg'),
+	(5, 2, 50000, 450000, 'rhm.jpeg'),
+	(5, 5, 75000, 650000, 'rhbts.jpeg'),
+	(6, 2, 50000, 250000, 'cim.jpeg'),
+	(7, 1, 65000, 750000, 'gcill.jpeg'),
+	(7, 2, 78000, 1475000, 'gcilm.jpeg');
+/*!40000 ALTER TABLE `avoir` ENABLE KEYS */;
 
 -- Listage de la structure de la table bd. partenaire
 CREATE TABLE IF NOT EXISTS `partenaire` (
