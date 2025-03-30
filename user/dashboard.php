@@ -3,7 +3,7 @@ session_start();
 include_once '../config/database.php';
 include_once 'include/auth.php';
 
-if(!isLoggedIn() && isAdmin()){
+if(!isLoggedIn() && !isAdmin()){
     header('Location:../login.php');
     exit();
 }
@@ -110,7 +110,7 @@ try {
                     <div class="container ep-container">
                         <div class="row">
                             <div class="col-12 mb-4">
-                                <h2>Bienvenue, <?php echo htmlspecialchars($user['login'] ?? 'Utilisateur'); ?></h2>
+                                <h2>Bienvenue, <?php echo htmlspecialchars($_SESSION['user']['user_login'] ?? 'Utilisateur'); ?></h2>
                                 <p>Voici un aperçu de votre plateforme <?php include '../name.php' ;  ?></p>
                             </div>
                         </div>

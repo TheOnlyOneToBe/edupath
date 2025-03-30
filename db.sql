@@ -110,20 +110,6 @@ INSERT INTO `cycle` (`id_cycle`, `nom`, `nbre_annee`) VALUES
 	(15, 'Cycle Spécialisé', '2 ');
 /*!40000 ALTER TABLE `cycle` ENABLE KEYS */;
 
--- Listage de la structure de la table bd. avoir
-CREATE TABLE IF NOT EXISTS `avoir` (
-  `id_filiere` int NOT NULL,
-  `id_cycle` int NOT NULL,
-  `montant_inscription` int DEFAULT NULL,
-  `montant_scolarite` int DEFAULT NULL,
-  `photo` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id_filiere`,`id_cycle`),
-  KEY `id_cycle` (`id_cycle`),
-  CONSTRAINT `avoir_ibfk_1` FOREIGN KEY (`id_filiere`) REFERENCES `filiere` (`id_filiere`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `avoir_ibfk_2` FOREIGN KEY (`id_cycle`) REFERENCES `cycle` (`id_cycle`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-
 -- Listage de la structure de la table bd. filiere
 CREATE TABLE IF NOT EXISTS `filiere` (
   `id_filiere` int NOT NULL AUTO_INCREMENT,
@@ -154,6 +140,21 @@ INSERT INTO `filiere` (`id_filiere`, `nom`, `description`, `id_utilisateur`) VAL
 	(14, 'Sciences Politiques', 'Formation en sciences politiques', 4),
 	(15, 'Journalisme', 'Formation en communication médiatique', 5);
 /*!40000 ALTER TABLE `filiere` ENABLE KEYS */;
+-- Listage de la structure de la table bd. avoir
+CREATE TABLE IF NOT EXISTS `avoir` (
+  `id_filiere` int NOT NULL,
+  `id_cycle` int NOT NULL,
+  `montant_inscription` int DEFAULT NULL,
+  `montant_scolarite` int DEFAULT NULL,
+  `photo` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id_filiere`,`id_cycle`),
+  KEY `id_cycle` (`id_cycle`),
+  CONSTRAINT `avoir_ibfk_1` FOREIGN KEY (`id_filiere`) REFERENCES `filiere` (`id_filiere`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `avoir_ibfk_2` FOREIGN KEY (`id_cycle`) REFERENCES `cycle` (`id_cycle`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
 
 
 -- Listage des données de la table bd.avoir : ~14 rows (environ)

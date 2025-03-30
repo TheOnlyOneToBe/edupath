@@ -15,7 +15,7 @@
                   </a>
                 </div>
               </div>
-              <div class="col-lg-10 col-6">
+              <div class="col-lg-12 col-8">
                 <div class="ep-header__inner-right">
                   <nav class="ep-header__navigation">
                     <ul class="ep-header__menu ep-header__menu--style2">
