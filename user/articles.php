@@ -3,7 +3,7 @@ session_start();
 include_once '../config/database.php';
 include_once 'include/auth.php';
 
-if(!isLoggedIn() && isAdmin()){
+if(!isLoggedIn() && !isAdmin()){
     header('Location:../login.php');
     exit();
 }
@@ -55,6 +55,7 @@ try {
                 <!-- Start Breadcrumbs Area -->
                 <div class="ep-breadcrumbs breadcrumbs-bg background-image"
                     style="background-image: url('../assets/images/breadcrumbs-bg.png')">
+                    
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-6 col-md-6 col-12">

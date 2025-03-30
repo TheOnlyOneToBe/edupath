@@ -1,11 +1,9 @@
 <?php
 function isLoggedIn() {
     if(isset($_SESSION['user']) && !empty($_SESSION['user']['user_id'])){
-     return null;
+     return 1;
     }
-    else {
     return 0;
-    };
 }
 
 function requireLogin() {
@@ -23,12 +21,10 @@ function logout() {
 }
 
 function isAdmin() {
-    if((strtolower($_SESSION['user']['user_fonction']) === 'admin')){
+    if(($_SESSION['user']['user_fonction']) === 'admin'){
         return 1;
     }   
-    else {
         return 0;
-    }
 }
 
 function isGerant() {

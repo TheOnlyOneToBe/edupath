@@ -11,14 +11,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (!empty($login) && !empty($password)) {
         try {
-            $sql = "SELECT * FROM Utilisateur WHERE login = :login AND password = :password";
+            $sql = "SELECT * FROM Utilisateur WHERE login = :login";
             $stmt = $conn->prepare($sql);
             $stmt->execute([
                 ':login' => $login,
-                ':password' => $password // Note: Dans un cas réel, utiliser password_hash() et password_verify()
             ]);
-
-            if ($user = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($user  && password_verify($password, $user['password'])) {
                 // Création de la session
                $_SESSION['user'] =  [
                 'user_id' => $user['id_utilisateur'],

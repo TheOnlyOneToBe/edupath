@@ -43,8 +43,13 @@
                       </li>
                     <?php else: ?>
                       <li> 
-                        </li>
                         <a href="user/dashboard.php"><?php echo $_SESSION['user']['user_login'] ;?> (User )</a>
+                        </li>
+                    <?php endif; ?>
+                   <?php if(isset($_SESSION['user'])): ?> 
+                      <li>
+                      <a href="logout.php">Se déconnecter</a>
+                      </li>
                     <?php endif; ?>
                       </ul>
                       

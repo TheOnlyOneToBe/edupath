@@ -5,19 +5,15 @@
     <div class="container ep-container">
       <div class="ep-header__inner ep-header__inner--style2">
         <div class="row align-items-center">
-          <!-- Logo -->
-          <div class="col-lg-2 col-6">
-            <div class="ep-logo">
-              <a href="  dashboard.php">
-                <img src="../assets/images/logo.svg" alt="logo" />
-              </a>
-            </div>
-          </div>
           <!-- Menu -->
-          <div class="col-lg-10 col-6">
+          <div class="col-lg-12 col-8">
             <div class="ep-header__inner-right">
               <nav class="ep-header__navigation">
                 <ul class="ep-header__menu ep-header__menu--style2">
+                  <!-- Accueil -->
+                  <li>
+                    <a href="../index.php">Accueil</a> 
+                  </li>
                   <!-- Articles -->
                   <li>
                     <a href="#">Articles <i class="fi fi-ss-angle-small-down"></i></a>
@@ -88,6 +84,9 @@
                       <li><a href="utilisateurs.php">Liste des Utilisateurs</a></li>
                       <li><a href="add_user.php">Ajouter Utilisateur</a></li>
                     </ul>
+                  </li>
+                  <li>
+                    <a href="include/logout">Se déconnecter</a>
                   </li>
                 </ul>
               </nav>

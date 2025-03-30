@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 ]);
 
                 $_SESSION['success'] = "L'utilisateur a été ajouté avec succès!";
-                header('Location: users.php');
+                header('Location:utilisateurs.php');
                 exit();
             }
         } catch (PDOException $e) {
