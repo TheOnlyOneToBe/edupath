@@ -69,7 +69,7 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     
     <!-- Favicon -->
-    <?php include('favicon.php'); ?>
+    <?php include('../favicon.php'); ?>
 
     <!-- Site Title -->
     <title>Profil Utilisateur | <?php include '../name.php' ;  ?></title>

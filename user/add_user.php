@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="robots" content="all" />
 
     <!-- Favicon -->
-    <?php include('favicon.php'); ?>
+    <?php include('../favicon.php'); ?>
 
     <!-- Site Title -->
     <title>Ajouter un utilisateur | <?php include '../name.php' ;  ?></title>

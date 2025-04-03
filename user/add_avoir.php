@@ -81,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         content="online learning, education, e-learning, courses, tutorials, educational resources, skill development, career enhancement" />
 
     <!-- Favicon -->
-    <?php include('favicon.php'); ?>
+    <?php include('../favicon.php'); ?>
 
     <!-- Site Title -->
     <title>Ajouter une association Filière-Cycle | Avoirs</title>

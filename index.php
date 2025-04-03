@@ -1,8 +1,13 @@
-<?php session_start() ;?>
+<?php session_start(); ?>
 <?php require_once 'config/database.php';
-$sts=$conn->prepare('SELECT COUNT("*") FROM avoir');
+$sts = $conn->prepare('SELECT COUNT("*") FROM avoir');
 $sts->execute();
-$sm=$sts->fetchColumn();
+$sm = $sts->fetchColumn();
+
+// Récupérer les derniers évènements (3 éléments)
+$sql_events = "SELECT * FROM evenement ORDER BY id_evenement DESC LIMIT 50";
+$stmt_events = $conn->query($sql_events);
+$events = $stmt_events->fetchAll();
 
 ?>
 
@@ -266,7 +271,7 @@ $sm=$sts->fetchColumn();
                   <div class="ep-hero__widget-column">
                     <div class="ep-hero__course">
                       <?php ?>
-                      <span class="counter"><?php echo $sm;?></span>
+                      <span class="counter"><?php echo $sm; ?></span>
                       <p>Filières<br />disponibles</p>
                     </div>
                     <!-- Image Two -->
@@ -522,7 +527,7 @@ $sm=$sts->fetchColumn();
                       data-wow-duration="1s">
                       <a href="formation_details.php?id=<?php echo $formation['id_filiere']; ?>" class="ep-course__img">
                         <img
-                          src="assets/imgs/formations/<?php echo $formation['photo'];?>"
+                          src="assets/imgs/formations/<?php echo $formation['photo']; ?>"
                           alt="<?php echo $formation['nom_filiere']; ?>" />
                       </a>
                       <a href="formations.php" class="ep-course__tag <?php echo $colorClass; ?>"><?php echo $formation['nom_cycle']; ?></a>
@@ -610,12 +615,12 @@ $sm=$sts->fetchColumn();
                   data-wow-delay=".3s"
                   data-wow-duration="1s">
                   <a href="" class="ep-team__img">
-                    <?php include_once 'team/t1.php' ; ?>
+                    <?php include_once 'team/t1.php'; ?>
                   </a>
                   <div class="ep-team__content">
                     <div class="ep-team__author">
                       <a href="">
-                        <h5><?php include_once 'team/t1-name.php' ;?></h5>
+                        <h5><?php include_once 'team/t1-name.php'; ?></h5>
                       </a>
                       <p>Formateur</p>
                     </div>
@@ -629,12 +634,12 @@ $sm=$sts->fetchColumn();
                   data-wow-delay=".5s"
                   data-wow-duration="1s">
                   <a href="" class="ep-team__img">
-                  <?php include_once 'team/t2.php' ;?>
+                    <?php include_once 'team/t2.php'; ?>
                   </a>
                   <div class="ep-team__content">
                     <div class="ep-team__author">
                       <a href="">
-                        <h5><?php include_once 'team/t2-name.php' ;?></h5>
+                        <h5><?php include_once 'team/t2-name.php'; ?></h5>
                       </a>
                       <p>Formateur Senior</p>
                     </div>
@@ -648,12 +653,12 @@ $sm=$sts->fetchColumn();
                   data-wow-delay=".7s"
                   data-wow-duration="1s">
                   <a href="" class="ep-team__img">
-                    <?php include_once 'team/t3.php' ;?>
+                    <?php include_once 'team/t3.php'; ?>
                   </a>
                   <div class="ep-team__content">
                     <div class="ep-team__author">
                       <a href="">
-                        <h5><?php include_once 'team/t3-name.php' ;?></h5>
+                        <h5><?php include_once 'team/t3-name.php'; ?></h5>
                       </a>
                       <p>Formateur Assistant</p>
                     </div>
@@ -897,7 +902,7 @@ $sm=$sts->fetchColumn();
               <div class="row justify-content-center">
                 <div class="col-lg-12 col-xl-6 col-md-8 col-12">
                   <div class="ep-section-head text-center">
-                    <span class="ep-section-head__sm-title ep2-color">Événements à venir</span>
+                    <span class="ep-section-head__sm-title ep2-color">Articles récents</span>
                     <h3 class="ep-section-head__big-title ep-split-text left">
                       Découvrez nos <span>Actualités</span> <br />récentes
                     </h3>
@@ -971,7 +976,7 @@ $sm=$sts->fetchColumn();
                       </div>
                     </div>
                     <!-- Start Brand -->
-                    
+
                 <?php
                     $delayIndex++;
                   }
@@ -982,31 +987,67 @@ $sm=$sts->fetchColumn();
               </div>
             </div>
           </section>
-          <div class="ep-section-head text-center">
-                    <span class="ep-section-head__sm-title ep2-color">Nos partenaires</span>
-                    <h3 class="ep-section-head__big-title ep-split-text left">
-                      Découvrez nos<span>partenaires</span>qui nous font confiance <br />
-                    </h3>
-                  </div>
-                  <br>  
-                  <br>
-          <div class="ep-brand section-gap pt-0">
-                      <div class="container ep-container">
-                        <div class="row">
-                          <div class="col-12">
-                            <div class="owl-carousel ep-brand__slider">
-                              <?php foreach ($partenaires as $partenaire): ?>
-                                <a href="#" class="ep-brand__logo ep-brand__logo--style2">
-                                  <img
-                                    src="assets/imgs/partenaires/<?php echo htmlspecialchars($partenaire['photo']); ?>"
-                                    alt="<?php echo htmlspecialchars($partenaire['nom']); ?>" />
-                                </a>
-                              <?php endforeach; ?>
-                            </div>
-                          </div>
+          <!-- Section Évènements -->
+          <section class="ep-events section-gap bg-light">
+            <div class="container">
+              <div class="section-header text-center mb-5">
+                <h2>Nos Évènements</h2>
+                <p>Découvrez nos derniers évènements</p>
+              </div>
+              <div class="row">
+                <div class="owl-carousel ep-event__slider">
+                  <?php foreach ($events as $event): ?>
+                    <div class="ep-event__card">
+                      <a href="event_detail.php?id=<?php echo $event['id_evenement']; ?>" class="ep-event__img">
+                        <img
+                          src="assets/imgs/events/<?php echo htmlspecialchars($event['photo']); ?>"
+                          alt="event-img" />
+                      </a>
+                      <div class="ep-event__info">
+                        <div class="ep-event__date ep6-bg">
+                          <!-- Placeholder date; update with $event date if available -->
+                          <?php echo random_int(1, 32); ?> Dec
                         </div>
+                        <div class="ep-event__location">
+                          <i class="fi fi-rs-marker ep6-color"></i>
+                        </div>
+                        <a href="event_detail.php?id=<?php echo $event['id_evenement']; ?>" class="ep-event__title">
+                          <?php echo htmlspecialchars($event['nom']); ?>
+                        </a>
                       </div>
                     </div>
+                  <?php endforeach; ?>
+                </div>
+              </div>
+            </div>
+          </section>
+          <br>
+          <br>
+          <div class="ep-section-head text-center">
+            <span class="ep-section-head__sm-title ep2-color">Nos partenaires</span>
+            <h3 class="ep-section-head__big-title ep-split-text left">
+              Découvrez nos<span>partenaires</span>qui nous font confiance <br />
+            </h3>
+          </div>
+          <br>
+          <br>
+          <div class="ep-brand section-gap pt-0">
+            <div class="container ep-container">
+              <div class="row">
+                <div class="col-12">
+                  <div class="owl-carousel ep-brand__slider">
+                    <?php foreach ($partenaires as $partenaire): ?>
+                      <a href="#" class="ep-brand__logo ep-brand__logo--style2">
+                        <img
+                          src="assets/imgs/partenaires/<?php echo htmlspecialchars($partenaire['photo']); ?>"
+                          alt="<?php echo htmlspecialchars($partenaire['nom']); ?>" />
+                      </a>
+                    <?php endforeach; ?>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <!-- End Event Area -->
       </main>
       <!-- Start Footer Area -->

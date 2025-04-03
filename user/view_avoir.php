@@ -79,7 +79,7 @@ if ($avoir) {
         content="online learning, education, e-learning, courses, tutorials, educational resources, skill development, career enhancement" />
 
     <!-- Favicon -->
-    <?php include('favicon.php'); ?>
+    <?php include('../favicon.php'); ?>
 
     <!-- Site Title -->
     <title>Détails des Frais | <?php include '../name.php' ;  ?></title>
