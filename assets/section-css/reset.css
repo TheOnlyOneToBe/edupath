@@ -14,7 +14,7 @@
 /* Custom Variable Colors */
 :root {
   --ep-primary-color-1: #00bfad;
-  --ep-primary-color-2: #006bff;
+  --ep-primary-color-2: #3e80db;
   --ep-primary-color-3: #543ee8;
   --ep-primary-color-4: #fec961;
   --ep-primary-color-5: #ff723a;
@@ -40,11 +40,11 @@
 /* Selection CSS */
 ::-moz-selection {
   color: var(--ep-white-color);
-  background: var(--ep-primary-color-5);
+  background: var(--ep-primary-color-2);
 }
 ::selection {
   color: var(--ep-white-color);
-  background: var(--ep-primary-color-5);
+  background: var(--ep-primary-color-2);
 }
 
 /* ScrollBar CSS */
@@ -64,7 +64,7 @@
 }
 ::-webkit-scrollbar-thumb {
   cursor: pointer !important;
-  background: var(--ep-primary-color-5) !important;
+  background: var(--ep-primary-color-2) !important;
   border-radius: 4px;
 }
 
@@ -463,7 +463,7 @@ textarea:hover,
 textarea:focus,
 selet:hover,
 select:focus {
-  border-color: var(--ep-primary-color-5);
+  border-color: var(--ep-primary-color-2);
 }
 a {
   color: inherit;
@@ -853,16 +853,16 @@ p {
 
 /* Color 5 */
 .ep5-color {
-  color: var(--ep-primary-color-5);
+  color: var(--ep-primary-color-2);
 }
 .ep5-bg {
-  background-color: var(--ep-primary-color-5) !important;
+  background-color: var(--ep-primary-color-2) !important;
 }
 .ep5-bg-light {
   background-color: #fff1ec !important;
 }
 .ep5-border-color {
-  border-bottom: 1px solid var(--ep-primary-color-5);
+  border-bottom: 1px solid var(--ep-primary-color-2);
 }
 
 /* Color 6 */
@@ -1098,7 +1098,7 @@ p {
   width: 40px;
   height: 40px;
   background: transparent;
-  border: 1px solid var(--ep-primary-color-5);
+  border: 1px solid var(--ep-primary-color-2);
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);
@@ -1127,7 +1127,7 @@ p {
   border: none;
   transition: 0.5s;
   opacity: 0;
-  border: 1px solid var(--ep-primary-color-5);
+  border: 1px solid var(--ep-primary-color-2);
 }
 
 body.ep-magic-cursor #magic-cursor {
@@ -1149,7 +1149,7 @@ body.ep-magic-cursor #magic-cursor {
   display: flex;
   align-items: center;
   pointer-events: none;
-  background-color: var(--ep-primary-color-5) !important;
+  background-color: var(--ep-primary-color-2) !important;
   border-radius: 50%;
   justify-content: center;
   mix-blend-mode: difference;
@@ -1200,7 +1200,7 @@ input[type="number"] {
   content: "";
   height: 50px;
   width: 50px;
-  background: url(../images/favicon.svg);
+  background: url(../images/favicon2.svg);
   transform: translateX(-50%);
   background-repeat: no-repeat;
   background-position: center;
@@ -1212,14 +1212,14 @@ input[type="number"] {
   animation: spinner 1s infinite linear;
   border-radius: 50%;
   border: 3px solid #fff1ec;
-  border-top-color: var(--ep-primary-color-5);
+  border-top-color: var(--ep-primary-color-2);
   height: 110px;
   margin: 0 auto 30px auto;
   width: 110px;
 }
 
 .ep-preloader.secondary .animation-preloader .spinner {
-  border-top-color: var(--ep-primary-color-5);
+  border-top-color: var(--ep-primary-color-2);
 }
 
 .ep-preloader .loader {
@@ -1327,7 +1327,7 @@ input[type="number"] {
   text-align: center;
   line-height: 46px;
   font-size: 26px;
-  color: var(--ep-primary-color-5);
+  color: var(--ep-primary-color-2);
   left: 0;
   top: 0;
   height: 46px;
@@ -1342,7 +1342,7 @@ input[type="number"] {
   fill: none;
 }
 .progress-wrap svg.progress-circle path {
-  stroke: var(--ep-primary-color-5);
+  stroke: var(--ep-primary-color-2);
   stroke-width: 4;
   box-sizing: border-box;
   -webkit-transition: all 200ms linear;
@@ -1363,7 +1363,7 @@ input[type="number"] {
 .nice-select:active,
 .nice-select.open,
 .nice-select:focus {
-  border-color: var(--ep-primary-color-5) !important;
+  border-color: var(--ep-primary-color-2) !important;
   box-shadow: none;
 }
 .nice-select:hover {
@@ -1382,7 +1382,7 @@ input[type="number"] {
 }
 
 .nice-select .option:hover {
-  background-color: var(--ep-primary-color-5);
+  background-color: var(--ep-primary-color-2);
 }
 .nice-select .option {
   line-height: 42px;
@@ -1397,7 +1397,7 @@ input[type="number"] {
   font-weight: 600;
 }
 .nice-select .option.selected {
-  background: var(--ep-primary-color-5);
+  background: var(--ep-primary-color-2);
   color: var(--ep-white-color);
 }
 .nice-select .list:hover .option:not(:hover) {
