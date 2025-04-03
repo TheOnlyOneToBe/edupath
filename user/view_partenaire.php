@@ -97,7 +97,7 @@ try {
                                                 <a href="/partenaires.php" class="ep-btn">
                                                     <i class="fi fi-rs-arrow-small-left"></i> Retour à la liste
                                                 </a>
-                                                <?php if (isset($_SESSION['user']) && $_SESSION['user']['fonction'] === 'admin'): ?>
+                                                <?php if (isset($_SESSION['user']) && $_SESSION['user']['user_fonction'] === 'admin'): ?>
                                                 <div>
                                                     <a href="edit_partenaire.php?id=<?php echo $partenaire['id_partenaire']; ?>" 
                                                        class="ep-btn ep-btn-primary">

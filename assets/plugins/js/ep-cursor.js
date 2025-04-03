@@ -104,7 +104,7 @@ if ($("body").not(".is-mobile").hasClass("ep-magic-cursor")) {
           borderWidth: 1,
           zIndex: 1,
           backdropFilter: "blur(14px)",
-          backgroundColor: "#ff6644",
+          backgroundColor: "#2781FFFF",
           boxShadow: "0px 1px 3px 0px rgba(18, 20, 32, 0.14)",
         });
         gsap.to(".ball-view", { duration: 0.3, scale: 1, autoAlpha: 1 });

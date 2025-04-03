@@ -100,7 +100,7 @@
 .ep-topbar__search form button {
   width: 54px;
   height: 46px;
-  background: var(--ep-primary-color-5);
+  background: var(--ep-primary-color-2);
   color: var(--ep-white-color);
   position: absolute;
   right: 0;
@@ -127,12 +127,12 @@
   transition: all 0.4s ease;
 }
 .ep-topbar__action-icon i:hover {
-  color: var(--ep-primary-color-5);
+  color: var(--ep-primary-color-2);
 }
 .ep-topbar__action-icon span {
 	width: 17px;
 	height: 17px;
-	background: var(--ep-primary-color-5);
+	background: var(--ep-primary-color-2);
 	display: block;
 	text-align: center;
 	border-radius: 100%;
@@ -231,7 +231,7 @@
   font-size: 16px;
 }
 .ep-header__menu li.active a {
-  color: var(--ep-primary-color-5);
+  color: var(--ep-primary-color-2);
 }
 .ep-header__menu li:hover > a, .ep-header__menu li.active a {
 	color: var(--ep-primary-color-2);
@@ -326,7 +326,7 @@
 .ep-header__account:hover p,
 .ep-header__account:hover span,
 .ep-header__account:hover i {
-  color: var(--ep-primary-color-5);
+  color: var(--ep-primary-color-2);
 }
 
 /* Header Style 2 */
@@ -358,7 +358,7 @@
 
 .ep-header__menu.ep-header__menu--style2 li:hover > a, 
 .ep-header__menu.ep-header__menu--style2 li.active a {
-  color: var(--ep-primary-color-5) ;
+  color: var(--ep-primary-color-2) ;
 }
 
 .ep-header__menu.ep-header__menu--style2 .sub-menu li a{
@@ -367,11 +367,11 @@
 
 .ep-header__menu.ep-header__menu--style2  li .sub-menu li:hover > a, 
 .ep-header__menu.ep-header__menu--style2  li .sub-menu li.active a {
-	color: var(--ep-primary-color-5);
+	color: var(--ep-primary-color-2);
 }
 
 .ep-header__menu.ep-header__menu--style2 li .sub-menu{
-  border-top-color:var(--ep-primary-color-5);
+  border-top-color:var(--ep-primary-color-2);
   top: 100%;
 }
 

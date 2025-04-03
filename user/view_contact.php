@@ -58,7 +58,7 @@ try {
     <meta name="keywords" content="online learning, education, e-learning, courses, tutorials, educational resources, skill development, career enhancement" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.svg" />
+    <?php include('favicon.php'); ?>
 
     <!-- Site Title -->
     <title>Détails du Message | <?php include '../name.php' ;  ?></title>

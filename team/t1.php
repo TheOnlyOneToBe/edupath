@@ -1,3 +1,3 @@
 <img
-    src="assets/imgs/1.png"
+    src="assets/imgs/01t.jpg"
     alt="" />

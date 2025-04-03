@@ -44,7 +44,7 @@
   background: var(--ep-primary-color-6);
 }
 .ep-service__card.service-6:hover::before {
-  background: var(--ep-primary-color-5);
+  background: var(--ep-primary-color-2);
 }
 
 .ep-service__icon img {

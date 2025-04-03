@@ -8,10 +8,10 @@
         <div class="container ep-container">
           <div class="ep-header__inner ep-header__inner--style2">
             <div class="row align-items-center">
-              <div class="col-lg-2 col-6">
-                <div class="ep-logo">
-                  <a href="index.php">
-                    
+              <div class="col-lg-2 col-3">
+              <div class="ep-logo">
+                  <a href="index.html">
+                    <img src="../assets/images/favicon2.svg" alt="logo" />
                   </a>
                 </div>
               </div>

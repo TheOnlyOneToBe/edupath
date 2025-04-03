@@ -40,7 +40,7 @@
 }
 .ep-breadcrumbs__menu li.active a,
 .ep-breadcrumbs__menu li:hover a {
-  color: var(--ep-primary-color-5);
+  color: var(--ep-primary-color-2);
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {

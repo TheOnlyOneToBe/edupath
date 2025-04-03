@@ -126,7 +126,7 @@ try {
                                     <label for="photo" class="form-label">Logo</label>
                                     <?php if (!empty($partenaire['photo'])): ?>
                                         <div class="mb-2">
-                                            <img src="<?php echo htmlspecialchars($partenaire['photo']); ?>"
+                                            <img src="../assets/imgs/partenaires/<?php echo htmlspecialchars($partenaire['photo']); ?>"
                                                 alt="Logo actuel" style="max-width: 200px;">
                                         </div>
                                     <?php endif; ?>

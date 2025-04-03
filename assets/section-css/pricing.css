@@ -31,7 +31,7 @@
 }
 
 .ep-pricing__card.pricing-1:hover::before {
-  background: var(--ep-primary-color-5);
+  background: var(--ep-primary-color-2);
 }
 .ep-pricing__card.pricing-2:hover::before {
   background: var(--ep-primary-color-2);

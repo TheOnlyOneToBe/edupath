@@ -138,11 +138,12 @@ try {
                                         <div class="col-md-6">
                                             <a href="filieres.php" class="ep-btn">Retour à la liste</a>
                                         </div>
-                                        <?php if (isset($_SESSION['user']) && ($_SESSION['user']['fonction'] === 'admin' || $_SESSION['user']['id_utilisateur'] === $filiere['id_utilisateur'])): ?>
+                                        <?php  if (isset($_SESSION['user']) && ($_SESSION['user']['user_fonction'] === 'admin' ||
+                                         $_SESSION['user']['id_utilisateur'] === $filiere['id_utilisateur'])):  ?>
                                         <div class="col-md-6 text-end">
                                             <a href="edit_filiere.php?id=<?php echo $filiere['id_filiere']; ?>" class="ep-btn">Modifier</a>
                                         </div>
-                                        <?php endif; ?>
+                                        <?php  endif;  ?>
                                     </div>
                                 </div>
                             </div>

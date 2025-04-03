@@ -55,13 +55,13 @@
   }
   
   .btn-danger {
-    background-color: #dc3545;
-    border-color: #dc3545;
+    background-color: #3aa6ff;
+    border-color: #3aa6ff;
   }
   
   .btn-danger:hover {
-    background-color: #c82333;
-    border-color: #bd2130;
+    background-color: #3aa6ff;
+    border-color: #3aa6ff;
   }
   
   /* Pagination */

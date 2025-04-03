@@ -236,7 +236,7 @@
   transition: all 0.4s ease;
 }
 .ep-hero__search-btn:hover {
-  background: var(--ep-primary-color-5);
+  background: var(--ep-primary-color-2);
 }
 
 .ep-hero__overview-card {

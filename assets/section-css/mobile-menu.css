@@ -34,7 +34,7 @@
   transition: all 0.3s;
 }
 .mobile-menu-offcanvas-toggler:hover .line {
-  background: var(--ep-primary-color-5);
+  background: var(--ep-primary-color-2);
 }
 .mobile-menu-offcanvas-toggler .line + .line {
   margin-top: 4px;
@@ -74,7 +74,7 @@
   background: var(--ep-offwhite-color);
 }
 .mobile-menu-modal .offcanvas-header .btn-close {
-  color: var(--ep-primary-color-5);
+  color: var(--ep-primary-color-2);
   opacity: 1;
   width: 35px;
   height: 35px;
@@ -86,10 +86,10 @@
   transition: all 0.4s ease;
   margin: 0;
   float: right;
-  border: 1px solid var(--ep-primary-color-5) !important;
+  border: 1px solid var(--ep-primary-color-2) !important;
 }
 .mobile-menu-modal .offcanvas-header .btn-close:hover {
-  background: var(--ep-primary-color-5);
+  background: var(--ep-primary-color-2);
   border: 1px solid transparent !important;
   color: var(--ep-white-color);
 }
@@ -119,10 +119,10 @@
   border: none;
 }
 .mobile-menu-modal .offcanvas-menu li.active .menu-arrow {
-  color: var(--ep-primary-color-5);
+  color: var(--ep-primary-color-2);
 }
 .mobile-menu-modal .offcanvas-menu li.active .menu-arrow::before {
-  background: var(--ep-primary-color-5) !important;
+  background: var(--ep-primary-color-2) !important;
   color: var(--ep-white-color) !important;
 }
 .mobile-menu-modal .offcanvas-menu li a {
@@ -134,7 +134,7 @@
 }
 .mobile-menu-modal .offcanvas-menu li a:hover,
 .mobile-menu-modal .offcanvas-menu li .menu-active {
-  color: var(--ep-primary-color-5);
+  color: var(--ep-primary-color-2);
 }
 .mobile-menu-modal .offcanvas-menu li a i {
   margin-left: 10px;
@@ -186,18 +186,18 @@
   font-size: 15px;
 }
 #offcanvas-menu .sub-menu li .menu-active {
-  color: var(--ep-primary-color-5);
+  color: var(--ep-primary-color-2);
 }
 
 #offcanvas-menu .sub-menu li a:hover,
 #offcanvas-menu .sub-menu li.active a {
-  color: var(--ep-primary-color-5) !important;
+  color: var(--ep-primary-color-2) !important;
 }
 #offcanvas-menu .menu-arrow {
   position: relative;
 }
 #offcanvas-menu .menu-arrow.active a {
-  color: var(--ep-primary-color-5);
+  color: var(--ep-primary-color-2);
 }
 #offcanvas-menu .sub-menu li {
   margin-bottom: 12px;
@@ -207,10 +207,10 @@
   color: var(--ep-secondary-color);
 }
 #offcanvas-menu .menu-arrow.active .sub-menu li.active a {
-  color: var(--ep-primary-color-5);
+  color: var(--ep-primary-color-2);
 }
 #offcanvas-menu .menu-arrow:hover::before {
-  background: var(--ep-primary-color-5);
+  background: var(--ep-primary-color-2);
   color: var(--ep-white-color);
 }
 #offcanvas-menu .menu-arrow::before {
@@ -224,13 +224,13 @@
   height: 24px;
   background: #ff723a1a;
   border-radius: 100%;
-  color: var(--ep-primary-color-5);
+  color: var(--ep-primary-color-2);
   text-align: center;
   line-height: 24px;
   transition: all 0.4s ease;
 }
 #offcanvas-menu .menu-arrow.active::before {
-  background: var(--ep-primary-color-5);
+  background: var(--ep-primary-color-2);
   color: var(--ep-white-color);
   content: "\f110";
 }

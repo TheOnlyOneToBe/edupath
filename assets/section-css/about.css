@@ -178,8 +178,8 @@
   margin: 0;
 }
 .ep-section__widget--style2 .ep-feature-list li i {
-  color: var(--ep-primary-color-5);
-  font-size: ;
+  color: var(--ep-primary-color-2);
+  font-size: 16px ;
   position: relative;
   top: 2px;
 }

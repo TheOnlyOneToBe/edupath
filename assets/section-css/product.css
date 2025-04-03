@@ -104,7 +104,7 @@
   margin-top: 10px;
 }
 .ep-product__title h5:hover {
-  color: var(--ep-primary-color-5);
+  color: var(--ep-primary-color-2);
 }
 .ep-product__info-bottom {
   display: flex;
@@ -127,7 +127,7 @@
   top: 3px;
 }
 .ep-product__btn:hover {
-  color: var(--ep-primary-color-5);
+  color: var(--ep-primary-color-2);
 }
 .ep-product__price {
   display: flex;
@@ -186,7 +186,7 @@
   stroke: currentColor;
 }
 .ep-cart__remove-button:hover {
-  color: var(--ep-primary-color-5) !important;
+  color: var(--ep-primary-color-2) !important;
 }
 .ep-cart__item td {
   color: #4f547b;
@@ -228,7 +228,7 @@
   margin-left: 10px;
 }
 .ep-cart__product-name:hover {
-  color: var(--ep-primary-color-5) !important;
+  color: var(--ep-primary-color-2) !important;
 }
 .ep-cart__item {
   border-bottom: 1px solid var(--ep-border-color);
@@ -322,14 +322,14 @@
   gap: 15px;
 }
 .ep-shop-single__categories a {
-  color: var(--ep-primary-color-5) !important;
+  color: var(--ep-primary-color-2) !important;
 }
 
 .ep-shop-single__tags a {
   font-weight: 400;
 }
 .ep-shop-single__tags a:hover {
-  color: var(--ep-primary-color-5) !important;
+  color: var(--ep-primary-color-2) !important;
 }
 .ep-shop-single__meta {
   margin-top: 30px;
@@ -363,7 +363,7 @@
   margin-bottom: 24px;
 }
 .ep-shop-single__wishlist-button:hover {
-  color: var(--ep-primary-color-5) !important;
+  color: var(--ep-primary-color-2) !important;
 }
 
 #productTabs {
@@ -452,7 +452,7 @@
   border-radius: 4px;
 }
 .ep-checkout__summary-item-name a:hover {
-  color: var(--ep-primary-color-5);
+  color: var(--ep-primary-color-2);
 }
 .ep-checkout__summary-item {
   display: flex;

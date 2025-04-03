@@ -19,7 +19,7 @@ $sm=$sts->fetchColumn();
   <meta name="keywords" content="apprentissage en ligne, éducation, e-learning, cours, tutoriels, ressources éducatives, développement de compétences, amélioration de carrière" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="assets/images/favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon2.svg" />
 
   <!-- Titre du site -->
   <title><?php include 'name.php';  ?> - Éducation, Cours & Formation en Ligne</title>

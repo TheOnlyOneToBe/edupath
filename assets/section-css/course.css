@@ -336,7 +336,7 @@
 }
 
 .ep-course__search-form button:hover {
-  background: var(--ep-primary-color-5);
+  background: var(--ep-primary-color-2);
 }
 
 .ep-course__select .nice-select {
@@ -389,7 +389,7 @@
 }
 .ep-pagination__list li a:hover,
 .ep-pagination__list li.active a {
-  background: var(--ep-primary-color-5);
+  background: var(--ep-primary-color-2);
   color: var(--ep-white-color);
 }
 

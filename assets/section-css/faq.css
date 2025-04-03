@@ -70,13 +70,13 @@
   height: 38px;
   line-height: 38px;
   color: var(--ep-white-color);
-  background: var(--ep-primary-color-5);
+  background: var(--ep-primary-color-2);
 }
 .ep-faq__accordion-item .accordion-button:not(.collapsed) {
   box-shadow: none;
   border-bottom: none !important;
   background: var(--ep-offwhite-color);
-  color: var(--ep-primary-color-5);
+  color: var(--ep-primary-color-2);
   border-radius: 20px 20px 0px 0px !important;
   padding-bottom: 0;
 }
@@ -112,7 +112,7 @@
 }
 .ep-faq__accordion-item .accordion-button:not(.collapsed)::after {
   background: var(--ep-white-color);
-  color: var(--ep-primary-color-5);
+  color: var(--ep-primary-color-2);
   content: "\f13d";
 }
 

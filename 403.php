@@ -16,7 +16,7 @@
     />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.svg" />
+    <?php include('favicon.php'); ?>
      <!-- Bootstrap -->
      <link rel="stylesheet" href="../assets/plugins/css/bootstrap.min.css" />
     <!-- Animate CSS -->
