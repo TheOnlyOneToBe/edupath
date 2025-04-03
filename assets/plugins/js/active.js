@@ -252,6 +252,39 @@
         },
       },
     });
+    
+    /*==============================================================================
+      Bourse Slider JS
+    ================================================================================*/
+    $(".ep-bourse__slider").owlCarousel({
+      items: 3,
+      autoplay: true,
+      loop: true,
+      margin: 30,
+      dots: false,
+      nav: true,
+      navText: [
+        "<i class='fi fi-rs-arrow-small-left'></i>",
+        "<i class='fi fi-rs-arrow-small-right'></i>",
+      ],
+      responsive: {
+        0: {
+          items: 1,
+        },
+        576: {
+          items: 1,
+        },
+        768: {
+          items: 2,
+        },
+        992: {
+          items: 2,
+        },
+        1200: {
+          items: 3,
+        },
+      },
+    });
 
     /*==============================================================================
       Realted Team Slider JS
